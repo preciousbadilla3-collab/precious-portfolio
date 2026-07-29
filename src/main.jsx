@@ -8,6 +8,7 @@ import App from "./App.jsx";
 
 /* Import last so it overrides section backgrounds */
 import "./SiteFlow.css";
+import "./MobileOptimizations.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

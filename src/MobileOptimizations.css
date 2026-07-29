@@ -1,0 +1,1010 @@
+/* =========================================================
+   MOBILE OPTIMIZATIONS
+   Imported last to keep desktop styling intact while making
+   touch devices cleaner, faster, and viewport-safe.
+========================================================= */
+
+html,
+body,
+#root{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  overflow-x:clip;
+}
+
+body{
+  min-width:0;
+}
+
+img,
+svg,
+video,
+iframe{
+  max-width:100%;
+}
+
+.mobile-menu-btn,
+.mobile-menu-cta,
+.category-label-mobile,
+.archive-mobile-details,
+.chat-mobile-close{
+  display:none;
+}
+
+.process-resume-preview{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  display:block;
+  object-fit:cover;
+  object-position:top center;
+
+  background:#fff;
+
+  transform:scale(1.018);
+  transform-origin:center top;
+
+  transition:
+    transform .65s cubic-bezier(.22,1,.36,1),
+    filter .45s ease;
+}
+
+.process-resume-card:hover .process-resume-preview{
+  transform:scale(1.045);
+
+  filter:
+    brightness(.58)
+    saturate(.78)
+    blur(1px);
+}
+
+.resume-fullscreen-viewer{
+  overflow:auto;
+  background:#f4f1f2;
+}
+
+.resume-fullscreen-viewer img{
+  width:100%;
+  height:auto;
+  min-height:100%;
+
+  display:block;
+  object-fit:contain;
+  object-position:top center;
+
+  background:#fff;
+}
+
+.chat-header-actions{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+/* =========================================================
+   TABLET / COLLAPSED NAVIGATION
+========================================================= */
+
+@media(max-width:980px){
+  .mobile-menu-btn{
+    width:44px;
+    height:44px;
+
+    padding:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    color:#fff8fa;
+
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.045);
+  }
+
+  .nav-center.mobile-open{
+    position:absolute;
+
+    top:calc(100% + 10px);
+    left:0;
+    right:0;
+
+    width:100%;
+    max-height:calc(100dvh - 110px);
+
+    padding:12px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+
+    overflow-y:auto;
+
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:25px;
+
+    background:rgba(15,7,11,.97);
+
+    box-shadow:
+      0 24px 70px rgba(0,0,0,.52),
+      inset 0 1px 0 rgba(255,255,255,.04);
+  }
+
+  .nav-center.mobile-open a{
+    min-height:46px;
+
+    padding:0 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.055);
+    border-radius:15px;
+
+    background:rgba(255,255,255,.025);
+
+    font-size:.78rem;
+  }
+
+  .nav-center.mobile-open a::after{
+    display:none;
+  }
+
+  .nav-center.mobile-open .mobile-menu-cta{
+    grid-column:1 / -1;
+
+    display:flex;
+    gap:9px;
+
+    color:#fff;
+
+    border-color:rgba(232,99,145,.2);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(119,25,59,.95),
+        rgba(199,63,113,.93)
+      );
+  }
+}
+
+/* =========================================================
+   MOBILE VIEWPORT + PERFORMANCE
+========================================================= */
+
+@media(max-width:768px), (hover:none){
+  html{
+    scroll-padding-top:86px;
+  }
+
+  body,
+  main,
+  main > section,
+  main > section > *{
+    min-width:0;
+    max-width:100%;
+  }
+
+  main > section:not(.hero):hover
+    > :not([class*="background"]):not(.about-marquee){
+    transform:none !important;
+  }
+
+  .flow-marquee{
+    width:100%;
+    max-width:100%;
+
+    margin-left:0;
+    margin-right:0;
+  }
+
+  .site-atmosphere{
+    overflow:hidden;
+    contain:strict;
+  }
+
+  .silk-ribbon-two,
+  .silk-ribbon-three,
+  .hero-wave-faint,
+  .star-dust-two,
+  .foreground-dust,
+  .atmosphere-noise{
+    display:none !important;
+  }
+
+  .site-atmosphere *,
+  .about-aurora,
+  .about-silk,
+  .about-stars,
+  .about-video-glow,
+  .about-record-dot,
+  .about-video-shine,
+  .about-marquee-track,
+  .flow-marquee-track,
+  .archive-stage-glow,
+  .archive-stage-orbit,
+  .archive-card-shine,
+  .archive-card.active .archive-card-shell,
+  .automation-live-dot,
+  .visual-workflow-line span,
+  .process-resume-glow,
+  .contact-availability-dot,
+  .hero-copy-card,
+  .hero-portrait-stage,
+  .hero-portrait-aura,
+  .hero-portrait-outline,
+  .floating-card,
+  .system-preview,
+  .services-preview,
+  .workflow-status i,
+  .ai-typing span,
+  .footer-line{
+    animation:none !important;
+  }
+
+  .hero-wave,
+  .hero-aurora,
+  .silk-ribbon,
+  .star-dust,
+  .atmosphere-glint{
+    will-change:auto !important;
+  }
+
+  .navbar,
+  .project-categories,
+  .projects-eyebrow,
+  .archive-card-shell,
+  .archive-project-badge,
+  .archive-arrow,
+  .process-resume-frame,
+  .chat-toggle,
+  .chat-window,
+  [class*="card"],
+  [class*="panel"]{
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+  }
+
+  .projects-carousel,
+  .archive-cards,
+  .archive-card,
+  .archive-card-shell,
+  .hero-portrait-stage,
+  .hero-portrait-frame{
+    perspective:none !important;
+    transform-style:flat !important;
+  }
+
+  button,
+  a{
+    touch-action:manipulation;
+  }
+}
+
+/* =========================================================
+   PHONE NAVIGATION
+========================================================= */
+
+@media(max-width:680px){
+  .navbar{
+    top:12px;
+    left:12px;
+    right:12px;
+
+    width:auto;
+    max-width:none;
+    height:64px;
+
+    padding:0 12px 0 15px;
+
+    transform:none;
+
+    border-radius:22px;
+
+    background:rgba(15,7,11,.94);
+
+    box-shadow:
+      0 16px 42px rgba(0,0,0,.32),
+      inset 0 1px 0 rgba(255,255,255,.035);
+  }
+
+  .logo{
+    min-width:0;
+    max-width:150px;
+  }
+
+  .logo-main{
+    font-size:1.55rem;
+    line-height:.88;
+  }
+
+  .logo-sub{
+    margin-top:5px;
+
+    font-size:.47rem;
+    letter-spacing:1.9px;
+  }
+
+  .logo::after{
+    display:none;
+  }
+
+  .whatsapp-btn,
+  .talk-btn{
+    display:none;
+  }
+
+  .nav-actions{
+    gap:0;
+  }
+
+  .mobile-menu-btn{
+    width:43px;
+    height:43px;
+
+    border-radius:14px;
+  }
+
+  .nav-center.mobile-open{
+    grid-template-columns:1fr;
+
+    padding:10px;
+
+    border-radius:21px;
+  }
+
+  .nav-center.mobile-open a{
+    min-height:44px;
+  }
+
+  .nav-center.mobile-open .mobile-menu-cta{
+    grid-column:auto;
+  }
+}
+
+/* =========================================================
+   PHONE PROJECT VAULT
+   One clean complete card at a time, inspired by the simple
+   mobile presentation the user referenced.
+========================================================= */
+
+@media(max-width:700px){
+  .projects{
+    padding:92px 0 84px;
+  }
+
+  .projects-inner{
+    width:calc(100% - 28px);
+    max-width:560px;
+  }
+
+  .projects-header{
+    margin-bottom:28px;
+  }
+
+  .projects-heading-row{
+    gap:18px;
+  }
+
+  .projects-heading-row h2{
+    max-width:330px;
+
+    font-size:clamp(2.55rem,12.5vw,3.45rem);
+    line-height:.94;
+    letter-spacing:-2.3px;
+  }
+
+  .projects-heading-row > p{
+    max-width:100%;
+
+    font-size:.86rem;
+    line-height:1.72;
+  }
+
+  .project-categories{
+    width:100%;
+    max-width:100%;
+
+    margin-bottom:25px;
+    padding:5px;
+
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:4px;
+
+    overflow:visible;
+
+    border-radius:22px;
+  }
+
+  .project-categories button{
+    min-width:0;
+    width:100%;
+
+    padding:12px 5px;
+
+    gap:5px;
+
+    font-size:.63rem;
+    white-space:nowrap;
+  }
+
+  .project-categories button svg{
+    width:15px;
+    height:15px;
+    flex-shrink:0;
+  }
+
+  .category-label-full{
+    display:none;
+  }
+
+  .category-label-mobile{
+    display:inline;
+  }
+
+  .archive-introduction{
+    margin-bottom:21px;
+    padding:0 6px;
+  }
+
+  .archive-introduction p{
+    font-size:.82rem;
+    line-height:1.62;
+  }
+
+  .projects-carousel{
+    min-height:0;
+
+    padding-bottom:74px;
+
+    perspective:none;
+  }
+
+  .archive-stage-glow,
+  .archive-stage-orbit{
+    display:none;
+  }
+
+  .archive-project-counter{
+    position:relative;
+
+    top:auto;
+    right:auto;
+
+    width:100%;
+
+    margin:0 0 14px;
+    padding:0 8px;
+
+    justify-content:flex-end;
+  }
+
+  .archive-project-counter i{
+    width:36px;
+  }
+
+  .archive-cards{
+    position:relative;
+    inset:auto;
+
+    width:100%;
+
+    transform:none;
+  }
+
+  .archive-card,
+  .archive-card.active,
+  .archive-card.previous,
+  .archive-card.next,
+  .archive-card.hidden{
+    position:relative;
+
+    left:auto;
+    top:auto;
+
+    width:100%;
+    max-width:none;
+    aspect-ratio:auto;
+
+    display:none;
+
+    opacity:1;
+    filter:none;
+
+    pointer-events:auto;
+
+    transform:none !important;
+  }
+
+  .archive-card.active{
+    display:block;
+  }
+
+  .archive-card-shell{
+    position:relative;
+    inset:auto;
+
+    overflow:hidden;
+
+    border-radius:31px;
+
+    background:
+      linear-gradient(
+        155deg,
+        rgba(72,34,47,.94),
+        rgba(34,17,23,.98)
+      );
+
+    box-shadow:
+      0 27px 70px rgba(0,0,0,.42),
+      0 0 34px rgba(131,18,58,.1),
+      inset 0 1px 0 rgba(255,255,255,.06);
+  }
+
+  .archive-card-topbar{
+    height:44px;
+    padding:0 15px;
+
+    grid-template-columns:1fr 1fr;
+  }
+
+  .archive-card-topbar small{
+    display:none;
+  }
+
+  .archive-card-visual{
+    height:auto;
+    aspect-ratio:1.28 / 1;
+  }
+
+  .archive-project-badge{
+    left:14px;
+    bottom:13px;
+
+    padding:8px 12px;
+
+    font-size:.56rem;
+  }
+
+  .visual-funnel-body{
+    height:70%;
+    padding:7%;
+
+    grid-template-columns:1fr;
+  }
+
+  .visual-funnel-art{
+    display:none;
+  }
+
+  .visual-funnel-copy h4{
+    max-width:100%;
+
+    font-size:clamp(1.7rem,8.3vw,2.55rem);
+    line-height:.98;
+  }
+
+  .visual-funnel-copy p{
+    max-width:100%;
+  }
+
+  .visual-funnel-stats span{
+    padding:7px 4px;
+  }
+
+  .visual-automation{
+    padding:7% 7%;
+  }
+
+  .visual-workflow-row,
+  .visual-workflow-node{
+    width:92%;
+  }
+
+  .visual-workflow-row .visual-workflow-node{
+    padding:9px 7px;
+
+    font-size:.48rem;
+  }
+
+  .visual-email{
+    grid-template-columns:12% 88%;
+  }
+
+  .visual-email-paper{
+    width:84%;
+    height:80%;
+  }
+
+  .archive-mobile-details{
+    padding:25px 22px 24px;
+
+    display:block;
+
+    border-top:1px solid rgba(255,255,255,.065);
+  }
+
+  .archive-mobile-kicker{
+    color:#e68aac;
+
+    font-size:.6rem;
+    font-weight:650;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+  }
+
+  .archive-mobile-details h3{
+    margin:10px 0 11px;
+
+    color:#fff8fa;
+
+    font-size:clamp(1.65rem,8vw,2.1rem);
+    font-weight:650;
+    line-height:1.05;
+    letter-spacing:-1.3px;
+  }
+
+  .archive-mobile-details p{
+    margin:0;
+
+    color:#b9abb0;
+
+    font-size:.82rem;
+    line-height:1.7;
+  }
+
+  .archive-mobile-tags{
+    margin-top:18px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+  }
+
+  .archive-mobile-tags span{
+    padding:7px 9px;
+
+    color:#c6b7bc;
+
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:999px;
+
+    background:rgba(255,255,255,.025);
+
+    font-size:.56rem;
+  }
+
+  .archive-mobile-link{
+    min-height:49px;
+
+    margin-top:21px;
+    padding:0 16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    color:#fff;
+
+    border-radius:15px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #8d214c,
+        #d14871
+      );
+
+    text-decoration:none;
+
+    font-size:.7rem;
+    font-weight:650;
+  }
+
+  .archive-mobile-link-disabled{
+    color:#bfaeb4;
+
+    background:rgba(255,255,255,.045);
+  }
+
+  .archive-details,
+  .archive-pagination{
+    display:none;
+  }
+
+  .archive-arrow{
+    top:auto;
+    bottom:0;
+
+    width:48px;
+    height:48px;
+
+    border-radius:16px;
+
+    background:rgba(20,9,13,.94);
+  }
+
+  .archive-arrow-left{
+    left:calc(50% - 56px);
+    right:auto;
+
+    transform:none;
+  }
+
+  .archive-arrow-right{
+    right:calc(50% - 56px);
+    left:auto;
+
+    transform:none;
+  }
+
+  .archive-arrow-left:hover,
+  .archive-arrow-right:hover{
+    transform:none;
+  }
+}
+
+/* =========================================================
+   PHONE RESUME
+========================================================= */
+
+@media(max-width:680px){
+  .process-resume-showcase{
+    margin-top:20px;
+  }
+
+  .process-resume-card,
+  .process-resume-label,
+  .process-resume-actions{
+    width:100%;
+    max-width:380px;
+  }
+
+  .process-resume-label{
+    margin-bottom:16px;
+  }
+
+  .process-resume-frame{
+    border-radius:27px 27px 34px 34px;
+  }
+
+  .process-resume-document{
+    aspect-ratio:8.5 / 11;
+  }
+
+  .process-resume-preview{
+    transform:none;
+    filter:none;
+  }
+
+  .process-resume-open{
+    height:92px;
+    padding:20px;
+  }
+
+  .process-resume-actions{
+    grid-template-columns:1fr;
+  }
+
+  .resume-fullscreen-overlay{
+    padding:70px 9px 9px;
+  }
+
+  .resume-fullscreen-viewer{
+    width:100%;
+    height:100%;
+
+    border-radius:17px;
+  }
+
+  .resume-fullscreen-viewer img{
+    min-height:0;
+  }
+
+  .resume-fullscreen-close{
+    top:14px;
+    right:14px;
+  }
+}
+
+/* =========================================================
+   PHONE CHAT
+========================================================= */
+
+@media(max-width:680px){
+  html.mobile-chat-open,
+  html.mobile-chat-open body{
+    overflow:hidden !important;
+  }
+
+  .chat-toggle{
+    right:12px;
+    bottom:12px;
+
+    width:54px;
+    height:54px;
+  }
+
+  .chat-toggle.active{
+    opacity:0;
+    pointer-events:none;
+  }
+
+  .chat-window{
+    top:86px;
+    left:10px;
+    right:10px;
+    bottom:10px;
+
+    width:auto;
+    max-width:none;
+    height:auto;
+    max-height:none;
+
+    border-radius:23px;
+
+    background:
+      linear-gradient(
+        160deg,
+        rgba(31,14,21,.995),
+        rgba(10,6,8,.995)
+      );
+
+    transform:translateY(12px) scale(.985);
+    transform-origin:center bottom;
+  }
+
+  .chat-window.show{
+    transform:none;
+  }
+
+  .chat-window,
+  .chat-window *{
+    min-width:0;
+  }
+
+  .chat-header{
+    min-height:68px;
+    padding:11px 12px;
+    gap:9px;
+  }
+
+  .chat-avatar{
+    width:39px;
+    height:39px;
+  }
+
+  .chat-profile{
+    gap:9px;
+  }
+
+  .chat-profile-copy h3{
+    font-size:.76rem;
+  }
+
+  .chat-profile-copy > span{
+    font-size:.54rem;
+  }
+
+  .chat-header-actions{
+    flex-shrink:0;
+  }
+
+  .chat-mobile-close{
+    width:38px;
+    height:38px;
+
+    padding:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#f6edf0;
+
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:12px;
+
+    background:rgba(255,255,255,.035);
+  }
+
+  .chat-clear-button{
+    padding:8px 6px;
+  }
+
+  .chat-body{
+    padding:13px;
+  }
+
+  .chat-intro-label{
+    margin-bottom:10px;
+  }
+
+  .chat-message-content{
+    max-width:88%;
+  }
+
+  .chat-message-bubble{
+    font-size:.72rem;
+    line-height:1.58;
+  }
+
+  .chat-quick-replies{
+    width:100%;
+    max-width:100%;
+
+    padding-bottom:3px;
+  }
+
+  .chat-quick-replies button{
+    flex:0 0 auto;
+  }
+
+  .chat-footer{
+    min-height:67px;
+    padding:9px 10px;
+  }
+
+  .chat-input-wrapper input{
+    height:47px;
+
+    font-size:16px;
+  }
+
+  .chat-send-button{
+    width:47px;
+    height:47px;
+  }
+
+  .chat-privacy-note{
+    display:none;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:390px){
+  .projects-inner,
+  .process-inner,
+  .about-inner,
+  .contact-inner,
+  .system-inner,
+  .services-inner{
+    width:calc(100% - 22px) !important;
+  }
+
+  .project-categories button{
+    font-size:.58rem;
+  }
+
+  .project-categories button svg{
+    width:13px;
+    height:13px;
+  }
+
+  .archive-mobile-details{
+    padding:22px 18px;
+  }
+
+  .chat-window{
+    left:7px;
+    right:7px;
+    bottom:7px;
+  }
+}

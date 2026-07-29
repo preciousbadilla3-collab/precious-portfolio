@@ -416,7 +416,12 @@ function Projects() {
                   onClick={() => setActiveCategory(categoryKey)}
                 >
                   <Icon size={17} />
-                  {category.label}
+                  <span className="category-label category-label-full">
+                    {category.label}
+                  </span>
+                  <span className="category-label category-label-mobile">
+                    {categoryKey === "email" ? "Email" : category.label}
+                  </span>
                 </button>
               );
             }
@@ -508,6 +513,37 @@ function Projects() {
                       <div className="archive-project-badge">
                         {project.kicker}
                       </div>
+                    </div>
+
+                    <div className="archive-mobile-details">
+                      <span className="archive-mobile-kicker">
+                        {project.kicker} · {project.number}
+                      </span>
+
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+
+                      <div className="archive-mobile-tags">
+                        {project.tags.map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </div>
+
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="archive-mobile-link"
+                        >
+                          View Live Project
+                          <ArrowUpRight size={17} />
+                        </a>
+                      ) : (
+                        <span className="archive-mobile-link archive-mobile-link-disabled">
+                          Project preview coming soon
+                        </span>
+                      )}
                     </div>
 
                   </div>

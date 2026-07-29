@@ -14,6 +14,7 @@ import {
 
 import "./Process.css";
 const resumePdf = "/precious-resume.pdf";
+const resumePreview = "/resume-preview/page-1.png";
 const credentials = [
   {
     number: "01",
@@ -235,12 +236,13 @@ function Process() {
 
                 <div className="process-resume-document">
 
-                  <iframe
-                    src={`${resumePdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                    title="Precious Badilla resume preview"
-                    className="process-resume-iframe"
-                    tabIndex="-1"
-                  ></iframe>
+                  <img
+                    src={resumePreview}
+                    alt="Preview of Precious Badilla's resume"
+                    className="process-resume-preview"
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                   <div
                     className="process-resume-shade"
@@ -333,10 +335,10 @@ function Process() {
               className="resume-fullscreen-viewer"
               onClick={(event) => event.stopPropagation()}
             >
-              <iframe
-                src={`${resumePdf}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-                title="Precious Badilla Resume"
-              ></iframe>
+              <img
+                src={resumePreview}
+                alt="Full preview of Precious Badilla's resume"
+              />
             </div>
           </div>,
           document.body

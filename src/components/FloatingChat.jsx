@@ -239,6 +239,7 @@ function FloatingChat() {
   });
 
   const messagesEndRef = useRef(null);
+  const messagesRef = useRef(null);
   const replyTimerRef = useRef(null);
 
   const hasBookingLink = BOOKING_URL.startsWith("http");
@@ -275,12 +276,28 @@ Thank you!`
   }, [messages]);
 
   useEffect(() => {
+    const mobileChat = window.matchMedia("(max-width: 680px)").matches;
+
+    if (!open || !mobileChat) return undefined;
+
+    document.documentElement.classList.add("mobile-chat-open");
+
+    return () => {
+      document.documentElement.classList.remove("mobile-chat-open");
+    };
+  }, [open]);
+
+  useEffect(() => {
     if (!open) return;
 
-    messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end"
-    });
+    const messageContainer = messagesRef.current;
+
+    if (messageContainer) {
+      messageContainer.scrollTo({
+        top: messageContainer.scrollHeight,
+        behavior: "smooth"
+      });
+    }
   }, [messages, typing, open]);
 
   useEffect(() => {
@@ -407,13 +424,24 @@ Thank you!`
 
           </div>
 
-          <button
-            type="button"
-            className="chat-clear-button"
-            onClick={clearConversation}
-          >
-            Clear
-          </button>
+          <div className="chat-header-actions">
+            <button
+              type="button"
+              className="chat-clear-button"
+              onClick={clearConversation}
+            >
+              Clear
+            </button>
+
+            <button
+              type="button"
+              className="chat-mobile-close"
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
         </header>
 
@@ -424,7 +452,7 @@ Thank you!`
             Portfolio Concierge
           </div>
 
-          <div className="chat-messages">
+          <div className="chat-messages" ref={messagesRef}>
 
             {messages.map((message) => (
               <div
