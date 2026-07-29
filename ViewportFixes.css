@@ -1,0 +1,427 @@
+/* =========================================================
+   FINAL MOBILE VIEWPORT FIX
+   Imported last from main.jsx.
+
+   Goals:
+   1. The page must never become wider than the phone screen.
+   2. The mobile hero must be a true one-column layout.
+   3. The chat trigger must stay in the visible lower-right corner.
+========================================================= */
+
+:root{
+  --visual-viewport-right:0px;
+  --visual-viewport-bottom:0px;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  margin:0;
+  overflow-x:clip !important;
+}
+
+html,
+body{
+  overscroll-behavior-x:none;
+}
+
+body{
+  position:relative;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe{
+  max-width:100%;
+}
+
+main{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  overflow-x:clip !important;
+}
+
+main > section{
+  min-width:0 !important;
+  overflow-x:clip !important;
+}
+
+/* The trigger is rendered through a portal directly under <body>. */
+.chat-toggle{
+  position:fixed !important;
+  top:auto !important;
+  left:auto !important;
+  right:calc(18px + var(--visual-viewport-right)) !important;
+  bottom:calc(18px + var(--visual-viewport-bottom) + env(safe-area-inset-bottom, 0px)) !important;
+  margin:0 !important;
+  display:flex !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  transform:none !important;
+  z-index:2147483000 !important;
+}
+
+.chat-window{
+  position:fixed !important;
+  z-index:2147482999 !important;
+}
+
+/* =========================================================
+   PHONE / TOUCH LAYOUT
+========================================================= */
+
+@media (max-width:768px), (pointer:coarse){
+  html,
+  body,
+  #root{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    overflow-x:clip !important;
+  }
+
+  body{
+    touch-action:pan-y;
+  }
+
+  main,
+  main > section{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    overflow-x:clip !important;
+  }
+
+  /* All main content wrappers stay inside the visible phone width. */
+  .about-inner,
+  .system-inner,
+  .projects-inner,
+  .process-inner,
+  .contact-inner,
+  .footer-inner{
+    width:calc(100% - 32px) !important;
+    max-width:calc(100% - 32px) !important;
+    min-width:0 !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  /* Full-width effects may not create a wider document. */
+  .site-atmosphere,
+  .hero-scene,
+  .about-background,
+  .system-stage-glow,
+  .archive-stage-glow,
+  .process-resume-glow,
+  [class*="aurora"],
+  [class*="ribbon"],
+  [class*="orbit"],
+  [class*="dust"],
+  [class*="wave"]{
+    max-width:100% !important;
+    overflow:hidden !important;
+    pointer-events:none !important;
+  }
+
+  .flow-marquee,
+  .about-marquee{
+    width:100% !important;
+    max-width:100% !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    overflow:hidden !important;
+  }
+
+  /* =======================================================
+     MOBILE NAVBAR — logo + WhatsApp + Let's Talk
+  ======================================================= */
+
+  .navbar{
+    top:10px !important;
+    left:12px !important;
+    right:auto !important;
+    width:calc(100% - 24px) !important;
+    max-width:calc(100% - 24px) !important;
+    min-width:0 !important;
+    height:66px !important;
+    margin:0 !important;
+    padding:0 10px 0 15px !important;
+    transform:none !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:7px !important;
+    overflow:hidden !important;
+    border-radius:22px !important;
+  }
+
+  .nav-center,
+  .mobile-menu-btn,
+  .mobile-menu-cta{
+    display:none !important;
+  }
+
+  .logo{
+    width:auto !important;
+    max-width:116px !important;
+    min-width:0 !important;
+    flex:1 1 116px !important;
+    overflow:hidden !important;
+  }
+
+  .logo-main{
+    font-size:1.5rem !important;
+    line-height:.9 !important;
+    white-space:nowrap !important;
+  }
+
+  .logo-sub{
+    margin-top:5px !important;
+    padding-left:2px !important;
+    font-size:.44rem !important;
+    letter-spacing:1.65px !important;
+    white-space:nowrap !important;
+  }
+
+  .logo::after{
+    display:none !important;
+  }
+
+  .nav-actions{
+    min-width:0 !important;
+    flex:0 0 auto !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:7px !important;
+  }
+
+  .whatsapp-btn{
+    width:41px !important;
+    height:41px !important;
+    min-width:41px !important;
+    flex:0 0 41px !important;
+    display:flex !important;
+  }
+
+  .talk-btn{
+    min-width:0 !important;
+    height:45px !important;
+    padding:0 14px !important;
+    flex:0 0 auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:6px !important;
+    font-size:.76rem !important;
+    white-space:nowrap !important;
+  }
+
+  .talk-btn svg{
+    width:15px !important;
+    height:15px !important;
+    flex:0 0 15px !important;
+  }
+
+  /* =======================================================
+     TRUE ONE-COLUMN MOBILE HERO
+     The portrait column is removed on phones to match the
+     clean reference layout and eliminate the wide grid.
+  ======================================================= */
+
+  .hero.hero-redesign{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    min-height:auto !important;
+    margin:0 !important;
+    padding:108px 18px 72px !important;
+    display:block !important;
+    overflow:hidden !important;
+    text-align:center !important;
+  }
+
+  .hero-copy{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:0 auto !important;
+    animation:none !important;
+    transform:none !important;
+  }
+
+  .hero-visual{
+    display:none !important;
+  }
+
+  .hero-status{
+    width:fit-content !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+    padding:0 11px !important;
+    font-size:.48rem !important;
+    letter-spacing:1.25px !important;
+    white-space:normal !important;
+  }
+
+  .hero-headline{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:22px 0 0 !important;
+    padding:0 !important;
+    font-size:clamp(2.55rem, 12vw, 3.55rem) !important;
+    line-height:.98 !important;
+    letter-spacing:-2px !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+  }
+
+  .hero-headline span{
+    display:block !important;
+  }
+
+  .hero-summary{
+    width:100% !important;
+    max-width:100% !important;
+    margin:22px auto 0 !important;
+    padding:0 !important;
+    font-size:.92rem !important;
+    line-height:1.68 !important;
+  }
+
+  .hero-actions{
+    width:100% !important;
+    max-width:100% !important;
+    margin-top:27px !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:11px !important;
+  }
+
+  .hero-primary-button,
+  .hero-secondary-button{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:0 !important;
+  }
+
+  .hero-capabilities{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:42px 0 0 !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:0 !important;
+    text-align:left !important;
+  }
+
+  .hero-capability{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    padding:15px 0 !important;
+    border-right:0 !important;
+    border-bottom:1px solid rgba(255,255,255,.07) !important;
+  }
+
+  .hero-capability:last-child{
+    border-bottom:0 !important;
+  }
+
+  /* =======================================================
+     CHAT — always attached to the visible phone viewport
+  ======================================================= */
+
+  .chat-toggle{
+    right:calc(14px + var(--visual-viewport-right)) !important;
+    bottom:calc(14px + var(--visual-viewport-bottom) + env(safe-area-inset-bottom, 0px)) !important;
+    width:56px !important;
+    height:56px !important;
+    display:flex !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    transform:none !important;
+  }
+
+  .chat-toggle.active{
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+
+  .chat-window{
+    top:calc(82px + env(safe-area-inset-top, 0px)) !important;
+    left:calc(10px + var(--visual-viewport-left, 0px)) !important;
+    right:calc(10px + var(--visual-viewport-right)) !important;
+    bottom:calc(10px + var(--visual-viewport-bottom) + env(safe-area-inset-bottom, 0px)) !important;
+    width:auto !important;
+    max-width:none !important;
+    height:auto !important;
+    max-height:none !important;
+    margin:0 !important;
+  }
+
+  .chat-input-wrapper input{
+    font-size:16px !important;
+  }
+}
+
+@media (max-width:355px){
+  .navbar{
+    left:8px !important;
+    width:calc(100% - 16px) !important;
+    max-width:calc(100% - 16px) !important;
+    padding-left:11px !important;
+    padding-right:7px !important;
+    gap:5px !important;
+  }
+
+  .logo{
+    max-width:101px !important;
+    flex-basis:101px !important;
+  }
+
+  .logo-main{
+    font-size:1.34rem !important;
+  }
+
+  .logo-sub{
+    font-size:.39rem !important;
+    letter-spacing:1.3px !important;
+  }
+
+  .nav-actions{
+    gap:5px !important;
+  }
+
+  .whatsapp-btn{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    flex-basis:38px !important;
+  }
+
+  .talk-btn{
+    height:42px !important;
+    padding:0 11px !important;
+    font-size:.7rem !important;
+  }
+}
