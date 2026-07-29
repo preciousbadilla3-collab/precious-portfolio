@@ -1,0 +1,224 @@
+/* =========================================================
+   NATIVE-SPEED DARK CHERRY CURSOR
+========================================================= */
+
+/*
+This cursor is rendered by the browser itself instead of
+being an HTML element that follows the pointer.
+*/
+
+@media (hover:hover) and (pointer:fine){
+
+    body.custom-cursor-enabled,
+    body.custom-cursor-enabled a,
+    body.custom-cursor-enabled button,
+    body.custom-cursor-enabled [role="button"],
+    body.custom-cursor-enabled label,
+    body.custom-cursor-enabled select{
+        cursor:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3Cfilter id='g' x='-60%25' y='-60%25' width='220%25' height='220%25'%3E%3CfeGaussianBlur stdDeviation='1.15' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M3.2 2.4L20.3 12.2L12.6 14.3L9.1 22.1L3.2 2.4Z' fill='%23f7dce6' stroke='%23b52f60' stroke-width='1.35' stroke-linejoin='round' filter='url(%23g)'/%3E%3Ccircle cx='18.8' cy='5.7' r='1.25' fill='%23ffb6cf'/%3E%3C/svg%3E")
+            3 2,
+            auto !important;
+    }
+
+    body.custom-cursor-enabled input,
+    body.custom-cursor-enabled textarea,
+    body.custom-cursor-enabled [contenteditable="true"]{
+        cursor:text !important;
+    }
+
+}
+
+
+/* =========================================================
+   HOVERED ELEMENT GLOW
+========================================================= */
+
+.cursor-lit{
+    outline:1px solid rgba(236,112,155,.2);
+    outline-offset:4px;
+
+    filter:
+        brightness(1.035)
+        drop-shadow(
+            0 0 12px rgba(211,62,113,.15)
+        )
+        drop-shadow(
+            0 0 28px rgba(108,8,43,.1)
+        );
+
+    transition:
+        filter .3s ease,
+        outline-color .3s ease;
+}
+
+
+/* Navigation text gets a lighter effect */
+
+.nav-center a.cursor-lit,
+.footer-nav a.cursor-lit{
+    outline:none;
+
+    filter:
+        brightness(1.14)
+        drop-shadow(
+            0 0 8px rgba(230,91,140,.3)
+        );
+}
+
+
+/* Buttons receive a stronger cherry bloom */
+
+button.cursor-lit,
+.primary-btn.cursor-lit,
+.secondary-btn.cursor-lit,
+.talk-btn.cursor-lit,
+.contact-book-button.cursor-lit,
+.resume-view-button.cursor-lit,
+.chat-toggle.cursor-lit{
+    outline-color:rgba(244,145,179,.3);
+
+    filter:
+        brightness(1.08)
+        drop-shadow(
+            0 0 11px rgba(228,78,130,.24)
+        )
+        drop-shadow(
+            0 0 25px rgba(126,10,50,.16)
+        );
+}
+
+
+/* Large glass panels use a softer glow */
+
+.system-stage.cursor-lit,
+.contact-session.cursor-lit,
+.chat-window.cursor-lit,
+.resume-card.cursor-lit,
+.about-video-card.cursor-lit{
+    outline-color:rgba(225,93,139,.16);
+
+    filter:
+        brightness(1.018)
+        drop-shadow(
+            0 0 28px rgba(128,10,49,.11)
+        );
+}
+
+
+/* =========================================================
+   SPARKLE LAYER
+========================================================= */
+
+.cursor-burst-layer{
+    position:fixed;
+    inset:0;
+
+    overflow:visible;
+
+    pointer-events:none;
+
+    z-index:30000;
+}
+
+.cursor-burst-spark{
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:#ffe8f0;
+
+    box-shadow:
+        0 0 5px rgba(255,238,244,.95),
+        0 0 12px rgba(229,89,138,.82);
+
+    transform:translate(-50%,-50%);
+
+    animation:
+        cursorSparkBurst .62s
+        cubic-bezier(.22,1,.36,1)
+        var(--spark-delay)
+        forwards;
+}
+
+
+/* Small diamond accent */
+
+.cursor-burst-spark:nth-child(even){
+    width:5px;
+    height:5px;
+
+    border-radius:1px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(45deg);
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes cursorSparkBurst{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            scale(.35);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate(
+                calc(-50% + var(--spark-x)),
+                calc(-50% + var(--spark-y))
+            )
+            scale(0);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover:none),
+(pointer:coarse){
+
+    .cursor-burst-layer{
+        display:none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+    .cursor-burst-spark{
+        animation:none;
+    }
+
+    .cursor-lit{
+        transition:none;
+    }
+
+}

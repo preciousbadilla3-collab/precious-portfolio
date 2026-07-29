@@ -1,0 +1,3804 @@
+/* =========================================================
+   CRAFT & CREDENTIALS
+   Resume + Professional Value
+========================================================= */
+
+.process{
+    position:relative;
+    isolation:isolate;
+
+    width:100%;
+    max-width:none;
+
+    margin:0;
+    padding:125px 0 120px;
+
+    overflow:hidden;
+
+    color:#fff;
+    background:transparent;
+}
+
+.process-anchor{
+    position:absolute;
+    top:-95px;
+}
+
+.process-inner{
+    position:relative;
+    z-index:2;
+
+    width:min(1180px, calc(100% - 48px));
+
+    margin:0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.process-header{
+    margin-bottom:58px;
+}
+
+.process-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    padding:9px 15px;
+
+    color:#ddaabd;
+
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:999px;
+
+    background:rgba(255,255,255,.028);
+
+    font-size:.7rem;
+    font-weight:600;
+    letter-spacing:2.2px;
+    text-transform:uppercase;
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.process-heading-row{
+    margin-top:25px;
+
+    display:grid;
+    grid-template-columns:1.15fr .65fr;
+    align-items:end;
+
+    gap:70px;
+}
+
+.process-index{
+    margin:0 0 13px;
+
+    color:rgba(223,122,157,.55);
+
+    font-size:.68rem;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+.process-heading-row h2{
+    max-width:710px;
+
+    margin:0;
+
+    color:#fff8fa;
+
+    font-size:clamp(3rem,5.1vw,5.4rem);
+    font-weight:650;
+    line-height:.94;
+    letter-spacing:-3.5px;
+
+    text-wrap:balance;
+}
+
+.process-heading-row h2 span{
+    display:block;
+
+    padding-bottom:.11em;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5d7e0 5%,
+            #dd7498 55%,
+            #a52a56 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+}
+
+.process-heading-row > p{
+    max-width:420px;
+
+    margin:0 0 5px;
+
+    color:#afa3a8;
+
+    font-size:.91rem;
+    line-height:1.85;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.credentials-layout{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    align-items:center;
+
+    gap:68px;
+}
+
+
+/* =========================================================
+   CREDENTIAL LIST
+========================================================= */
+
+.credentials-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:9px;
+}
+
+.credential-item{
+    position:relative;
+    overflow:hidden;
+
+    width:100%;
+    min-height:118px;
+
+    padding:20px 19px;
+
+    display:grid;
+    grid-template-columns:50px minmax(0,1fr) 38px;
+    align-items:center;
+
+    gap:17px;
+
+    color:#b8acb0;
+
+    border:1px solid transparent;
+    border-radius:24px;
+
+    cursor:pointer;
+    text-align:left;
+
+    background:transparent;
+
+    font-family:inherit;
+
+    transition:
+        transform .45s cubic-bezier(.22,1,.36,1),
+        background .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease;
+}
+
+.credential-item::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:22%;
+    bottom:22%;
+
+    width:1px;
+
+    background:rgba(220,77,125,.27);
+
+    transition:.4s ease;
+}
+
+.credential-item:hover{
+    transform:translateX(6px);
+
+    color:#f5ecef;
+
+    background:rgba(255,255,255,.022);
+    border-color:rgba(255,255,255,.05);
+}
+
+.credential-item.active{
+    transform:translateX(8px);
+
+    color:#fff;
+
+    border-color:rgba(222,81,129,.17);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(125,18,56,.25),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 22px 50px rgba(0,0,0,.2),
+        inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.credential-item.active::before{
+    top:11%;
+    bottom:11%;
+
+    width:2px;
+
+    background:#dd5684;
+
+    box-shadow:
+        0 0 17px rgba(221,86,132,.66);
+}
+
+.credential-number{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#d68ba4;
+
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:15px;
+
+    background:rgba(255,255,255,.03);
+
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:1px;
+
+    transition:.4s ease;
+}
+
+.credential-item.active .credential-number{
+    color:#fff;
+
+    border-color:rgba(230,111,151,.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            #74203f,
+            #b9446d
+        );
+
+    box-shadow:
+        0 12px 28px rgba(122,18,57,.27);
+}
+
+.credential-copy{
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.credential-copy strong{
+    color:inherit;
+
+    font-size:1rem;
+    font-weight:600;
+}
+
+.credential-copy small{
+    max-width:470px;
+
+    color:#93878b;
+
+    font-size:.73rem;
+    line-height:1.62;
+
+    transition:color .35s ease;
+}
+
+.credential-item.active .credential-copy small{
+    color:#b9adb1;
+}
+
+.credential-check{
+    width:35px;
+    height:35px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#74696d;
+
+    border:1px solid rgba(255,255,255,.055);
+    border-radius:50%;
+
+    transition:.4s ease;
+}
+
+.credential-item.active .credential-check{
+    color:#f4c4d3;
+
+    border-color:rgba(224,87,133,.25);
+
+    background:rgba(157,31,75,.28);
+
+    box-shadow:
+        0 0 20px rgba(212,71,119,.15);
+}
+
+
+/* =========================================================
+   RESUME SHOWCASE
+========================================================= */
+
+.resume-showcase{
+    position:relative;
+
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.resume-atmosphere{
+    position:absolute;
+
+    width:110%;
+    height:82%;
+
+    left:50%;
+    top:48%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(157,20,67,.28),
+            rgba(87,4,33,.08) 45%,
+            transparent 71%
+        );
+
+    filter:blur(65px);
+
+    animation:resumeGlow 7s ease-in-out infinite;
+}
+
+.resume-label{
+    position:relative;
+    z-index:4;
+
+    width:88%;
+
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    color:#e1d4d8;
+}
+
+.resume-label span{
+    font-size:.68rem;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.resume-label small{
+    color:#786d71;
+
+    font-size:.59rem;
+    letter-spacing:1px;
+}
+
+.resume-card{
+    --resume-rotate-x:0deg;
+    --resume-rotate-y:0deg;
+
+    position:relative;
+    z-index:3;
+
+    width:min(470px,88%);
+
+    perspective:1300px;
+
+    transform-style:preserve-3d;
+}
+
+.resume-card-frame{
+    position:relative;
+    overflow:hidden;
+
+    padding:8px;
+
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.023)
+        );
+
+    box-shadow:
+        0 42px 100px rgba(0,0,0,.48),
+        0 0 55px rgba(116,8,44,.15),
+        inset 0 1px 0 rgba(255,255,255,.065);
+
+    backdrop-filter:blur(23px);
+    -webkit-backdrop-filter:blur(23px);
+
+    transform:
+        rotateX(var(--resume-rotate-x))
+        rotateY(var(--resume-rotate-y))
+        translateZ(0);
+
+    transition:
+        transform .2s ease-out,
+        border-color .5s ease,
+        box-shadow .5s ease;
+}
+
+.resume-card:hover .resume-card-frame{
+    border-color:rgba(226,91,137,.22);
+
+    box-shadow:
+        0 50px 120px rgba(0,0,0,.56),
+        0 0 75px rgba(139,13,55,.2);
+}
+
+.resume-card-topbar{
+    height:48px;
+
+    padding:0 15px;
+
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+
+    color:#cbbdc2;
+
+    border-radius:21px 21px 0 0;
+    border-bottom:1px solid rgba(255,255,255,.065);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,8,13,.95),
+            rgba(59,14,29,.82),
+            rgba(17,7,11,.95)
+        );
+
+    font-size:.58rem;
+}
+
+.resume-window-dots{
+    display:flex;
+    gap:6px;
+}
+
+.resume-window-dots span{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#8e234b;
+}
+
+.resume-window-dots span:nth-child(2){
+    background:#bf5a7f;
+}
+
+.resume-window-dots span:nth-child(3){
+    background:#dfa0b6;
+}
+
+.resume-card-topbar > span{
+    color:#918489;
+
+    letter-spacing:.6px;
+}
+
+.resume-card-topbar small{
+    justify-self:end;
+
+    color:#bb8297;
+
+    letter-spacing:1px;
+}
+
+.resume-document-wrap{
+    position:relative;
+    overflow:hidden;
+
+    aspect-ratio:3 / 3.75;
+
+    border-radius:0 0 22px 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e8e2e4,
+            #fff
+        );
+}
+
+.resume-document{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+    object-position:top;
+
+    transition:
+        transform .8s cubic-bezier(.22,1,.36,1),
+        filter .6s ease;
+}
+
+.resume-card:hover .resume-document{
+    transform:scale(1.018);
+}
+
+.resume-reflection{
+    position:absolute;
+
+    width:36%;
+    height:180%;
+
+    left:-55%;
+    top:-42%;
+
+    transform:rotate(18deg);
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    animation:resumeReflection 8s ease-in-out infinite;
+}
+
+.resume-expand{
+    position:absolute;
+
+    left:50%;
+    bottom:20px;
+
+    transform:translateX(-50%) translateY(12px);
+
+    min-width:165px;
+
+    padding:11px 16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:999px;
+
+    cursor:pointer;
+
+    background:rgba(17,7,11,.77);
+
+    opacity:0;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.28);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    font-family:inherit;
+    font-size:.66rem;
+    font-weight:600;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        background .35s ease;
+}
+
+.resume-card:hover .resume-expand{
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+}
+
+.resume-expand:hover{
+    background:rgba(128,23,59,.86);
+}
+
+
+/* =========================================================
+   RESUME ACTIONS
+========================================================= */
+
+.resume-actions{
+    position:relative;
+    z-index:4;
+
+    margin-top:23px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:11px;
+}
+
+.resume-actions button,
+.resume-actions a{
+    min-height:48px;
+
+    padding:0 20px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    border-radius:999px;
+
+    font-family:inherit;
+    font-size:.7rem;
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:
+        transform .35s ease,
+        color .35s ease,
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.resume-view-button{
+    color:#fff;
+
+    border:0;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #76203f,
+            #c44773
+        );
+
+    box-shadow:
+        0 15px 34px rgba(142,20,62,.27);
+}
+
+.resume-download-button{
+    color:#e2d7da;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.025);
+}
+
+.resume-actions button:hover,
+.resume-actions a:hover{
+    transform:translateY(-4px);
+}
+
+.resume-view-button:hover{
+    box-shadow:
+        0 22px 45px rgba(157,24,70,.4);
+}
+
+.resume-download-button:hover{
+    color:#fff;
+
+    border-color:rgba(224,88,134,.22);
+
+    background:rgba(130,22,58,.18);
+}
+
+.resume-meta{
+    position:relative;
+    z-index:3;
+
+    margin-top:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    color:#71666a;
+
+    font-size:.56rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.resume-meta i{
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#c34873;
+
+    box-shadow:
+        0 0 8px rgba(195,72,115,.55);
+}
+
+
+/* =========================================================
+   FULLSCREEN MODAL
+========================================================= */
+
+.resume-modal{
+    position:fixed;
+    inset:0;
+
+    z-index:20000;
+
+    padding:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(3,1,2,.83);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    animation:resumeModalFade .35s ease;
+}
+
+.resume-modal-panel{
+    width:min(980px,100%);
+    height:min(91vh,900px);
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28,10,17,.97),
+            rgba(8,4,6,.97)
+        );
+
+    box-shadow:
+        0 50px 150px rgba(0,0,0,.7),
+        0 0 80px rgba(127,11,49,.18);
+
+    animation:resumeModalReveal .45s cubic-bezier(.22,1,.36,1);
+}
+
+.resume-modal-header{
+    min-height:70px;
+
+    padding:0 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.resume-modal-header > div{
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.resume-modal-header span{
+    color:#cc7795;
+
+    font-size:.58rem;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.resume-modal-header strong{
+    color:#f1e7ea;
+
+    font-size:.82rem;
+    font-weight:600;
+}
+
+.resume-modal-header button{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#e7dade;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:13px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.035);
+
+    transition:.3s ease;
+}
+
+.resume-modal-header button:hover{
+    color:#fff;
+
+    transform:rotate(5deg);
+
+    border-color:rgba(220,80,127,.25);
+
+    background:rgba(131,22,59,.28);
+}
+
+.resume-modal-document{
+    flex:1;
+
+    min-height:0;
+
+    padding:18px;
+
+    background:rgba(0,0,0,.18);
+}
+
+.resume-modal-document iframe{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    border:0;
+    border-radius:14px;
+
+    background:#fff;
+}
+
+.resume-modal-footer{
+    min-height:56px;
+
+    padding:0 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:#74696d;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    font-size:.61rem;
+}
+
+.resume-modal-footer a{
+    display:inline-flex;
+    align-items:center;
+
+    gap:8px;
+
+    color:#e1d5d9;
+
+    text-decoration:none;
+}
+
+.resume-modal-footer a:hover{
+    color:#e984a6;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes resumeGlow{
+    0%,
+    100%{
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+        opacity:.68;
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.13);
+
+        opacity:1;
+    }
+}
+
+@keyframes resumeReflection{
+    0%,
+    65%{
+        left:-55%;
+    }
+
+    100%{
+        left:140%;
+    }
+}
+
+@keyframes resumeModalFade{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes resumeModalReveal{
+    from{
+        opacity:0;
+
+        transform:
+            translateY(25px)
+            scale(.96);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .process{
+        padding:105px 0 100px;
+    }
+
+    .process-heading-row{
+        grid-template-columns:1fr;
+
+        gap:22px;
+    }
+
+    .process-heading-row > p{
+        max-width:620px;
+    }
+
+    .credentials-layout{
+        grid-template-columns:1fr;
+
+        gap:65px;
+    }
+
+    .credentials-list{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .credential-item{
+        min-height:150px;
+
+        grid-template-columns:45px minmax(0,1fr);
+    }
+
+    .credential-check{
+        display:none;
+    }
+
+    .resume-card{
+        width:min(500px,82%);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+    .process{
+        padding:86px 0 78px;
+    }
+
+    .process-inner{
+        width:min(100% - 34px,1180px);
+    }
+
+    .process-header{
+        margin-bottom:42px;
+    }
+
+    .process-heading-row h2{
+        font-size:clamp(2.75rem,13vw,4rem);
+        letter-spacing:-2.5px;
+    }
+
+    .credentials-list{
+        grid-template-columns:1fr;
+
+        gap:7px;
+    }
+
+    .credential-item{
+        min-height:120px;
+
+        grid-template-columns:43px minmax(0,1fr);
+
+        padding:16px 14px;
+    }
+
+    .credential-item.active{
+        transform:translateX(3px);
+    }
+
+    .resume-card{
+        width:100%;
+    }
+
+    .resume-label{
+        width:100%;
+    }
+
+    .resume-actions{
+        width:100%;
+
+        flex-direction:column;
+    }
+
+    .resume-actions button,
+    .resume-actions a{
+        width:100%;
+    }
+
+    .resume-meta{
+        max-width:290px;
+
+        flex-wrap:wrap;
+    }
+
+    .resume-expand{
+        opacity:1;
+
+        transform:translateX(-50%) translateY(0);
+    }
+
+    .resume-modal{
+        padding:10px;
+    }
+
+    .resume-modal-panel{
+        height:94vh;
+
+        border-radius:20px;
+    }
+
+    .resume-modal-footer span{
+        display:none;
+    }
+
+    .resume-modal-footer{
+        justify-content:flex-end;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .resume-atmosphere,
+    .resume-reflection,
+    .resume-modal,
+    .resume-modal-panel{
+        animation:none;
+    }
+
+    .resume-card-frame{
+        transform:none !important;
+    }
+
+}
+/* =========================================================
+   INTERACTIVE RESUME DOCUMENT
+========================================================= */
+
+.resume-showcase{
+    position:relative;
+
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.resume-label{
+    width:min(100%,460px);
+
+    margin-bottom:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    color:#b9aab0;
+
+    font-size:.62rem;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+}
+
+.resume-label small{
+    color:#685d61;
+
+    font-size:.52rem;
+}
+
+.resume-document-card{
+    --resume-rotate-x:0deg;
+    --resume-rotate-y:0deg;
+    --resume-light-x:50%;
+    --resume-light-y:50%;
+
+    position:relative;
+
+    width:min(100%,460px);
+
+    perspective:1300px;
+}
+
+.resume-preview-shell{
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35,14,22,.96),
+            rgba(8,5,7,.98)
+        );
+
+    box-shadow:
+        0 35px 85px rgba(0,0,0,.5),
+        0 0 45px rgba(115,8,44,.14),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    transform:
+        rotateX(var(--resume-rotate-x))
+        rotateY(var(--resume-rotate-y))
+        translateZ(0);
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform .2s ease-out,
+        border-color .4s ease,
+        box-shadow .5s ease;
+}
+
+.resume-document-card:hover
+.resume-preview-shell{
+    border-color:rgba(228,91,139,.23);
+
+    box-shadow:
+        0 45px 105px rgba(0,0,0,.58),
+        0 0 55px rgba(154,16,64,.21),
+        inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+
+/* Preview toolbar */
+
+.resume-preview-toolbar{
+    height:48px;
+
+    padding:0 15px;
+
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+
+    gap:12px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(105,19,50,.32),
+            rgba(20,9,13,.58)
+        );
+}
+
+.resume-window-dots{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+.resume-window-dots span{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.16);
+}
+
+.resume-window-dots span:first-child{
+    background:#a63861;
+}
+
+.resume-window-dots span:nth-child(2){
+    background:#7e2d4b;
+}
+
+.resume-window-dots span:nth-child(3){
+    background:#4e2635;
+}
+
+.resume-toolbar-title{
+    min-width:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    color:#a99aa0;
+
+    font-size:.58rem;
+}
+
+.resume-toolbar-title span{
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.resume-toolbar-title svg{
+    color:#bd5077;
+}
+
+.resume-preview-toolbar > small{
+    color:#6d6266;
+
+    font-size:.49rem;
+    letter-spacing:1px;
+}
+
+
+/* Actual PDF preview */
+
+.resume-preview-viewport{
+    position:relative;
+
+    width:100%;
+    aspect-ratio:8.5 / 11;
+
+    overflow:hidden;
+
+    background:#dedede;
+}
+
+.resume-preview-frame{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    border:0;
+
+    pointer-events:none;
+
+    background:#fff;
+
+    transform:scale(1.015);
+
+    transform-origin:center top;
+
+    transition:
+        transform .7s cubic-bezier(.22,1,.36,1),
+        filter .5s ease;
+}
+
+.resume-preview-shade{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 48%,
+            rgba(14,3,8,.11) 76%,
+            rgba(8,1,4,.42) 100%
+        );
+
+    opacity:.45;
+
+    transition:opacity .45s ease;
+}
+
+.resume-preview-light{
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    background:
+        radial-gradient(
+            circle at
+            var(--resume-light-x)
+            var(--resume-light-y),
+            rgba(255,255,255,.18),
+            transparent 28%
+        );
+
+    mix-blend-mode:screen;
+
+    transition:opacity .4s ease;
+}
+
+
+/* Hover overlay */
+
+.resume-open-overlay{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    padding:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+
+    color:#fff;
+
+    border:0;
+
+    cursor:pointer;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(123,16,57,.22),
+            rgba(10,3,6,.72) 70%
+        );
+
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+
+    opacity:0;
+
+    transform:scale(1.02);
+
+    transition:
+        opacity .42s ease,
+        transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+.resume-document-card:hover
+.resume-open-overlay{
+    opacity:1;
+
+    transform:scale(1);
+}
+
+.resume-document-card:hover
+.resume-preview-frame{
+    transform:scale(1.045);
+
+    filter:
+        brightness(.58)
+        saturate(.75);
+}
+
+.resume-document-card:hover
+.resume-preview-shade{
+    opacity:.82;
+}
+
+.resume-document-card:hover
+.resume-preview-light{
+    opacity:1;
+}
+
+.resume-open-icon{
+    width:48px;
+    height:48px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ffe8f0;
+
+    border:
+        1px solid rgba(255,255,255,.17);
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(153,36,78,.75),
+            rgba(78,13,39,.82)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(88,5,34,.32),
+        inset 0 1px 0 rgba(255,255,255,.17);
+
+    transform:translateY(10px);
+
+    transition:transform .45s ease;
+}
+
+.resume-open-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+    gap:4px;
+
+    text-align:left;
+
+    transform:translateY(10px);
+
+    transition:transform .45s ease;
+}
+
+.resume-open-copy small{
+    color:#c18aa0;
+
+    font-size:.53rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.resume-open-copy strong{
+    color:#fff7fa;
+
+    font-size:.88rem;
+    font-weight:600;
+}
+
+.resume-open-arrow{
+    color:#d982a1;
+
+    transform:
+        translate(-5px,10px);
+
+    transition:transform .45s ease;
+}
+
+.resume-document-card:hover
+.resume-open-icon,
+.resume-document-card:hover
+.resume-open-copy{
+    transform:translateY(0);
+}
+
+.resume-document-card:hover
+.resume-open-arrow{
+    transform:translate(0,0);
+}
+
+
+/* =========================================================
+   RESUME ACTIONS
+========================================================= */
+
+.resume-actions{
+    width:min(100%,460px);
+
+    margin-top:15px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.resume-view-button,
+.resume-download-button{
+    min-height:48px;
+
+    padding:0 16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    border-radius:14px;
+
+    font-family:inherit;
+    font-size:.63rem;
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:
+        transform .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+}
+
+.resume-view-button{
+    color:#fff;
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #792141,
+            #bd416d
+        );
+
+    box-shadow:
+        0 14px 32px rgba(118,15,53,.25);
+}
+
+.resume-download-button{
+    color:#c9bbc0;
+
+    border:
+        1px solid rgba(255,255,255,.075);
+
+    background:
+        rgba(255,255,255,.027);
+}
+
+.resume-view-button:hover,
+.resume-download-button:hover{
+    transform:translateY(-4px);
+
+    color:#fff;
+
+    border-color:
+        rgba(224,96,141,.24);
+
+    box-shadow:
+        0 19px 40px rgba(117,12,51,.25);
+}
+
+.resume-meta{
+    margin-top:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:9px;
+
+    color:#776a6f;
+
+    font-size:.49rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.resume-meta i{
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#a83e65;
+}
+
+
+/* =========================================================
+   FULLSCREEN RESUME MODAL
+========================================================= */
+
+.resume-modal{
+    position:fixed;
+    inset:0;
+
+    z-index:999999;
+
+    padding:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(3,1,2,.82);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    animation:
+        resumeModalReveal
+        .35s ease;
+}
+
+.resume-modal-panel{
+    width:min(1100px,100%);
+    height:min(900px,92vh);
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28,12,18,.98),
+            rgba(7,4,5,.99)
+        );
+
+    box-shadow:
+        0 45px 130px rgba(0,0,0,.7),
+        0 0 70px rgba(118,8,45,.16);
+
+    animation:
+        resumePanelReveal
+        .5s cubic-bezier(.22,1,.36,1);
+}
+
+.resume-modal-header{
+    min-height:72px;
+
+    padding:13px 17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+}
+
+.resume-modal-title{
+    display:flex;
+    flex-direction:column;
+
+    gap:4px;
+}
+
+.resume-modal-title span{
+    color:#ae5879;
+
+    font-size:.49rem;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+}
+
+.resume-modal-title strong{
+    color:#f3e9ec;
+
+    font-size:.78rem;
+    font-weight:600;
+}
+
+.resume-modal-controls{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+}
+
+.resume-modal-controls a{
+    min-height:38px;
+
+    padding:0 13px;
+
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    color:#c8b9be;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius:11px;
+
+    font-size:.56rem;
+    text-decoration:none;
+
+    transition:
+        color .3s ease,
+        background .3s ease;
+}
+
+.resume-modal-controls a:hover{
+    color:#fff;
+
+    background:
+        rgba(142,25,66,.2);
+}
+
+.resume-modal-controls button{
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#aa9ba0;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius:11px;
+
+    cursor:pointer;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        color .3s ease,
+        background .3s ease,
+        transform .3s ease;
+}
+
+.resume-modal-controls button:hover{
+    color:#fff;
+
+    transform:rotate(90deg);
+
+    background:
+        rgba(142,25,66,.2);
+}
+
+.resume-modal-document{
+    flex:1;
+    min-height:0;
+
+    padding:10px;
+
+    background:#171717;
+}
+
+.resume-modal-document iframe{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#fff;
+}
+
+.resume-modal-footer{
+    min-height:54px;
+
+    padding:10px 17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    border-top:
+        1px solid rgba(255,255,255,.055);
+}
+
+.resume-modal-footer > span{
+    color:#62575b;
+
+    font-size:.5rem;
+}
+
+.resume-modal-footer a{
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    color:#d59ab0;
+
+    font-size:.56rem;
+    text-decoration:none;
+}
+
+.resume-modal-footer a:hover{
+    color:#fff;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes resumeModalReveal{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes resumePanelReveal{
+    from{
+        opacity:0;
+
+        transform:
+            translateY(22px)
+            scale(.96);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media(hover:none){
+
+    .resume-open-overlay{
+        top:auto;
+
+        height:105px;
+
+        opacity:1;
+
+        transform:none;
+
+        justify-content:flex-start;
+
+        background:
+            linear-gradient(
+                180deg,
+                transparent,
+                rgba(9,2,5,.9)
+            );
+
+        backdrop-filter:none;
+    }
+
+    .resume-open-icon{
+        width:40px;
+        height:40px;
+
+        transform:none;
+    }
+
+    .resume-open-copy,
+    .resume-open-arrow{
+        transform:none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+    .resume-actions{
+        grid-template-columns:1fr;
+    }
+
+    .resume-modal{
+        padding:10px;
+    }
+
+    .resume-modal-panel{
+        height:calc(100dvh - 20px);
+
+        border-radius:20px;
+    }
+
+    .resume-modal-controls a{
+        display:none;
+    }
+
+    .resume-modal-footer > span{
+        display:none;
+    }
+
+    .resume-modal-footer{
+        justify-content:flex-end;
+    }
+
+}
+/* =========================================================
+   COMPACT LUXURY RESUME SHOWCASE
+========================================================= */
+
+.process-resume-showcase{
+    position:relative;
+
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+
+    padding-top:8px;
+
+    isolation:isolate;
+}
+
+
+/* Soft cherry glow behind resume */
+
+.process-resume-glow{
+    position:absolute;
+
+    width:390px;
+    height:470px;
+
+    top:85px;
+    left:50%;
+
+    z-index:-1;
+
+    transform:translateX(-50%);
+
+    border-radius:45%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(185,40,91,.28),
+            rgba(101,10,43,.13) 45%,
+            transparent 72%
+        );
+
+    filter:blur(38px);
+
+    pointer-events:none;
+}
+
+
+/* Label above document */
+
+.process-resume-label{
+    width:min(360px,100%);
+
+    min-height:42px;
+
+    margin-bottom:20px;
+    padding:0 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:11px;
+
+    color:#caaeb8;
+
+    border:
+        1px solid rgba(255,255,255,.085);
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(117,31,64,.25),
+            rgba(255,255,255,.035),
+            rgba(117,31,64,.25)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 13px 35px rgba(0,0,0,.2);
+
+    font-size:.58rem;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.process-resume-label svg{
+    color:#d55482;
+
+    animation:
+        processResumeArrow
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* Main card */
+
+.process-resume-card{
+    --resume-x:0deg;
+    --resume-y:0deg;
+
+    position:relative;
+
+    width:min(360px,100%);
+
+    perspective:1200px;
+}
+
+
+/* Decorative rear frame */
+
+.process-resume-card::before{
+    content:"";
+
+    position:absolute;
+
+    inset:14px -14px -15px 14px;
+
+    z-index:-2;
+
+    border:
+        1px solid rgba(223,92,141,.12);
+
+    border-radius:
+        42px 24px 42px 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(121,30,64,.32),
+            rgba(25,8,14,.52)
+        );
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.36),
+        0 0 45px rgba(130,13,53,.14);
+
+    transform:rotate(1.5deg);
+}
+
+
+/* Thin outer outline */
+
+.process-resume-card::after{
+    content:"";
+
+    position:absolute;
+
+    inset:-8px 8px 8px -8px;
+
+    z-index:-1;
+
+    border:
+        1px solid rgba(255,255,255,.055);
+
+    border-radius:
+        26px 45px 25px 45px;
+
+    pointer-events:none;
+}
+
+.process-resume-frame{
+    position:relative;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    border-radius:
+        28px 28px 38px 38px;
+
+    background:
+        linear-gradient(
+            150deg,
+            rgba(42,15,25,.98),
+            rgba(9,5,7,.99)
+        );
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.52),
+        0 0 35px rgba(132,13,54,.13),
+        inset 0 1px 0 rgba(255,255,255,.09);
+
+    transform:
+        rotateX(var(--resume-x))
+        rotateY(var(--resume-y))
+        translateZ(0);
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform .22s ease-out,
+        border-color .4s ease,
+        box-shadow .45s ease;
+}
+
+.process-resume-card:hover
+.process-resume-frame{
+    border-color:
+        rgba(232,104,151,.27);
+
+    box-shadow:
+        0 42px 105px rgba(0,0,0,.6),
+        0 0 52px rgba(154,18,67,.22),
+        inset 0 1px 0 rgba(255,255,255,.11);
+}
+
+
+/* Small browser bar */
+
+.process-resume-topbar{
+    height:46px;
+
+    padding:0 14px;
+
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+
+    gap:10px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(121,27,62,.34),
+            rgba(20,8,12,.92)
+        );
+}
+
+.process-resume-dots{
+    display:flex;
+    align-items:center;
+
+    gap:5px;
+}
+
+.process-resume-dots span{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#51313d;
+}
+
+.process-resume-dots span:first-child{
+    background:#b7426c;
+}
+
+.process-resume-dots span:nth-child(2){
+    background:#84344f;
+}
+
+.process-resume-dots span:nth-child(3){
+    background:#5b2b3c;
+}
+
+.process-resume-file{
+    min-width:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:6px;
+
+    color:#b9a7ad;
+
+    font-size:.56rem;
+}
+
+.process-resume-file span{
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.process-resume-file svg{
+    color:#c4567e;
+}
+
+.process-resume-topbar small{
+    color:#77666c;
+
+    font-size:.46rem;
+    letter-spacing:1px;
+}
+
+
+/* Visible PDF document */
+
+.process-resume-document{
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:8.5 / 11;
+
+    overflow:hidden;
+
+    background:#e7e7e7;
+}
+
+.process-resume-iframe{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    border:0;
+
+    pointer-events:none;
+
+    background:#fff;
+
+    transform:scale(1.018);
+    transform-origin:center top;
+
+    transition:
+        transform .65s cubic-bezier(.22,1,.36,1),
+        filter .45s ease;
+}
+
+
+/* Very light bottom gradient */
+
+.process-resume-shade{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(20,3,10,.12) 82%,
+            rgba(13,2,7,.35) 100%
+        );
+
+    opacity:.2;
+
+    transition:opacity .4s ease;
+}
+
+
+/* Hover layer */
+
+.process-resume-open{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    padding:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:12px;
+
+    color:#fff;
+
+    border:0;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(109,19,53,.27),
+            rgba(14,4,8,.73) 72%
+        );
+
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+
+    transform:scale(1.025);
+
+    transition:
+        opacity .38s ease,
+        transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+.process-resume-card:hover
+.process-resume-open{
+    opacity:1;
+
+    transform:scale(1);
+}
+
+.process-resume-card:hover
+.process-resume-iframe{
+    transform:scale(1.045);
+
+    filter:
+        brightness(.55)
+        saturate(.72)
+        blur(1px);
+}
+
+.process-resume-card:hover
+.process-resume-shade{
+    opacity:.9;
+}
+
+
+/* Hover button content */
+
+.process-resume-open-icon{
+    width:46px;
+    height:46px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ffe9f1;
+
+    border:
+        1px solid rgba(255,255,255,.17);
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #b83e69,
+            #681c3b
+        );
+
+    box-shadow:
+        0 13px 35px rgba(96,8,39,.36),
+        inset 0 1px 0 rgba(255,255,255,.16);
+
+    transform:translateY(12px);
+
+    transition:transform .42s ease;
+}
+
+.process-resume-open-text{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+    gap:3px;
+
+    text-align:left;
+
+    transform:translateY(12px);
+
+    transition:transform .42s ease;
+}
+
+.process-resume-open-text small{
+    color:#d295aa;
+
+    font-size:.48rem;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+}
+
+.process-resume-open-text strong{
+    color:#fff8fa;
+
+    font-size:.8rem;
+    font-weight:650;
+}
+
+.process-resume-open > svg{
+    color:#e393af;
+
+    transform:
+        translate(-5px,12px);
+
+    transition:transform .42s ease;
+}
+
+.process-resume-card:hover
+.process-resume-open-icon,
+.process-resume-card:hover
+.process-resume-open-text{
+    transform:translateY(0);
+}
+
+.process-resume-card:hover
+.process-resume-open > svg{
+    transform:translate(0,0);
+}
+
+
+/* Bottom actions */
+
+.process-resume-actions{
+    width:min(360px,100%);
+
+    margin-top:26px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+}
+
+.process-resume-actions button,
+.process-resume-actions a{
+    min-height:45px;
+
+    padding:0 13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    border-radius:13px;
+
+    font-family:inherit;
+    font-size:.57rem;
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+}
+
+.process-resume-actions button{
+    color:#fff;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8c294d,
+            #c34472
+        );
+
+    box-shadow:
+        0 14px 32px rgba(117,13,51,.25);
+}
+
+.process-resume-actions a{
+    color:#c8b9be;
+
+    border:
+        1px solid rgba(255,255,255,.075);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.process-resume-actions button:hover,
+.process-resume-actions a:hover{
+    transform:translateY(-4px);
+
+    border-color:
+        rgba(224,96,141,.25);
+
+    box-shadow:
+        0 18px 40px rgba(116,13,50,.25);
+}
+
+.process-resume-meta{
+    margin-top:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    color:#776a6f;
+
+    font-size:.46rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.process-resume-meta i{
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#af4169;
+}
+
+
+/* =========================================================
+   FULL RESUME VIEWER
+========================================================= */
+
+.process-resume-modal{
+    position:fixed;
+    inset:0;
+
+    z-index:999999;
+
+    padding:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(3,1,2,.86);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    animation:
+        processResumeModalFade
+        .3s ease;
+}
+
+.process-resume-modal-panel{
+    width:min(980px,100%);
+    height:min(880px,92vh);
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,12,19,.99),
+            rgba(7,4,5,.99)
+        );
+
+    box-shadow:
+        0 45px 130px rgba(0,0,0,.72),
+        0 0 70px rgba(119,8,46,.16);
+
+    animation:
+        processResumeModalRise
+        .45s cubic-bezier(.22,1,.36,1);
+}
+
+.process-resume-modal-header{
+    min-height:68px;
+
+    padding:12px 16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:18px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+}
+
+.process-resume-modal-header > div:first-child{
+    display:flex;
+    flex-direction:column;
+
+    gap:4px;
+}
+
+.process-resume-modal-header span{
+    color:#b65b7d;
+
+    font-size:.47rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.process-resume-modal-header strong{
+    color:#f3e9ec;
+
+    font-size:.75rem;
+    font-weight:600;
+}
+
+.process-resume-modal-buttons{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+}
+
+.process-resume-modal-buttons a{
+    min-height:37px;
+
+    padding:0 12px;
+
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    color:#cdbdc2;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:10px;
+
+    font-size:.53rem;
+    text-decoration:none;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.process-resume-modal-buttons button{
+    width:37px;
+    height:37px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#b9a8ae;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        transform .3s ease,
+        color .3s ease,
+        background .3s ease;
+}
+
+.process-resume-modal-buttons button:hover{
+    color:#fff;
+
+    transform:rotate(90deg);
+
+    background:
+        rgba(146,27,69,.22);
+}
+
+.process-resume-modal-document{
+    flex:1;
+    min-height:0;
+
+    padding:9px;
+
+    background:#161415;
+}
+
+.process-resume-modal-document iframe{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    border:0;
+    border-radius:12px;
+
+    background:#fff;
+}
+
+.process-resume-modal-footer{
+    min-height:51px;
+
+    padding:9px 16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:14px;
+
+    border-top:
+        1px solid rgba(255,255,255,.055);
+}
+
+.process-resume-modal-footer span{
+    color:#665a5e;
+
+    font-size:.48rem;
+}
+
+.process-resume-modal-footer a{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    color:#da9fb4;
+
+    font-size:.52rem;
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes processResumeArrow{
+    0%,
+    100%{
+        transform:translateY(-2px);
+    }
+
+    50%{
+        transform:translateY(3px);
+    }
+}
+
+@keyframes processResumeModalFade{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes processResumeModalRise{
+    from{
+        opacity:0;
+
+        transform:
+            translateY(20px)
+            scale(.97);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media(hover:none){
+
+    .process-resume-open{
+        top:auto;
+        bottom:0;
+
+        height:100px;
+
+        justify-content:flex-start;
+
+        opacity:1;
+
+        transform:none;
+
+        background:
+            linear-gradient(
+                180deg,
+                transparent,
+                rgba(12,3,7,.92)
+            );
+
+        backdrop-filter:none;
+    }
+
+    .process-resume-open-icon{
+        width:39px;
+        height:39px;
+
+        transform:none;
+    }
+
+    .process-resume-open-text,
+    .process-resume-open > svg{
+        transform:none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+    .process-resume-showcase{
+        margin-top:35px;
+    }
+
+    .process-resume-card{
+        width:min(330px,90vw);
+    }
+
+    .process-resume-label,
+    .process-resume-actions{
+        width:min(330px,90vw);
+    }
+
+    .process-resume-actions{
+        grid-template-columns:1fr;
+    }
+
+    .process-resume-modal{
+        padding:9px;
+    }
+
+    .process-resume-modal-panel{
+        height:calc(100dvh - 18px);
+
+        border-radius:18px;
+    }
+
+    .process-resume-modal-buttons a{
+        display:none;
+    }
+
+    .process-resume-modal-footer span{
+        display:none;
+    }
+
+    .process-resume-modal-footer{
+        justify-content:flex-end;
+    }
+
+}
+/* =========================================================
+   ZAIRE-STYLE FULLSCREEN RESUME VIEWER
+========================================================= */
+
+.resume-fullscreen-overlay{
+    position:fixed;
+    inset:0;
+
+    z-index:2147483647;
+
+    width:100%;
+    height:100dvh;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+
+    padding:
+        48px
+        115px
+        0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(89,12,41,.12),
+            transparent 38%
+        ),
+        #020202;
+
+    animation:
+        resumeFullscreenFade
+        .3s
+        ease
+        forwards;
+}
+
+
+/* PDF viewing area */
+
+.resume-fullscreen-viewer{
+    position:relative;
+
+    width:min(1120px,100%);
+    height:100%;
+
+    overflow:hidden;
+
+    background:#050505;
+
+    animation:
+        resumeFullscreenDocument
+        .48s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+}
+
+.resume-fullscreen-viewer iframe{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    border:0;
+
+    background:#050505;
+}
+
+
+/* Large circular close button */
+
+.resume-fullscreen-close{
+    position:fixed;
+
+    top:31px;
+    right:35px;
+
+    z-index:5;
+
+    width:70px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(41,39,40,.98),
+            rgba(18,17,18,.98)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    transition:
+        transform .35s cubic-bezier(.22,1,.36,1),
+        color .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+.resume-fullscreen-close:hover{
+    color:#ffe7f0;
+
+    transform:
+        rotate(90deg)
+        scale(1.06);
+
+    border-color:
+        rgba(217,83,132,.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(121,30,64,.98),
+            rgba(51,14,29,.98)
+        );
+}
+
+
+/* Entry animations */
+
+@keyframes resumeFullscreenFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes resumeFullscreenDocument{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(22px)
+            scale(.985);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* Tablet */
+
+@media(max-width:1000px){
+
+    .resume-fullscreen-overlay{
+        padding:
+            35px
+            75px
+            0
+            25px;
+    }
+
+    .resume-fullscreen-close{
+        top:20px;
+        right:18px;
+
+        width:58px;
+        height:58px;
+    }
+
+}
+
+
+/* Mobile */
+
+@media(max-width:680px){
+
+    .resume-fullscreen-overlay{
+        padding:
+            76px
+            0
+            0;
+    }
+
+    .resume-fullscreen-viewer{
+        width:100%;
+    }
+
+    .resume-fullscreen-close{
+        top:12px;
+        right:12px;
+
+        width:51px;
+        height:51px;
+    }
+
+    .resume-fullscreen-close svg{
+        width:26px;
+        height:26px;
+    }
+
+}
+/* =========================================================
+   PROCESS SECTION — BALANCED LARGE VERSION
+   Bigger and more premium, but not oversized
+========================================================= */
+
+.process{
+    padding:
+        135px
+        0
+        155px;
+}
+
+.process-inner{
+    width:
+        min(
+            1320px,
+            calc(100% - 70px)
+        );
+
+    margin:
+        0
+        auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.process-header{
+    margin-bottom:
+        70px;
+}
+
+.process-heading-row{
+    gap:
+        70px;
+}
+
+.process-heading-row h2{
+    max-width:
+        670px;
+
+    font-size:
+        clamp(
+            3.3rem,
+            5.4vw,
+            5.8rem
+        );
+
+    line-height:
+        .94;
+}
+
+.process-heading-row > p{
+    max-width:
+        470px;
+
+    font-size:
+        .94rem;
+
+    line-height:
+        1.85;
+}
+
+
+/* =========================================================
+   MAIN TWO-COLUMN LAYOUT
+========================================================= */
+
+.credentials-layout{
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(390px, .85fr);
+
+    align-items:
+        start;
+
+    gap:
+        78px;
+}
+
+
+/* =========================================================
+   BIGGER CREDENTIAL CARDS
+========================================================= */
+
+.credentials-list{
+    gap:
+        22px;
+}
+
+.credential-item{
+    min-height:
+        132px;
+
+    padding:
+        27px
+        30px;
+
+    grid-template-columns:
+        58px
+        minmax(0, 1fr)
+        46px;
+
+    gap:
+        24px;
+
+    border-radius:
+        25px;
+
+    transition:
+        transform
+        .42s
+        cubic-bezier(.22,1,.36,1),
+
+        border-color
+        .35s
+        ease,
+
+        background
+        .4s
+        ease,
+
+        box-shadow
+        .4s
+        ease;
+}
+
+.credential-item:hover,
+.credential-item.active{
+    transform:
+        translateX(9px);
+
+    box-shadow:
+        0
+        24px
+        65px
+        rgba(0,0,0,.28),
+
+        0
+        0
+        35px
+        rgba(155,23,70,.12);
+}
+
+
+/* Number box */
+
+.credential-number{
+    width:
+        58px;
+
+    height:
+        58px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        17px;
+
+    font-size:
+        .73rem;
+
+    font-weight:
+        700;
+}
+
+
+/* Text inside cards */
+
+.credential-copy{
+    gap:
+        9px;
+}
+
+.credential-copy strong{
+    font-size:
+        1.08rem;
+
+    line-height:
+        1.25;
+}
+
+.credential-copy small{
+    max-width:
+        610px;
+
+    font-size:
+        .79rem;
+
+    line-height:
+        1.72;
+}
+
+
+/* Check circle */
+
+.credential-check{
+    width:
+        44px;
+
+    height:
+        44px;
+
+    border-radius:
+        50%;
+}
+
+.credential-check svg{
+    width:
+        18px;
+
+    height:
+        18px;
+}
+
+
+/* =========================================================
+   BIGGER RESUME PRESENTATION
+========================================================= */
+
+.process-resume-showcase{
+    padding-top:
+        0;
+}
+
+.process-resume-label{
+    width:
+        min(420px,100%);
+
+    min-height:
+        47px;
+
+    margin-bottom:
+        24px;
+
+    font-size:
+        .62rem;
+}
+
+.process-resume-card{
+    width:
+        min(420px,100%);
+}
+
+.process-resume-glow{
+    width:
+        470px;
+
+    height:
+        570px;
+
+    top:
+        95px;
+
+    filter:
+        blur(44px);
+}
+
+
+/* Slightly larger rear decorative frame */
+
+.process-resume-card::before{
+    inset:
+        17px
+        -17px
+        -18px
+        17px;
+
+    border-radius:
+        48px
+        28px
+        48px
+        28px;
+}
+
+.process-resume-card::after{
+    inset:
+        -10px
+        10px
+        10px
+        -10px;
+}
+
+
+/* Resume frame */
+
+.process-resume-frame{
+    border-radius:
+        31px
+        31px
+        42px
+        42px;
+}
+
+.process-resume-topbar{
+    height:
+        50px;
+
+    padding:
+        0
+        17px;
+}
+
+.process-resume-file{
+    font-size:
+        .61rem;
+}
+
+
+/* Actual document */
+
+.process-resume-document{
+    aspect-ratio:
+        8.5 / 11;
+}
+
+
+/* Larger hover call-to-action */
+
+.process-resume-open{
+    gap:
+        15px;
+
+    padding:
+        28px;
+}
+
+.process-resume-open-icon{
+    width:
+        52px;
+
+    height:
+        52px;
+
+    border-radius:
+        16px;
+}
+
+.process-resume-open-text small{
+    font-size:
+        .52rem;
+}
+
+.process-resume-open-text strong{
+    font-size:
+        .91rem;
+}
+
+
+/* =========================================================
+   BUTTONS UNDER RESUME
+========================================================= */
+
+.process-resume-actions{
+    width:
+        min(420px,100%);
+
+    margin-top:
+        29px;
+
+    gap:
+        11px;
+}
+
+.process-resume-actions button,
+.process-resume-actions a{
+    min-height:
+        51px;
+
+    padding:
+        0
+        16px;
+
+    border-radius:
+        15px;
+
+    font-size:
+        .62rem;
+}
+
+.process-resume-meta{
+    margin-top:
+        20px;
+
+    font-size:
+        .49rem;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+    .process-inner{
+        width:
+            min(
+                100% - 48px,
+                980px
+            );
+    }
+
+    .credentials-layout{
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(350px, .8fr);
+
+        gap:
+            45px;
+    }
+
+    .credential-item{
+        min-height:
+            122px;
+
+        padding:
+            24px;
+
+        grid-template-columns:
+            52px
+            minmax(0,1fr)
+            41px;
+
+        gap:
+            19px;
+    }
+
+    .credential-number{
+        width:
+            52px;
+
+        height:
+            52px;
+    }
+
+    .process-resume-card,
+    .process-resume-label,
+    .process-resume-actions{
+        width:
+            min(380px,100%);
+    }
+
+}
+
+
+/* =========================================================
+   STACKED TABLET
+========================================================= */
+
+@media(max-width:900px){
+
+    .process{
+        padding:
+            110px
+            0
+            125px;
+    }
+
+    .credentials-layout{
+        grid-template-columns:
+            1fr;
+
+        gap:
+            75px;
+    }
+
+    .credentials-list{
+        width:
+            100%;
+    }
+
+    .process-resume-showcase{
+        width:
+            100%;
+    }
+
+    .process-resume-card,
+    .process-resume-label,
+    .process-resume-actions{
+        width:
+            min(430px,100%);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+    .process{
+        padding:
+            90px
+            0
+            105px;
+    }
+
+    .process-inner{
+        width:
+            calc(100% - 30px);
+    }
+
+    .process-header{
+        margin-bottom:
+            48px;
+    }
+
+    .process-heading-row h2{
+        font-size:
+            clamp(
+                2.7rem,
+                14vw,
+                4rem
+            );
+    }
+
+    .credential-item{
+        min-height:
+            auto;
+
+        padding:
+            21px
+            18px;
+
+        grid-template-columns:
+            46px
+            minmax(0,1fr)
+            36px;
+
+        gap:
+            14px;
+
+        border-radius:
+            20px;
+    }
+
+    .credential-item:hover,
+    .credential-item.active{
+        transform:
+            translateX(3px);
+    }
+
+    .credential-number{
+        width:
+            46px;
+
+        height:
+            46px;
+
+        border-radius:
+            14px;
+    }
+
+    .credential-copy strong{
+        font-size:
+            .91rem;
+    }
+
+    .credential-copy small{
+        font-size:
+            .69rem;
+
+        line-height:
+            1.65;
+    }
+
+    .credential-check{
+        width:
+            36px;
+
+        height:
+            36px;
+    }
+
+    .process-resume-card,
+    .process-resume-label,
+    .process-resume-actions{
+        width:
+            min(350px,92vw);
+    }
+
+}

@@ -1,0 +1,485 @@
+/* =========================================================
+   CONTINUOUS SITE FLOW
+   One atmosphere • Invisible sections • Floating content
+========================================================= */
+
+/* Dark fallback behind the fixed atmosphere */
+
+html,
+body,
+#root{
+  min-height:100%;
+  background:#050203;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+
+/* =========================================================
+   LAYER ORDER
+========================================================= */
+
+.site-atmosphere{
+  z-index:0;
+}
+
+main{
+  position:relative;
+  z-index:1;
+
+  width:100%;
+
+  background:transparent !important;
+}
+
+.navbar{
+  z-index:10000;
+}
+
+.chat-toggle{
+  z-index:10002;
+}
+
+.chat-window{
+  z-index:10001;
+}
+
+
+/* =========================================================
+   REMOVE VISIBLE SECTION BOXES
+========================================================= */
+
+main > section{
+  position:relative;
+
+  width:100% !important;
+  max-width:none !important;
+
+  margin:0 !important;
+
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+
+  box-shadow:none !important;
+}
+
+/* Removes tiny seams between sections */
+
+main > section + section{
+  margin-top:-1px !important;
+}
+
+
+/* =========================================================
+   REMOVE EACH SECTION'S PRIVATE BACKGROUND
+========================================================= */
+
+/*
+The fixed SiteAtmosphere is now the only main background.
+These section-specific atmosphere containers are unnecessary.
+*/
+
+main > section:not(.hero) > [class*="background"]{
+  display:none !important;
+}
+
+
+/* About section */
+
+.about{
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+
+.about-background{
+  display:none !important;
+}
+
+
+/* Services section */
+
+.services{
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+
+
+/* Portfolio / Projects section */
+
+.projects,
+.portfolio{
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+
+
+/* Process section */
+
+.process{
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+
+
+/* Resume / What I Do section */
+
+.resume,
+.capabilities,
+.expertise{
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+
+
+/* Contact section */
+
+.contact{
+  background:transparent !important;
+
+  border-top:0 !important;
+  border-bottom:0 !important;
+}
+
+
+/* Footer */
+
+.footer{
+  position:relative;
+  z-index:1;
+
+  background:transparent !important;
+
+  border-top:0 !important;
+}
+
+
+/* =========================================================
+   KEEP CONTENT ABOVE THE ATMOSPHERE
+========================================================= */
+
+main > section > :not([class*="background"]){
+  position:relative;
+  z-index:2;
+}
+
+
+/* =========================================================
+   SUBTLE FLOATING SECTION EFFECT
+========================================================= */
+
+/*
+Only the foreground content lifts.
+The fixed atmosphere remains still behind everything.
+*/
+
+main > section:not(.hero) >
+:not([class*="background"]):
+not(.about-marquee){
+  transition:
+    transform .75s cubic-bezier(.22,1,.36,1);
+}
+
+@media (hover:hover) and (pointer:fine){
+
+  main > section:not(.hero):hover >
+  :not([class*="background"]):
+  not(.about-marquee){
+    transform:translateY(-5px);
+  }
+
+}
+
+
+/* =========================================================
+   FLOATING CONTENT CARDS
+========================================================= */
+
+.about-video-card,
+.timeline-content,
+[class*="service-card"],
+[class*="project-card"],
+[class*="resume-card"],
+[class*="contact-card"]{
+  transform:translateZ(0);
+
+  transition:
+    transform .55s cubic-bezier(.22,1,.36,1),
+    border-color .55s ease,
+    box-shadow .55s ease;
+}
+
+@media (hover:hover) and (pointer:fine){
+
+  .about-video-card:hover,
+  .timeline-content:hover,
+  [class*="service-card"]:hover,
+  [class*="project-card"]:hover,
+  [class*="resume-card"]:hover,
+  [class*="contact-card"]:hover{
+    transform:translateY(-8px);
+
+    border-color:rgba(222,78,127,.22);
+
+    box-shadow:
+      0 30px 75px rgba(0,0,0,.34),
+      0 0 42px rgba(126,9,47,.10);
+  }
+
+}
+
+
+/* =========================================================
+   ABOUT MARQUEE — NO HARD SECTION DIVIDER
+========================================================= */
+
+.about-marquee{
+  border-top:0 !important;
+  border-bottom:0 !important;
+
+  background:rgba(255,255,255,.008) !important;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      black 9%,
+      black 91%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   SOFT SCROLL TRANSITIONS
+========================================================= */
+
+main > section:not(.hero){
+  scroll-margin-top:95px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  main > section:not(.hero) >
+  :not([class*="background"]):
+  not(.about-marquee){
+    transform:none !important;
+  }
+
+}/* =========================================================
+   REFINED TYPOGRAPHY SCALE
+   Smaller, elegant section headlines
+========================================================= */
+
+/* Hero headline */
+.hero-title{
+  max-width:680px;
+
+  font-size:clamp(2.8rem,4.2vw,4.35rem);
+  line-height:1.01;
+  letter-spacing:-2.2px;
+}
+
+
+/* About headline */
+.about-title{
+  font-size:clamp(2.45rem,3.7vw,3.9rem);
+  line-height:1.02;
+  letter-spacing:-2px;
+}
+
+
+/* What I Do headline */
+.system-heading-grid h2{
+  font-size:clamp(2.5rem,3.9vw,4.2rem);
+  line-height:1;
+  letter-spacing:-2.4px;
+}
+
+
+/* Portfolio headline */
+.projects-heading-row h2{
+  font-size:clamp(2.8rem,4.6vw,4.8rem);
+  line-height:.94;
+  letter-spacing:-3px;
+}
+
+
+/* Resume headline */
+.process-heading-row h2{
+  font-size:clamp(2.7rem,4.2vw,4.55rem);
+  line-height:.97;
+  letter-spacing:-2.8px;
+}
+
+
+/* Contact headline */
+.contact-title{
+  font-size:clamp(2.7rem,4.1vw,4.45rem);
+  line-height:.98;
+  letter-spacing:-2.7px;
+}
+
+
+/* Discovery card headline */
+.contact-session h3{
+  font-size:clamp(1.95rem,2.8vw,2.95rem);
+  line-height:1.04;
+  letter-spacing:-1.7px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+  .hero-title{
+    font-size:clamp(2.7rem,6vw,3.9rem);
+  }
+
+  .about-title,
+  .system-heading-grid h2{
+    font-size:clamp(2.45rem,6vw,3.7rem);
+  }
+
+  .projects-heading-row h2,
+  .process-heading-row h2,
+  .contact-title{
+    font-size:clamp(2.65rem,7vw,4rem);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+  .hero-title{
+    font-size:clamp(2.35rem,10.5vw,3.15rem);
+    line-height:1.04;
+    letter-spacing:-1.6px;
+  }
+
+  .about-title,
+  .system-heading-grid h2{
+    font-size:clamp(2.2rem,10vw,3rem);
+    line-height:1.03;
+    letter-spacing:-1.5px;
+  }
+
+  .projects-heading-row h2,
+  .process-heading-row h2,
+  .contact-title{
+    font-size:clamp(2.35rem,11vw,3.3rem);
+    line-height:1;
+    letter-spacing:-1.8px;
+  }
+
+  .contact-session h3{
+    font-size:clamp(1.85rem,8vw,2.5rem);
+    line-height:1.05;
+    letter-spacing:-1.2px;
+  }
+
+}/* =========================================================
+   HERO ALIGNMENT
+   Match the spacing of the other sections
+========================================================= */
+
+.hero{
+  width:min(1180px, calc(100% - 48px)) !important;
+
+  margin:0 auto !important;
+
+  padding:145px 0 110px !important;
+
+  grid-template-columns:minmax(0, 1.08fr) minmax(340px, .92fr);
+
+  column-gap:80px;
+}
+
+
+/* Keep the left content properly contained */
+
+.hero-left{
+  width:100%;
+  max-width:610px;
+}
+
+
+/* Keep the portrait from sitting too close to the edge */
+
+.hero-right{
+  width:100%;
+
+  justify-self:end;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+  .hero{
+    width:min(100% - 44px, 900px) !important;
+
+    padding:135px 0 95px !important;
+
+    grid-template-columns:1fr;
+
+    row-gap:70px;
+  }
+
+  .hero-left{
+    max-width:700px;
+
+    margin:0 auto;
+  }
+
+  .hero-right{
+    justify-self:center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+  .hero{
+    width:min(100% - 34px, 620px) !important;
+
+    padding:115px 0 75px !important;
+
+    row-gap:52px;
+  }
+
+}

@@ -1,0 +1,912 @@
+/* =========================================================
+   CONTACT
+   Luxury Dark Cherry Consultation Section
+========================================================= */
+
+.contact{
+    position:relative;
+    isolation:isolate;
+
+    width:100%;
+    max-width:none;
+
+    margin:0;
+    padding:125px 0 95px;
+
+    overflow:hidden;
+
+    color:#fff;
+    background:transparent;
+}
+
+.contact-inner{
+    position:relative;
+    z-index:2;
+
+    width:min(1180px, calc(100% - 48px));
+
+    margin:0 auto;
+
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    align-items:center;
+
+    gap:75px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.contact-intro{
+    position:relative;
+
+    max-width:540px;
+}
+
+
+/* Availability */
+
+.contact-availability{
+    width:max-content;
+    max-width:100%;
+
+    padding:10px 16px;
+
+    display:inline-flex;
+    align-items:center;
+
+    gap:10px;
+
+    color:#c8e9d7;
+
+    border:1px solid rgba(110,224,158,.16);
+    border-radius:999px;
+
+    background:rgba(42,125,80,.10);
+
+    font-size:.68rem;
+    font-weight:600;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.availability-dot{
+    width:7px;
+    height:7px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#70e0a1;
+
+    box-shadow:
+        0 0 0 5px rgba(112,224,161,.08),
+        0 0 14px rgba(112,224,161,.55);
+
+    animation:contactAvailability 2.3s ease-in-out infinite;
+}
+
+
+/* Index */
+
+.contact-index{
+    margin:28px 0 0;
+
+    color:rgba(222,120,155,.58);
+
+    font-size:.67rem;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+
+/* Heading */
+
+.contact-title{
+    margin:18px 0 0;
+
+    color:#fff8fa;
+
+    font-size:clamp(3rem,5vw,5.4rem);
+    font-weight:650;
+    line-height:.95;
+    letter-spacing:-3.5px;
+
+    text-wrap:balance;
+}
+
+.contact-title span{
+    display:block;
+
+    padding-bottom:.12em;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5d7e1 4%,
+            #de789b 56%,
+            #a52a56 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* Description */
+
+.contact-description{
+    max-width:520px;
+
+    margin:25px 0 0;
+
+    color:#afa3a8;
+
+    font-size:.93rem;
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   CONTACT CHANNELS
+========================================================= */
+
+.contact-channels{
+    margin-top:34px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.contact-channel{
+    position:relative;
+
+    min-height:78px;
+
+    padding:13px 16px;
+
+    display:grid;
+    grid-template-columns:48px minmax(0,1fr) 25px;
+    align-items:center;
+
+    gap:14px;
+
+    color:#eee4e8;
+
+    border:1px solid rgba(255,255,255,.065);
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.038),
+            rgba(255,255,255,.014)
+        );
+
+    text-decoration:none;
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    transition:
+        transform .4s cubic-bezier(.22,1,.36,1),
+        background .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+a.contact-channel:hover{
+    transform:translateX(7px);
+
+    border-color:rgba(222,79,128,.18);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(128,19,57,.18),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 17px 40px rgba(0,0,0,.18);
+}
+
+.contact-channel-icon{
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#df789b;
+
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+
+    background:rgba(255,255,255,.035);
+}
+
+.contact-channel-icon.whatsapp{
+    color:#88e5ae;
+}
+
+.contact-channel-copy{
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+}
+
+.contact-channel-copy small{
+    color:#887b80;
+
+    font-size:.59rem;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.contact-channel-copy strong{
+    overflow-wrap:anywhere;
+
+    color:#e7dcdf;
+
+    font-size:.78rem;
+    font-weight:550;
+}
+
+.contact-channel-arrow{
+    color:#8e8085;
+
+    transition:
+        color .35s ease,
+        transform .35s ease;
+}
+
+a.contact-channel:hover .contact-channel-arrow{
+    color:#e986a8;
+
+    transform:translate(3px,-3px);
+}
+
+.contact-location{
+    grid-template-columns:48px minmax(0,1fr);
+}
+
+
+/* =========================================================
+   DISCOVERY SESSION PANEL
+========================================================= */
+
+.contact-session{
+    position:relative;
+    overflow:hidden;
+
+    min-height:675px;
+
+    padding:42px 42px 36px;
+
+    border:1px solid rgba(255,255,255,.105);
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.068),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        0 45px 115px rgba(0,0,0,.42),
+        0 0 65px rgba(125,8,47,.12),
+        inset 0 1px 0 rgba(255,255,255,.055);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    transition:
+        transform .6s cubic-bezier(.22,1,.36,1),
+        border-color .6s ease,
+        box-shadow .6s ease;
+}
+
+.contact-session:hover{
+    transform:translateY(-8px);
+
+    border-color:rgba(224,83,132,.19);
+
+    box-shadow:
+        0 55px 135px rgba(0,0,0,.5),
+        0 0 80px rgba(145,13,56,.16);
+}
+
+.contact-session::before{
+    content:"";
+
+    position:absolute;
+
+    width:38%;
+    height:190%;
+
+    left:-60%;
+    top:-45%;
+
+    transform:rotate(18deg);
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.065),
+            transparent
+        );
+
+    animation:contactReflection 9s ease-in-out infinite;
+}
+
+.contact-session::after{
+    content:"";
+
+    position:absolute;
+
+    left:8%;
+    right:8%;
+    top:0;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.23),
+            transparent
+        );
+}
+
+
+/* Internal glow */
+
+.contact-session-light{
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    right:-270px;
+    top:-250px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(184,28,82,.25),
+            transparent 68%
+        );
+
+    filter:blur(55px);
+
+    pointer-events:none;
+}
+
+
+/* Top row */
+
+.contact-session-header{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.contact-session-label{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    color:#e688a8;
+
+    font-size:.66rem;
+    font-weight:600;
+    letter-spacing:2.1px;
+    text-transform:uppercase;
+}
+
+.contact-session-label > span{
+    width:32px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #df5685,
+            rgba(223,86,133,.1)
+        );
+
+    box-shadow:
+        0 0 10px rgba(223,86,133,.35);
+}
+
+.contact-session-number{
+    color:#72666a;
+
+    font-size:.58rem;
+    font-weight:600;
+    letter-spacing:1.6px;
+}
+
+
+/* Calendar icon */
+
+.contact-session-icon{
+    width:58px;
+    height:58px;
+
+    margin-top:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#f3c6d5;
+
+    border:1px solid rgba(227,105,147,.18);
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(113,25,55,.8),
+            rgba(191,63,106,.54)
+        );
+
+    box-shadow:
+        0 18px 40px rgba(125,17,54,.3);
+}
+
+
+/* Session heading */
+
+.contact-session h3{
+    position:relative;
+    z-index:2;
+
+    max-width:540px;
+
+    margin:24px 0 0;
+
+    color:#fff7fa;
+
+    font-size:clamp(2.2rem,3.5vw,3.7rem);
+    font-weight:650;
+    line-height:1;
+    letter-spacing:-2.3px;
+}
+
+.contact-session h3 span{
+    display:block;
+
+    color:#df7197;
+}
+
+.contact-session-description{
+    position:relative;
+    z-index:2;
+
+    max-width:535px;
+
+    margin:22px 0 0;
+
+    color:#aea2a7;
+
+    font-size:.86rem;
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   SESSION POINTS
+========================================================= */
+
+.contact-session-points{
+    position:relative;
+    z-index:2;
+
+    margin-top:28px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.contact-session-point{
+    padding:16px 17px;
+
+    display:grid;
+    grid-template-columns:22px minmax(0,1fr);
+    align-items:start;
+
+    gap:13px;
+
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:17px;
+
+    background:rgba(255,255,255,.026);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease;
+}
+
+.contact-session-point:hover{
+    transform:translateX(5px);
+
+    border-color:rgba(220,76,125,.16);
+
+    background:rgba(125,20,57,.12);
+}
+
+.contact-session-point > svg{
+    margin-top:2px;
+
+    color:#df7197;
+}
+
+.contact-session-point > span{
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.contact-session-point strong{
+    color:#eee3e7;
+
+    font-size:.76rem;
+    font-weight:600;
+}
+
+.contact-session-point small{
+    color:#8f8387;
+
+    font-size:.67rem;
+    line-height:1.55;
+}
+
+
+/* =========================================================
+   BOOKING BUTTON
+========================================================= */
+
+.contact-book-button{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    min-height:60px;
+
+    margin-top:25px;
+    padding:0 22px;
+
+    display:grid;
+    grid-template-columns:25px 1fr 25px;
+    align-items:center;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #78203f,
+            #c64774
+        );
+
+    box-shadow:
+        0 18px 42px rgba(142,20,62,.31),
+        inset 0 1px 1px rgba(255,255,255,.16);
+
+    font-size:.81rem;
+    font-weight:650;
+
+    text-align:center;
+    text-decoration:none;
+
+    transition:
+        transform .4s cubic-bezier(.22,1,.36,1),
+        box-shadow .4s ease,
+        filter .4s ease;
+}
+
+.contact-book-button:hover{
+    transform:translateY(-5px);
+
+    filter:brightness(1.07);
+
+    box-shadow:
+        0 27px 58px rgba(159,23,70,.44),
+        inset 0 1px 1px rgba(255,255,255,.2);
+}
+
+.contact-book-button > svg:last-child{
+    justify-self:end;
+
+    transition:transform .35s ease;
+}
+
+.contact-book-button:hover > svg:last-child{
+    transform:translate(3px,-3px);
+}
+
+.contact-session-note{
+    position:relative;
+    z-index:2;
+
+    margin-top:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    color:#776b70;
+
+    font-size:.6rem;
+    letter-spacing:.6px;
+}
+
+
+/* =========================================================
+   BOTTOM SIGNATURE
+========================================================= */
+
+.contact-signature{
+    position:relative;
+    z-index:2;
+
+    width:min(1180px, calc(100% - 48px));
+
+    margin:78px auto 0;
+
+    padding-top:24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    color:#6f6468;
+
+    border-top:1px solid rgba(255,255,255,.045);
+
+    font-size:.6rem;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.contact-signature i{
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#c94975;
+
+    box-shadow:
+        0 0 10px rgba(201,73,117,.6);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes contactAvailability{
+    0%,
+    100%{
+        opacity:.55;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+@keyframes contactReflection{
+    0%,
+    67%{
+        left:-60%;
+    }
+
+    100%{
+        left:140%;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .contact{
+        padding:105px 0 85px;
+    }
+
+    .contact-inner{
+        grid-template-columns:1fr;
+
+        gap:70px;
+    }
+
+    .contact-intro{
+        max-width:720px;
+    }
+
+    .contact-description{
+        max-width:650px;
+    }
+
+    .contact-channels{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-location{
+        grid-column:1 / -1;
+    }
+
+    .contact-session{
+        width:min(700px,100%);
+
+        margin:0 auto;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:680px){
+
+    .contact{
+        padding:86px 0 70px;
+    }
+
+    .contact-inner{
+        width:min(100% - 34px,1180px);
+
+        gap:55px;
+    }
+
+    .contact-title{
+        font-size:clamp(2.75rem,13vw,4rem);
+        letter-spacing:-2.5px;
+    }
+
+    .contact-description{
+        font-size:.88rem;
+    }
+
+    .contact-channels{
+        display:flex;
+    }
+
+    .contact-channel{
+        min-height:73px;
+
+        grid-template-columns:43px minmax(0,1fr) 20px;
+
+        padding:12px;
+    }
+
+    .contact-channel-icon{
+        width:42px;
+        height:42px;
+    }
+
+    .contact-location{
+        grid-template-columns:43px minmax(0,1fr);
+    }
+
+    .contact-session{
+        min-height:auto;
+
+        padding:28px 20px 25px;
+
+        border-radius:25px;
+    }
+
+    .contact-session-header{
+        align-items:flex-start;
+    }
+
+    .contact-session-number{
+        display:none;
+    }
+
+    .contact-session-icon{
+        width:52px;
+        height:52px;
+
+        margin-top:32px;
+    }
+
+    .contact-session h3{
+        font-size:clamp(2rem,10vw,3rem);
+        letter-spacing:-1.8px;
+    }
+
+    .contact-session-point{
+        padding:14px;
+    }
+
+    .contact-book-button{
+        min-height:57px;
+
+        padding:0 16px;
+
+        font-size:.75rem;
+    }
+
+    .contact-signature{
+        width:min(100% - 34px,1180px);
+
+        margin-top:60px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .availability-dot,
+    .contact-session::before{
+        animation:none;
+    }
+
+    .contact-session,
+    .contact-channel,
+    .contact-session-point,
+    .contact-book-button{
+        transition:none;
+    }
+
+}

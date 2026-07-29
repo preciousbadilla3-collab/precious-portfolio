@@ -1,0 +1,59 @@
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:#090708;
+
+color:white;
+
+font-family:Inter,sans-serif;
+
+overflow-x:hidden;
+
+}
+
+main{
+
+display:flex;
+
+flex-direction:column;
+
+gap:0;
+
+}
+
+section{
+
+padding:80px 6%;
+
+position:relative;
+
+}#root{
+  position:relative;
+  min-height:100vh;
+
+  background:#050203;
+}
+
+main{
+  position:relative;
+  z-index:1;
+}
+
+main > section{
+  position:relative;
+}

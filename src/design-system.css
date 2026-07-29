@@ -1,0 +1,67 @@
+:root{
+
+/* COLORS */
+
+--bg:#090708;
+--surface:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+
+--text:#fff;
+--text-light:#a9a4aa;
+
+--accent:#d14871;
+--accent-light:#f59aba;
+
+/* WIDTH */
+
+--container:1180px;
+
+/* SECTION */
+
+--section:110px;
+
+/* RADIUS */
+
+--radius:22px;
+
+/* TYPOGRAPH */
+--hero:clamp(3.4rem,5vw,5.2rem);
+--title:clamp(2rem,3vw,2.8rem);
+--subtitle:1.05rem;
+--body:.95rem;
+--small:.82rem;
+
+/* SHADOW */
+
+--shadow:
+0 18px 50px rgba(0,0,0,.28);
+
+}
+
+/* GLOBAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+font-size:16px;
+}
+
+body{
+background:var(--bg);
+color:white;
+font-family:Inter,sans-serif;
+overflow-x:hidden;
+}
+
+section{
+
+width:100%;
+margin:auto;
+padding:var(--section) 4%;
+
+}
