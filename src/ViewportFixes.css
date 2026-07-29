@@ -316,3 +316,17 @@ html.touch-device main > section{
     margin:0 !important;
   }
 }
+
+/* =========================================================
+   VERIFIED MOBILE VIEWPORT CONTAINMENT
+   Prevent content inside <main> from widening the phone's
+   layout viewport. This keeps the page, navbar, and fixed
+   chat trigger aligned with the visible screen.
+========================================================= */
+
+@media (max-width: 980px), (pointer: coarse) {
+  main {
+    contain: paint !important;
+    overflow-x: clip !important;
+  }
+}
