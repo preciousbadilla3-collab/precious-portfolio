@@ -186,21 +186,17 @@ Only the foreground content lifts.
 The fixed atmosphere remains still behind everything.
 */
 
-main > section:not(.hero) >
-:not([class*="background"]):
-not(.about-marquee){
+main > section:not(.hero)
+  > :not([class*="background"]):not(.about-marquee){
   transition:
     transform .75s cubic-bezier(.22,1,.36,1);
 }
 
 @media (hover:hover) and (pointer:fine){
 
-  main > section:not(.hero):hover >
-  :not([class*="background"]):
-  not(.about-marquee){
-    transform:translateY(-5px);
-  }
-
+  main > section:not(.hero):hover
+  > :not([class*="background"]):not(.about-marquee){
+  transform:translateY(-5px);
 }
 
 
@@ -278,9 +274,8 @@ main > section:not(.hero){
 
 @media(max-width:768px){
 
-  main > section:not(.hero) >
-  :not([class*="background"]):
-  not(.about-marquee){
+  main > section:not(.hero)
+  > :not([class*="background"]):not(.about-marquee) {
     transform:none !important;
   }
 
