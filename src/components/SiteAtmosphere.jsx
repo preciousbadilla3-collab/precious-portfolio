@@ -1,167 +1,290 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./HeroAtmosphere.css";
 
-const foregroundDust = [
-  [8, 18, 3, -1.2, 9.5],
-  [17, 70, 2, -4.1, 11.5],
-  [29, 35, 4, -2.7, 12.5],
-  [42, 82, 2, -6.2, 10.5],
-  [56, 24, 3, -3.4, 13.5],
-  [68, 63, 2, -7.1, 11.8],
-  [79, 17, 4, -5.2, 14.2],
-  [90, 74, 3, -2.1, 12.2]
-];
+const TAU = Math.PI * 2;
 
 function SiteAtmosphere() {
+  const canvasRef = useRef(null);
+
   useEffect(() => {
-    const root = document.documentElement;
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+
+    const context = canvas.getContext("2d", {
+      alpha: true,
+      desynchronized: true
+    });
+
+    if (!context) return undefined;
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    const finePointer = window.matchMedia("(pointer: fine)").matches;
 
-    if (reduceMotion || !finePointer) return undefined;
+    const coarsePointer = window.matchMedia(
+      "(pointer: coarse), (hover: none)"
+    ).matches;
 
-    let frameId = 0;
-    let nextX = 0;
-    let nextY = 0;
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
+    let animationFrame = 0;
+    let lastFrameTime = 0;
+    let isPageVisible = !document.hidden;
 
-    const applyParallax = () => {
-      frameId = 0;
+    const frameInterval = coarsePointer ? 1000 / 24 : 1000 / 40;
 
-      root.style.setProperty("--wave-x", `${nextX * -18}px`);
-      root.style.setProperty("--wave-y", `${nextY * -10}px`);
-      root.style.setProperty("--stars-x", `${nextX * -8}px`);
-      root.style.setProperty("--stars-y", `${nextY * -5}px`);
-      root.style.setProperty("--front-x", `${nextX * 13}px`);
-      root.style.setProperty("--front-y", `${nextY * 9}px`);
-      root.style.setProperty("--hero-copy-x", `${nextX * 1.8}px`);
-      root.style.setProperty("--hero-copy-y", `${nextY * 1.2}px`);
-      root.style.setProperty("--hero-visual-x", `${nextX * 4.5}px`);
-      root.style.setProperty("--hero-visual-y", `${nextY * 3.2}px`);
+    const resizeCanvas = () => {
+      const visualViewport = window.visualViewport;
+
+      width = Math.max(
+        Math.round(
+          visualViewport?.width ||
+            document.documentElement.clientWidth ||
+            window.innerWidth
+        ),
+        1
+      );
+
+      height = Math.max(
+        Math.round(visualViewport?.height || window.innerHeight),
+        1
+      );
+      pixelRatio = Math.min(window.devicePixelRatio || 1, coarsePointer ? 1 : 1.35);
+
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     };
 
-    const handlePointerMove = (event) => {
-      nextX = event.clientX / window.innerWidth - 0.5;
-      nextY = event.clientY / window.innerHeight - 0.5;
+    const getPoint = (column, row, columns, rows, time, layer) => {
+      const xProgress = column / Math.max(columns - 1, 1);
+      const yProgress = row / Math.max(rows - 1, 1);
 
-      if (!frameId) {
-        frameId = window.requestAnimationFrame(applyParallax);
+      const layerShift = layer === 0 ? 0 : Math.PI * 0.85;
+      const baseY =
+        height * (layer === 0 ? 0.3 : 0.54) +
+        yProgress * height * (layer === 0 ? 0.42 : 0.31);
+
+      const envelope = Math.sin(xProgress * Math.PI);
+      const waveOne = Math.sin(
+        column * 0.34 + row * 0.42 + time * 0.00042 + layerShift
+      );
+      const waveTwo = Math.cos(
+        column * 0.16 - row * 0.28 - time * 0.00024 + layerShift
+      );
+
+      const amplitude = height * (coarsePointer ? 0.035 : 0.052);
+      const driftX = Math.sin(row * 0.45 + time * 0.00016 + layerShift) * 16;
+
+      return {
+        x: xProgress * width + driftX,
+        y:
+          baseY +
+          waveOne * amplitude * envelope +
+          waveTwo * amplitude * 0.42,
+        alpha: 0.2 + envelope * 0.7
+      };
+    };
+
+    const drawDot = (x, y, radius, color, alpha) => {
+      context.globalAlpha = alpha * 0.24;
+      context.fillStyle = color;
+      context.beginPath();
+      context.arc(x, y, radius * 2.15, 0, TAU);
+      context.fill();
+
+      context.globalAlpha = alpha;
+      context.beginPath();
+      context.arc(x, y, radius, 0, TAU);
+      context.fill();
+    };
+
+    const drawMesh = (time, layer) => {
+      const columns = coarsePointer ? 24 : Math.min(46, Math.ceil(width / 35));
+      const rows = coarsePointer ? 12 : 18;
+      const points = Array.from({ length: rows }, () => Array(columns));
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let column = 0; column < columns; column += 1) {
+          points[row][column] = getPoint(
+            column,
+            row,
+            columns,
+            rows,
+            time,
+            layer
+          );
+        }
+      }
+
+      const lineAlpha = layer === 0 ? 0.09 : 0.045;
+      context.lineWidth = 0.65;
+
+      for (let row = 0; row < rows; row += 1) {
+        context.beginPath();
+
+        points[row].forEach((point, index) => {
+          if (index === 0) context.moveTo(point.x, point.y);
+          else context.lineTo(point.x, point.y);
+        });
+
+        context.strokeStyle = `rgba(243, 82, 145, ${lineAlpha})`;
+        context.stroke();
+      }
+
+      for (let column = 0; column < columns; column += 2) {
+        context.beginPath();
+
+        for (let row = 0; row < rows; row += 1) {
+          const point = points[row][column];
+          if (row === 0) context.moveTo(point.x, point.y);
+          else context.lineTo(point.x, point.y);
+        }
+
+        context.strokeStyle = `rgba(255, 157, 194, ${lineAlpha * 0.62})`;
+        context.stroke();
+      }
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let column = 0; column < columns; column += 1) {
+          const point = points[row][column];
+          const progress = column / Math.max(columns - 1, 1);
+          const color =
+            progress < 0.42
+              ? "#c63c73"
+              : progress < 0.78
+                ? "#f36a9f"
+                : "#ffb06f";
+
+          const radius = layer === 0 ? 1.05 : 0.78;
+          const layerOpacity = layer === 0 ? 0.58 : 0.23;
+          const rowFade = 1 - Math.abs(row / (rows - 1) - 0.5) * 0.8;
+
+          drawDot(
+            point.x,
+            point.y,
+            radius,
+            color,
+            point.alpha * layerOpacity * rowFade
+          );
+        }
       }
     };
 
-    const resetParallax = () => {
-      nextX = 0;
-      nextY = 0;
+    const drawGlints = (time) => {
+      const glints = [
+        [0.16, 0.25, 0],
+        [0.52, 0.43, 1.8],
+        [0.83, 0.64, 3.5],
+        [0.7, 0.18, 5.2]
+      ];
 
-      if (!frameId) {
-        frameId = window.requestAnimationFrame(applyParallax);
+      glints.forEach(([xRatio, yRatio, phase]) => {
+        const pulse = 0.55 + Math.sin(time * 0.001 + phase) * 0.28;
+        const x = width * xRatio;
+        const y = height * yRatio;
+
+        context.globalAlpha = pulse * 0.34;
+        context.strokeStyle = "#ffc2d9";
+        context.lineWidth = 0.8;
+        context.beginPath();
+        context.moveTo(x - 5, y);
+        context.lineTo(x + 5, y);
+        context.moveTo(x, y - 5);
+        context.lineTo(x, y + 5);
+        context.stroke();
+
+        context.globalAlpha = pulse * 0.75;
+        context.fillStyle = "#fff5fa";
+        context.beginPath();
+        context.arc(x, y, 1.15, 0, TAU);
+        context.fill();
+      });
+    };
+
+    const render = (time = 0) => {
+      context.clearRect(0, 0, width, height);
+      context.globalCompositeOperation = "source-over";
+
+      drawMesh(time, 1);
+      drawMesh(time, 0);
+      drawGlints(time);
+
+      context.globalAlpha = 1;
+    };
+
+    const animate = (time) => {
+      animationFrame = 0;
+
+      if (!isPageVisible) return;
+
+      if (time - lastFrameTime >= frameInterval) {
+        lastFrameTime = time;
+        render(time);
+      }
+
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    const startAnimation = () => {
+      if (reduceMotion || animationFrame || !isPageVisible) return;
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    const handleVisibilityChange = () => {
+      isPageVisible = !document.hidden;
+
+      if (isPageVisible) {
+        render(performance.now());
+        startAnimation();
+      } else if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
       }
     };
 
-    window.addEventListener("pointermove", handlePointerMove, {
-      passive: true
-    });
-    window.addEventListener("blur", resetParallax);
+    const handleResize = () => {
+      resizeCanvas();
+      render(performance.now());
+    };
+
+    resizeCanvas();
+    render(0);
+
+    if (!reduceMotion) startAnimation();
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    window.visualViewport?.addEventListener(
+      "resize",
+      handleResize,
+      { passive: true }
+    );
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("blur", resetParallax);
+      window.removeEventListener("resize", handleResize);
+      window.visualViewport?.removeEventListener(
+        "resize",
+        handleResize
+      );
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
-      if (frameId) {
-        window.cancelAnimationFrame(frameId);
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
       }
-
-      [
-        "--wave-x",
-        "--wave-y",
-        "--stars-x",
-        "--stars-y",
-        "--front-x",
-        "--front-y",
-        "--hero-copy-x",
-        "--hero-copy-y",
-        "--hero-visual-x",
-        "--hero-visual-y"
-      ].forEach((property) => root.style.removeProperty(property));
     };
   }, []);
 
   return (
     <div className="site-atmosphere" aria-hidden="true">
-      <div className="atmosphere-base"></div>
-
-      <div className="atmosphere-spotlight atmosphere-spotlight-copy"></div>
-      <div className="atmosphere-spotlight atmosphere-spotlight-portrait"></div>
-
-      <div className="hero-aurora hero-aurora-left"></div>
-      <div className="hero-aurora hero-aurora-right"></div>
-
-      <div className="silk-ribbon silk-ribbon-one"></div>
-      <div className="silk-ribbon silk-ribbon-two"></div>
-      <div className="silk-ribbon silk-ribbon-three"></div>
-
-      <svg
-        className="hero-wave hero-wave-main"
-        viewBox="0 0 1600 720"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <linearGradient id="heroWaveGradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#7a123d" stopOpacity="0" />
-            <stop offset="18%" stopColor="#c83c72" stopOpacity=".28" />
-            <stop offset="48%" stopColor="#ff8ab4" stopOpacity=".72" />
-            <stop offset="74%" stopColor="#d94a82" stopOpacity=".38" />
-            <stop offset="100%" stopColor="#7a123d" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-
-        <g className="hero-wave-lines">
-          <path d="M-150 505 C180 230 430 205 690 395 C920 565 1190 555 1440 330 C1560 220 1680 205 1770 270" />
-          <path d="M-150 525 C175 265 425 238 685 420 C915 582 1180 575 1430 355 C1555 248 1680 235 1770 295" />
-          <path d="M-150 545 C165 300 415 272 675 445 C905 600 1170 595 1420 382 C1548 276 1670 265 1770 322" />
-          <path d="M-150 565 C155 335 405 305 665 470 C895 618 1160 615 1410 408 C1540 305 1660 295 1770 350" />
-          <path d="M-150 585 C145 370 395 338 655 495 C885 636 1150 635 1400 435 C1530 334 1650 325 1770 378" />
-        </g>
-      </svg>
-
-      <svg
-        className="hero-wave hero-wave-faint"
-        viewBox="0 0 1600 720"
-        preserveAspectRatio="none"
-      >
-        <g className="hero-wave-lines">
-          <path d="M-100 170 C245 40 505 105 720 250 C930 390 1175 385 1420 190 C1550 85 1675 80 1780 145" />
-          <path d="M-100 190 C235 70 495 135 710 275 C920 410 1165 408 1410 215 C1540 112 1665 108 1780 170" />
-          <path d="M-100 210 C225 100 485 165 700 300 C910 430 1155 430 1400 240 C1530 140 1655 135 1780 195" />
-        </g>
-      </svg>
-
-      <div className="star-dust star-dust-one"></div>
-      <div className="star-dust star-dust-two"></div>
-
-      <div className="atmosphere-glint glint-one"></div>
-      <div className="atmosphere-glint glint-two"></div>
-      <div className="atmosphere-glint glint-three"></div>
-      <div className="atmosphere-glint glint-four"></div>
-
-      <div className="foreground-dust">
-        {foregroundDust.map(([x, y, size, delay, duration], index) => (
-          <span
-            key={index}
-            style={{
-              "--dust-x": `${x}%`,
-              "--dust-y": `${y}%`,
-              "--dust-size": `${size}px`,
-              "--dust-delay": `${delay}s`,
-              "--dust-duration": `${duration}s`
-            }}
-          ></span>
-        ))}
-      </div>
-
-      <div className="atmosphere-noise"></div>
-      <div className="atmosphere-vignette"></div>
+      <div className="atmosphere-color-field" />
+      <canvas ref={canvasRef} className="atmosphere-canvas" />
+      <div className="atmosphere-soft-light" />
+      <div className="atmosphere-vignette" />
     </div>
   );
 }

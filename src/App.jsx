@@ -3,8 +3,8 @@ import { useState } from "react";
 import "./App.css";
 
 import Intro from "./components/Intro";
-import SiteAtmosphere from "./components/SiteAtmosphere";
 import CustomCursor from "./components/CustomCursor";
+import SiteAtmosphere from "./components/SiteAtmosphere";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -16,24 +16,28 @@ import Footer from "./components/Footer";
 import FloatingChat from "./components/FloatingChat";
 
 function App() {
-  const [introDone, setIntroDone] = useState(() => {
+  const [isTouchDevice] = useState(() => {
     if (typeof window === "undefined") return false;
 
-    const mobileOrTouch = window.matchMedia(
-      "(max-width: 768px), (hover: none)"
+    return window.matchMedia(
+      "(max-width: 768px), (hover: none), (pointer: coarse)"
     ).matches;
+  });
+
+  const [introDone, setIntroDone] = useState(() => {
+    if (typeof window === "undefined") return false;
 
     let alreadySeen = false;
 
     try {
-      alreadySeen = sessionStorage.getItem(
-        "precious-portfolio-intro-seen"
-      ) === "true";
+      alreadySeen =
+        sessionStorage.getItem("precious-portfolio-intro-seen") ===
+        "true";
     } catch {
-      // The intro still works when browser storage is unavailable.
+      // Continue normally if storage is unavailable.
     }
 
-    return mobileOrTouch || alreadySeen;
+    return isTouchDevice || alreadySeen;
   });
 
   const finishIntro = () => {
@@ -43,7 +47,7 @@ function App() {
         "true"
       );
     } catch {
-      // Ignore storage restrictions in private/in-app browsers.
+      // Ignore storage restrictions in private or in-app browsers.
     }
 
     setIntroDone(true);
@@ -51,12 +55,10 @@ function App() {
 
   return (
     <>
-      <CustomCursor />
-
-      {/* The website stays behind the intro,
-          so the nebula explosion can reveal it. */}
-
       <SiteAtmosphere />
+
+      {!isTouchDevice && <CustomCursor />}
+
       <Navbar />
 
       <main>
@@ -71,11 +73,7 @@ function App() {
       <Footer />
       <FloatingChat />
 
-      {!introDone && (
-        <Intro
-          finishIntro={finishIntro}
-        />
-      )}
+      {!introDone && <Intro finishIntro={finishIntro} />}
     </>
   );
 }
