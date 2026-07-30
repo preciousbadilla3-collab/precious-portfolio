@@ -416,10 +416,7 @@ function Projects() {
                   onClick={() => setActiveCategory(categoryKey)}
                 >
                   <Icon size={17} />
-                  <span className="category-label category-label-full">
-                    {category.label}
-                  </span>
-                  <span className="category-label category-label-mobile">
+                  <span className="category-label">
                     {categoryKey === "email" ? "Email" : category.label}
                   </span>
                 </button>

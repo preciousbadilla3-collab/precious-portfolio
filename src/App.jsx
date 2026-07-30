@@ -3,8 +3,8 @@ import { useState } from "react";
 import "./App.css";
 
 import Intro from "./components/Intro";
-import CustomCursor from "./components/CustomCursor";
 import SiteAtmosphere from "./components/SiteAtmosphere";
+import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -16,6 +16,8 @@ import Footer from "./components/Footer";
 import FloatingChat from "./components/FloatingChat";
 
 function App() {
+  const [introDone, setIntroDone] = useState(false);
+
   const [isTouchDevice] = useState(() => {
     if (typeof window === "undefined") return false;
 
@@ -23,35 +25,6 @@ function App() {
       "(max-width: 768px), (hover: none), (pointer: coarse)"
     ).matches;
   });
-
-  const [introDone, setIntroDone] = useState(() => {
-    if (typeof window === "undefined") return false;
-
-    let alreadySeen = false;
-
-    try {
-      alreadySeen =
-        sessionStorage.getItem("precious-portfolio-intro-seen") ===
-        "true";
-    } catch {
-      // Continue normally if storage is unavailable.
-    }
-
-    return isTouchDevice || alreadySeen;
-  });
-
-  const finishIntro = () => {
-    try {
-      sessionStorage.setItem(
-        "precious-portfolio-intro-seen",
-        "true"
-      );
-    } catch {
-      // Ignore storage restrictions in private or in-app browsers.
-    }
-
-    setIntroDone(true);
-  };
 
   return (
     <>
@@ -73,7 +46,9 @@ function App() {
       <Footer />
       <FloatingChat />
 
-      {!introDone && <Intro finishIntro={finishIntro} />}
+      {!introDone && (
+        <Intro finishIntro={() => setIntroDone(true)} />
+      )}
     </>
   );
 }
