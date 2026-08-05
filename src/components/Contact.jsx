@@ -11,60 +11,25 @@ import {
 
 import { FaWhatsapp } from "react-icons/fa";
 
-/* Update these details anytime */
-const EMAIL_ADDRESS = "preciousbadilla3@gmail.com";
-const WHATSAPP_NUMBER = "+639910139615";
-
-/*
-Paste your real GoHighLevel calendar link here later.
-
-Until then, the booking button will open an email requesting
-a discovery call, so the button will still work.
-*/
-const GHL_BOOKING_URL = "PASTE_YOUR_GHL_BOOKING_LINK_HERE";
+import {
+  bookingHref,
+  hasBookingLink,
+  locationLabel,
+  siteConfig,
+  whatsappHref
+} from "../config/siteConfig";
 
 function Contact() {
-  const hasBookingLink = GHL_BOOKING_URL.startsWith("http");
-
-  const bookingEmailSubject = encodeURIComponent(
-    "Discovery Call Request"
-  );
-
-  const bookingEmailBody = encodeURIComponent(
-    `Hi Precious,
-
-I'd like to schedule a discovery call regarding my project.
-
-Business or project:
-Preferred date and time:
-Services I'm interested in:
-
-Thank you!`
-  );
-
-  const bookingHref = hasBookingLink
-    ? GHL_BOOKING_URL
-    : `mailto:${EMAIL_ADDRESS}?subject=${bookingEmailSubject}&body=${bookingEmailBody}`;
-
   return (
     <section className="contact" id="contact">
-
       <div className="contact-inner">
-
-        {/* =========================
-            LEFT SIDE
-        ========================== */}
-
         <div className="contact-intro">
-
           <div className="contact-availability">
             <span className="availability-dot"></span>
             Now accepting select projects
           </div>
 
-          <p className="contact-index">
-            05 / CONTACT
-          </p>
+          <p className="contact-index">05 / CONTACT</p>
 
           <h2 className="contact-title">
             Let’s build a system that feels
@@ -79,9 +44,8 @@ Thank you!`
           </p>
 
           <div className="contact-channels">
-
             <a
-              href={`mailto:${EMAIL_ADDRESS}`}
+              href={`mailto:${siteConfig.email}`}
               className="contact-channel"
             >
               <span className="contact-channel-icon">
@@ -90,7 +54,7 @@ Thank you!`
 
               <span className="contact-channel-copy">
                 <small>Email</small>
-                <strong>{EMAIL_ADDRESS}</strong>
+                <strong>{siteConfig.email}</strong>
               </span>
 
               <ArrowUpRight
@@ -100,10 +64,10 @@ Thank you!`
             </a>
 
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={whatsappHref}
               className="contact-channel"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <span className="contact-channel-icon whatsapp">
                 <FaWhatsapp size={20} />
@@ -121,38 +85,25 @@ Thank you!`
             </a>
 
             <div className="contact-channel contact-location">
-
               <span className="contact-channel-icon">
                 <MapPin size={19} />
               </span>
 
               <span className="contact-channel-copy">
                 <small>Location</small>
-                <strong>
-                  Palawan, Philippines · Available remotely
-                </strong>
+                <strong>{locationLabel}</strong>
               </span>
-
             </div>
-
           </div>
-
         </div>
 
-
-        {/* =========================
-            DISCOVERY SESSION
-        ========================== */}
-
         <div className="contact-session">
-
           <div
             className="contact-session-light"
             aria-hidden="true"
           ></div>
 
           <div className="contact-session-header">
-
             <div className="contact-session-label">
               <span></span>
               Strategy Session
@@ -161,7 +112,6 @@ Thank you!`
             <div className="contact-session-number">
               01 / DISCOVERY
             </div>
-
           </div>
 
           <div className="contact-session-icon">
@@ -180,9 +130,7 @@ Thank you!`
           </p>
 
           <div className="contact-session-points">
-
             <div className="contact-session-point">
-
               <CheckCircle2 size={19} />
 
               <span>
@@ -192,11 +140,9 @@ Thank you!`
                   preventing leads from moving forward.
                 </small>
               </span>
-
             </div>
 
             <div className="contact-session-point">
-
               <CheckCircle2 size={19} />
 
               <span>
@@ -206,11 +152,9 @@ Thank you!`
                   automation, AI agent, or connected solution.
                 </small>
               </span>
-
             </div>
 
             <div className="contact-session-point">
-
               <CheckCircle2 size={19} />
 
               <span>
@@ -220,21 +164,17 @@ Thank you!`
                   for your project.
                 </small>
               </span>
-
             </div>
-
           </div>
 
           <a
             href={bookingHref}
             className="contact-book-button"
             target={hasBookingLink ? "_blank" : undefined}
-            rel={hasBookingLink ? "noreferrer" : undefined}
+            rel={hasBookingLink ? "noopener noreferrer" : undefined}
           >
             <Calendar size={19} />
-
             <span>Book a Discovery Call</span>
-
             <ArrowUpRight size={19} />
           </a>
 
@@ -242,15 +182,8 @@ Thank you!`
             <Sparkles size={13} />
             30-minute complimentary strategy session
           </div>
-
         </div>
-
       </div>
-
-
-      {/* =========================
-          BOTTOM SIGNATURE
-      ========================== */}
 
       <div className="contact-signature" aria-hidden="true">
         <span>CRM Systems</span>
@@ -261,7 +194,6 @@ Thank you!`
         <i></i>
         <span>AI Agents</span>
       </div>
-
     </section>
   );
 }

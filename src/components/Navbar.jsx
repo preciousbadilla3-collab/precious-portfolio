@@ -2,6 +2,12 @@ import "./Navbar.css";
 import { ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
+import {
+  bookingHref,
+  hasBookingLink,
+  whatsappHref
+} from "../config/siteConfig";
+
 const links = [
   ["#hero", "Home"],
   ["#about", "About Me"],
@@ -14,7 +20,7 @@ const links = [
 function Navbar() {
   return (
     <header className="navbar">
-      <a href="#hero" className="logo">
+      <a href="#hero" className="logo" aria-label="Precious portfolio home">
         <span className="logo-main">
           precious<span className="logo-dot">.</span>
         </span>
@@ -31,16 +37,21 @@ function Navbar() {
 
       <div className="nav-actions">
         <a
-          href="https://wa.me/639123456789"
+          href={whatsappHref}
           className="whatsapp-btn"
           target="_blank"
-          rel="noreferrer"
-          aria-label="Contact me on WhatsApp"
+          rel="noopener noreferrer"
+          aria-label="Contact Precious on WhatsApp"
         >
           <FaWhatsapp size={20} />
         </a>
 
-        <a href="#contact" className="talk-btn">
+        <a
+          href={bookingHref}
+          className="talk-btn"
+          target={hasBookingLink ? "_blank" : undefined}
+          rel={hasBookingLink ? "noopener noreferrer" : undefined}
+        >
           <span>Let's Talk</span>
           <ArrowRight size={17} />
         </a>

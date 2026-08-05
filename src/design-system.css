@@ -1,67 +1,72 @@
-:root{
+:root {
+  /* Brand colors */
+  --pb-bg: #050203;
+  --pb-surface: rgba(255, 255, 255, 0.04);
+  --pb-border: rgba(255, 255, 255, 0.08);
+  --pb-text: #fff8fa;
+  --pb-text-muted: #afa3a8;
+  --pb-accent: #d14871;
+  --pb-accent-light: #f59aba;
 
-/* COLORS */
+  /* Layout */
+  --pb-container: 1180px;
+  --pb-section-space: 112px;
+  --pb-section-space-mobile: 76px;
+  --pb-mobile-gutter: 16px;
 
---bg:#090708;
---surface:rgba(255,255,255,.04);
---border:rgba(255,255,255,.08);
+  /* Typography */
+  --pb-section-title: clamp(2.75rem, 4.2vw, 4.5rem);
+  --pb-section-title-mobile: clamp(2.3rem, 10vw, 3.05rem);
+  --pb-body: 0.98rem;
+  --pb-body-mobile: 0.95rem;
+  --pb-small: 0.76rem;
+  --pb-eyebrow: 0.7rem;
 
---text:#fff;
---text-light:#a9a4aa;
+  /* Actions */
+  --pb-button-height: 52px;
+  --pb-button-height-mobile: 52px;
+  --pb-button-font: 0.88rem;
+  --pb-button-radius: 999px;
 
---accent:#d14871;
---accent-light:#f59aba;
-
-/* WIDTH */
-
---container:1180px;
-
-/* SECTION */
-
---section:110px;
-
-/* RADIUS */
-
---radius:22px;
-
-/* TYPOGRAPH */
---hero:clamp(3.4rem,5vw,5.2rem);
---title:clamp(2rem,3vw,2.8rem);
---subtitle:1.05rem;
---body:.95rem;
---small:.82rem;
-
-/* SHADOW */
-
---shadow:
-0 18px 50px rgba(0,0,0,.28);
-
+  /* Shape and shadow */
+  --pb-radius: 22px;
+  --pb-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
-/* GLOBAL */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html{
-scroll-behavior:smooth;
-font-size:16px;
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
-body{
-background:var(--bg);
-color:white;
-font-family:Inter,sans-serif;
-overflow-x:hidden;
+body {
+  margin: 0;
+  color: var(--pb-text);
+  font-family: Inter, Arial, sans-serif;
+  background: var(--pb-bg);
+  overflow-x: clip;
 }
 
-section{
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
 
-width:100%;
-margin:auto;
-padding:var(--section) 4%;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 
+img,
+video,
+svg {
+  max-width: 100%;
 }

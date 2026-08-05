@@ -1,6 +1,8 @@
 import "./Hero.css";
 import preciousPhoto from "../assets/precious.jpg";
 
+import { bookingHref, hasBookingLink } from "../config/siteConfig";
+
 import {
   ArrowRight,
   CheckCircle2,
@@ -47,15 +49,17 @@ function Hero() {
         <div className="hero-actions">
 
           <a
-            href="#contact"
+            href={bookingHref}
             className="hero-primary-button"
+            target={hasBookingLink ? "_blank" : undefined}
+            rel={hasBookingLink ? "noopener noreferrer" : undefined}
           >
             Book a Discovery Call
             <ArrowRight size={18} />
           </a>
 
           <a
-            href="#projects"
+            href="#portfolio"
             className="hero-secondary-button"
           >
             View My Work

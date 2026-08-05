@@ -7,15 +7,17 @@ import {
 } from "lucide-react";
 
 import "./About.css";
+import preciousPhoto from "../assets/precious.jpg";
 
 function About() {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoUnavailable, setVideoUnavailable] = useState(false);
 
   const toggleVideo = async () => {
     const video = videoRef.current;
 
-    if (!video) return;
+    if (!video || videoUnavailable) return;
 
     try {
       if (video.paused) {
@@ -82,7 +84,7 @@ function About() {
             <span>Palawan, Philippines · Available remotely</span>
           </div>
 
-          <a href="#projects" className="about-link">
+          <a href="#portfolio" className="about-link">
             Explore selected work
             <ArrowUpRight size={17} />
           </a>
@@ -113,17 +115,19 @@ function About() {
                 ref={videoRef}
                 className="about-video"
                 src="/precious-intro.mp4"
+                poster={preciousPhoto}
                 preload="metadata"
                 playsInline
-                controls
+                controls={!videoUnavailable}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
+                onError={() => setVideoUnavailable(true)}
               >
                 Your browser does not support video playback.
               </video>
 
-              {!isPlaying && (
+              {!isPlaying && !videoUnavailable && (
                 <button
                   type="button"
                   className="about-play-button"
@@ -134,6 +138,13 @@ function About() {
                 </button>
               )}
 
+              {videoUnavailable && (
+                <div className="about-video-fallback" role="status">
+                  <span>Introduction video coming soon</span>
+                  <small>The portfolio remains fully available below.</small>
+                </div>
+              )}
+
               <div className="about-video-shine"></div>
 
               <div className="about-video-caption">
@@ -142,13 +153,15 @@ function About() {
                   <small>A brief introduction</small>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={toggleVideo}
-                  aria-label="Play introduction video"
-                >
-                  <Play size={15} fill="currentColor" />
-                </button>
+                {!videoUnavailable && (
+                  <button
+                    type="button"
+                    onClick={toggleVideo}
+                    aria-label="Play introduction video"
+                  >
+                    <Play size={15} fill="currentColor" />
+                  </button>
+                )}
               </div>
 
             </div>

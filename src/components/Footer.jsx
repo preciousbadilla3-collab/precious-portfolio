@@ -11,11 +11,11 @@ import {
   FaWhatsapp
 } from "react-icons/fa";
 
-const EMAIL_ADDRESS = "preciousbadilla3@gmail.com";
-const WHATSAPP_NUMBER = "+639910139615";
-
-/* Replace this with your real LinkedIn link */
-const LINKEDIN_URL = "https://www.linkedin.com/";
+import {
+  locationLabel,
+  siteConfig,
+  whatsappHref
+} from "../config/siteConfig";
 
 function Footer() {
   const scrollToTop = () => {
@@ -27,23 +27,16 @@ function Footer() {
 
   return (
     <footer className="footer">
-
       <div className="footer-inner">
-
         <div className="footer-main-row">
-
-          {/* Brand */}
           <a href="#hero" className="footer-brand">
             <strong>
               Precious<span>.</span>
             </strong>
 
-            <small>
-              GoHighLevel Systems Specialist
-            </small>
+            <small>{siteConfig.role}</small>
           </a>
 
-          {/* Navigation */}
           <nav
             className="footer-nav"
             aria-label="Footer navigation"
@@ -55,36 +48,34 @@ function Footer() {
             <a href="#contact">Contact</a>
           </nav>
 
-          {/* Social links */}
           <div className="footer-socials">
-
             <a
-              href={`mailto:${EMAIL_ADDRESS}`}
+              href={`mailto:${siteConfig.email}`}
               aria-label="Email Precious"
             >
               <Mail size={17} />
             </a>
 
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={whatsappHref}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="Message Precious on WhatsApp"
             >
               <FaWhatsapp size={18} />
             </a>
 
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Visit Precious on LinkedIn"
-            >
-              <FaLinkedinIn size={16} />
-            </a>
-
+            {siteConfig.linkedInUrl && (
+              <a
+                href={siteConfig.linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Precious on LinkedIn"
+              >
+                <FaLinkedinIn size={16} />
+              </a>
+            )}
           </div>
-
         </div>
 
         <div className="footer-divider">
@@ -92,15 +83,14 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-
           <p>
-            © {new Date().getFullYear()} Precious Badilla.
+            © {new Date().getFullYear()} {siteConfig.name}.
             All rights reserved.
           </p>
 
           <div className="footer-location">
             <MapPin size={13} />
-            Palawan, Philippines · Available remotely
+            {locationLabel}
           </div>
 
           <button
@@ -112,11 +102,8 @@ function Footer() {
             <span>Back to top</span>
             <ArrowUp size={15} />
           </button>
-
         </div>
-
       </div>
-
     </footer>
   );
 }

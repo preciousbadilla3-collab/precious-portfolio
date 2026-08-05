@@ -12,14 +12,11 @@ import {
 
 import "./FloatingChat.css";
 
-const EMAIL_ADDRESS = "preciousbadilla3@gmail.com";
-
-/*
-  Paste your GoHighLevel calendar URL here later.
-
-  Until then, booking buttons will open a prepared email.
-*/
-const BOOKING_URL = "PASTE_YOUR_GHL_BOOKING_LINK_HERE";
+import {
+  bookingHref,
+  hasBookingLink,
+  siteConfig
+} from "../config/siteConfig";
 
 const initialMessages = [
   {
@@ -162,7 +159,7 @@ function createAutomaticReply(message) {
         "You can contact Precious directly by email. Include a short description of your business and the project you have in mind.",
       action: {
         label: "Email Precious",
-        href: `mailto:${EMAIL_ADDRESS}`
+        href: `mailto:${siteConfig.email}`
       }
     };
   }
@@ -212,7 +209,7 @@ function createAutomaticReply(message) {
       "Thanks for sharing that. Precious would be happy to learn more about your project. You can book a discovery call or email her directly with the details.",
     action: {
       label: "Contact Precious",
-      href: `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(
+      href: `mailto:${siteConfig.email}?subject=${encodeURIComponent(
         "Portfolio Project Inquiry"
       )}&body=${encodeURIComponent(
         `Hi Precious,\n\nI would like to discuss this project:\n\n${message}\n`
@@ -242,28 +239,6 @@ function FloatingChat() {
   const messagesEndRef = useRef(null);
   const messagesRef = useRef(null);
   const replyTimerRef = useRef(null);
-
-  const hasBookingLink = BOOKING_URL.startsWith("http");
-
-  const bookingEmailSubject = encodeURIComponent(
-    "Discovery Call Request"
-  );
-
-  const bookingEmailBody = encodeURIComponent(
-    `Hi Precious,
-
-I would like to arrange a discovery call.
-
-Business or project:
-Service I am interested in:
-Preferred date and time:
-
-Thank you!`
-  );
-
-  const bookingHref = hasBookingLink
-    ? BOOKING_URL
-    : `mailto:${EMAIL_ADDRESS}?subject=${bookingEmailSubject}&body=${bookingEmailBody}`;
 
   useEffect(() => {
     try {
@@ -353,20 +328,28 @@ Thank you!`
 
   const handleMessageAction = (action) => {
     if (action.href === "#booking") {
-      window.location.href = bookingHref;
+      if (hasBookingLink) {
+        window.open(bookingHref, "_blank", "noopener,noreferrer");
+      } else {
+        window.location.href = bookingHref;
+      }
       return;
     }
 
     if (action.href.startsWith("#")) {
-      const destination = document.querySelector(
-        action.href
-      );
+      const destination = document.querySelector(action.href);
 
       destination?.scrollIntoView({
-        behavior: "smooth"
+        behavior: "smooth",
+        block: "start"
       });
 
       setOpen(false);
+      return;
+    }
+
+    if (/^https?:\/\//i.test(action.href)) {
+      window.open(action.href, "_blank", "noopener,noreferrer");
       return;
     }
 
@@ -536,7 +519,7 @@ Thank you!`
               Book a Call
             </a>
 
-            <a href={`mailto:${EMAIL_ADDRESS}`}>
+            <a href={`mailto:${siteConfig.email}`}>
               <Mail size={15} />
               Email
             </a>

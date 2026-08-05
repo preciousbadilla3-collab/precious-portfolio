@@ -10,6 +10,7 @@ import App from "./App.jsx";
 import "./SiteFlow.css";
 import "./MobileOptimizations.css";
 import "./ViewportFixes.css";
+import "./FinalPolish.css";
 
 const isTouchDevice =
   typeof window !== "undefined" &&

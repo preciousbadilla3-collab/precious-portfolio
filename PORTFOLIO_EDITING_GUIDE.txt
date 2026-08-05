@@ -1,0 +1,54 @@
+PRECIOUS PORTFOLIO — QUICK EDITING GUIDE
+========================================
+
+1) CONTACT DETAILS, WHATSAPP, BOOKING, LINKEDIN
+Open:
+  src/config/siteConfig.js
+
+Update only the values inside siteConfig.
+- bookingUrl: paste the published GoHighLevel calendar link.
+- linkedInUrl: paste your real LinkedIn profile, or leave blank to hide it.
+- All booking, email, WhatsApp, navbar, contact, footer, and chat links use this one file.
+
+2) PROJECTS
+Open:
+  src/data/portfolioProjects.js
+
+For every project:
+- title: project name
+- kicker: short niche/category label
+- description: 1–2 sentence summary
+- tags: 3 short skill labels
+- image: put the image in public/projects/ then use /projects/file-name.jpg
+- liveUrl: paste the live project URL
+
+A blank liveUrl displays a clean "coming soon" message instead of a broken link.
+
+3) RESUME
+Replace:
+  public/precious-resume.pdf
+  public/resume-preview/page-1.png
+
+Keep the same file names so no code changes are needed.
+
+4) INTRODUCTION VIDEO
+Add:
+  public/precious-intro.mp4
+
+If the video is missing, the About section automatically displays a polished fallback instead of a broken player.
+
+5) SAFE UPDATE PROCESS
+Run:
+  npm run build
+  npm run preview -- --host
+
+Test the production preview on desktop and phone. Then:
+  git add .
+  git commit -m "Update portfolio content"
+  git push
+
+Vercel updates automatically, and the GHL-domain embed displays the new version after refresh.
+
+IMPORTANT
+Do not remove the final closing braces in src/SiteFlow.css.
+Do not add another viewport/mobile override file. Use src/FinalPolish.css only for shared sizing adjustments.

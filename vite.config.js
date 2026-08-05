@@ -1,7 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+
+  build: {
+    // Prevent Lightning CSS from changing the working CSS behavior.
+    cssMinify: false,
+
+    // Keep all styles in one predictable CSS file.
+    cssCodeSplit: false,
+  },
+});
