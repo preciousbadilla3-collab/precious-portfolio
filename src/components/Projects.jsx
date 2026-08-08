@@ -36,6 +36,57 @@ const categoryDetails = {
   }
 };
 
+/* =========================================================
+   PORTFOLIO PROJECT OVERRIDES
+   BrightSmile is now Funnel Project 01
+========================================================= */
+
+const updatedPortfolioGroups = {
+  ...portfolioGroups,
+
+  funnels: [
+    {
+      number: "01",
+      title: "BrightSmile Dental Clinic",
+      kicker: "Dental Clinic Funnel",
+      visualTitle: "A healthier smile starts here.",
+
+      description:
+        "A conversion-focused dental clinic funnel designed to build trust, showcase treatments, capture leads, and guide patients toward booking an appointment.",
+
+      tags: [
+        "Dental Funnel",
+        "Lead Capture",
+        "Appointment Booking"
+      ],
+
+      image: "/brightsmile-dental.png",
+      
+      liveUrl:
+        "https://precious.myfreelanceportfolio.me/brightsmile-dental-clinic"
+    },
+
+    {
+    number: "02",
+    title: "Crownline Real Estate Funnel",
+    kicker: "Real Estate Funnel",
+    visualTitle: "Find your next move with confidence.",
+    description:
+      "A premium real estate lead generation funnel designed to showcase properties, build buyer trust, capture qualified inquiries, and guide prospects toward booking a consultation.",
+    tags: [
+      "Real Estate",
+      "Lead Generation",
+      "Consultation Booking"
+    ],
+    image: "/real-estate.png",
+    liveUrl:
+      "https://precious.myfreelanceportfolio.me/crownline-funnel"
+  },
+
+  ...portfolioGroups.funnels.slice(2)
+]
+};
+
 function ProjectVisual({ category, project }) {
   if (project.image) {
     return (
@@ -214,7 +265,7 @@ function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [rotationPaused, setRotationPaused] = useState(false);
 
-  const projects = portfolioGroups[activeCategory];
+  const projects = updatedPortfolioGroups[activeCategory];
   const activeProject = projects[activeIndex];
   const currentCategory = categoryDetails[activeCategory];
   const CategoryIcon = currentCategory.icon;
@@ -227,25 +278,36 @@ function Projects() {
     if (rotationPaused) return undefined;
 
     const interval = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % projects.length);
+      setActiveIndex(
+        (current) => (current + 1) % projects.length
+      );
     }, 6500);
 
     return () => window.clearInterval(interval);
-  }, [activeCategory, projects.length, rotationPaused]);
+  }, [
+    activeCategory,
+    projects.length,
+    rotationPaused
+  ]);
 
   const showNext = () => {
-    setActiveIndex((current) => (current + 1) % projects.length);
+    setActiveIndex(
+      (current) => (current + 1) % projects.length
+    );
   };
 
   const showPrevious = () => {
     setActiveIndex(
-      (current) => (current - 1 + projects.length) % projects.length
+      (current) =>
+        (current - 1 + projects.length) %
+        projects.length
     );
   };
 
   const getCardPosition = (index) => {
     const total = projects.length;
-    const difference = (index - activeIndex + total) % total;
+    const difference =
+      (index - activeIndex + total) % total;
 
     if (difference === 0) return "active";
     if (difference === 1) return "next";
@@ -255,7 +317,10 @@ function Projects() {
   };
 
   return (
-    <section className="projects" id="portfolio">
+    <section
+      className="projects"
+      id="portfolio"
+    >
 
       {/* Keeps old #projects links working */}
       <span
@@ -287,9 +352,10 @@ function Projects() {
             </div>
 
             <p>
-              An evolving collection of funnels, workflows, and
-              campaigns designed to make every digital interaction
-              feel clearer, smoother, and more intentional.
+              An evolving collection of funnels,
+              workflows, and campaigns designed to
+              make every digital interaction feel
+              clearer, smoother, and more intentional.
             </p>
 
           </div>
@@ -300,20 +366,28 @@ function Projects() {
           {Object.entries(categoryDetails).map(
             ([categoryKey, category]) => {
               const Icon = category.icon;
-              const isActive = activeCategory === categoryKey;
+              const isActive =
+                activeCategory === categoryKey;
 
               return (
                 <button
                   key={categoryKey}
                   type="button"
-                  className={isActive ? "active" : ""}
-                  onClick={() => setActiveCategory(categoryKey)}
+                  className={
+                    isActive ? "active" : ""
+                  }
+                  onClick={() =>
+                    setActiveCategory(categoryKey)
+                  }
                   aria-pressed={isActive}
                   aria-label={`Show ${category.label} projects`}
                 >
                   <Icon size={17} />
+
                   <span className="category-label">
-                    {categoryKey === "email" ? "Email" : category.label}
+                    {categoryKey === "email"
+                      ? "Email"
+                      : category.label}
                   </span>
                 </button>
               );
@@ -322,128 +396,192 @@ function Projects() {
         </div>
 
         <div className="archive-introduction">
+
           <div>
             <CategoryIcon size={17} />
             <span>{currentCategory.label}</span>
           </div>
 
-          <p>{currentCategory.description}</p>
+          <p>
+            {currentCategory.description}
+          </p>
+
         </div>
 
         <div
           className="projects-carousel"
           tabIndex="0"
-          onMouseEnter={() => setRotationPaused(true)}
-          onMouseLeave={() => setRotationPaused(false)}
-          onFocus={() => setRotationPaused(true)}
-          onBlur={() => setRotationPaused(false)}
+          onMouseEnter={() =>
+            setRotationPaused(true)
+          }
+          onMouseLeave={() =>
+            setRotationPaused(false)
+          }
+          onFocus={() =>
+            setRotationPaused(true)
+          }
+          onBlur={() =>
+            setRotationPaused(false)
+          }
           onKeyDown={(event) => {
-            if (event.key === "ArrowRight") showNext();
-            if (event.key === "ArrowLeft") showPrevious();
+            if (event.key === "ArrowRight")
+              showNext();
+
+            if (event.key === "ArrowLeft")
+              showPrevious();
           }}
         >
 
           <div className="archive-stage-glow"></div>
+
           <div className="archive-stage-orbit orbit-one"></div>
+
           <div className="archive-stage-orbit orbit-two"></div>
 
           <div className="archive-project-counter">
+
             <span>
-              {String(activeIndex + 1).padStart(2, "0")}
+              {String(
+                activeIndex + 1
+              ).padStart(2, "0")}
             </span>
 
             <i></i>
 
             <small>
-              {String(projects.length).padStart(2, "0")}
+              {String(
+                projects.length
+              ).padStart(2, "0")}
             </small>
+
           </div>
 
           <div className="archive-cards">
 
-            {projects.map((project, index) => {
-              const position = getCardPosition(index);
-              const isActive = position === "active";
+            {projects.map(
+              (project, index) => {
 
-              return (
-                <article
-                  key={`${activeCategory}-${project.number}`}
-                  className={`archive-card ${position}`}
-                  onClick={() => {
-                    if (!isActive) setActiveIndex(index);
-                  }}
-                  aria-hidden={!isActive}
-                >
+                const position =
+                  getCardPosition(index);
 
-                  <div className="archive-card-shell">
+                const isActive =
+                  position === "active";
 
-                    <div className="archive-card-topbar">
+                return (
+                  <article
+                    key={`${activeCategory}-${project.number}`}
+                    className={`archive-card ${position}`}
+                   onClick={() => {
+  if (!isActive) {
+    setActiveIndex(index);
+    return;
+  }
 
-                      <div className="archive-card-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
+  if (project.liveUrl) {
+    window.open(
+      project.liveUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+}}
+                    aria-hidden={!isActive}
+                  >
 
-                      <small>
-                        precious-portfolio / {activeCategory}
-                      </small>
+                    <div className="archive-card-shell">
 
-                      <span>
-                        {project.number}
-                      </span>
+                      <div className="archive-card-topbar">
 
-                    </div>
+                        <div className="archive-card-dots">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
 
-                    <div className="archive-card-visual">
-                      <ProjectVisual
-                        category={activeCategory}
-                        project={project}
-                      />
+                        <small>
+                          precious-portfolio /{" "}
+                          {activeCategory}
+                        </small>
 
-                      <div className="archive-card-shine"></div>
-
-                      <div className="archive-project-badge">
-                        {project.kicker}
-                      </div>
-                    </div>
-
-                    <div className="archive-mobile-details">
-                      <span className="archive-mobile-kicker">
-                        {project.kicker} · {project.number}
-                      </span>
-
-                      <h3>{project.title}</h3>
-                      <p>{project.description}</p>
-
-                      <div className="archive-mobile-tags">
-                        {project.tags.map((tag) => (
-                          <span key={tag}>{tag}</span>
-                        ))}
-                      </div>
-
-                      {project.liveUrl ? (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="archive-mobile-link"
-                        >
-                          View Live Project
-                          <ArrowUpRight size={17} />
-                        </a>
-                      ) : (
-                        <span className="archive-mobile-link archive-mobile-link-disabled">
-                          Project preview coming soon
+                        <span>
+                          {project.number}
                         </span>
-                      )}
+
+                      </div>
+
+                      <div className="archive-card-visual">
+
+                        <ProjectVisual
+                          category={
+                            activeCategory
+                          }
+                          project={project}
+                        />
+
+                        <div className="archive-card-shine"></div>
+
+                        <div className="archive-project-badge">
+                          {project.kicker}
+                        </div>
+
+                      </div>
+
+                      <div className="archive-mobile-details">
+
+                        <span className="archive-mobile-kicker">
+                          {project.kicker} ·{" "}
+                          {project.number}
+                        </span>
+
+                        <h3>
+                          {project.title}
+                        </h3>
+
+                        <p>
+                          {project.description}
+                        </p>
+
+                        <div className="archive-mobile-tags">
+
+                          {project.tags.map(
+                            (tag) => (
+                              <span key={tag}>
+                                {tag}
+                              </span>
+                            )
+                          )}
+
+                        </div>
+
+                        {project.liveUrl ? (
+                          <a
+                            href={
+                              project.liveUrl
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            className="archive-mobile-link"
+                          >
+                            View Live Project
+                            <ArrowUpRight
+                              size={17}
+                            />
+                          </a>
+                        ) : (
+                          <span className="archive-mobile-link archive-mobile-link-disabled">
+                            Project preview coming
+                            soon
+                          </span>
+                        )}
+
+                      </div>
+
                     </div>
 
-                  </div>
-
-                </article>
-              );
-            })}
+                  </article>
+                );
+              }
+            )}
 
           </div>
 
@@ -475,26 +613,39 @@ function Projects() {
           <div className="archive-details-main">
 
             <span>
-              {activeProject.kicker} · {activeProject.number}
+              {activeProject.kicker} ·{" "}
+              {activeProject.number}
             </span>
 
-            <h3>{activeProject.title}</h3>
+            <h3>
+              {activeProject.title}
+            </h3>
 
-            <p>{activeProject.description}</p>
+            <p>
+              {activeProject.description}
+            </p>
 
           </div>
 
           <div className="archive-details-side">
 
             <div className="archive-tags">
-              {activeProject.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
+
+              {activeProject.tags.map(
+                (tag) => (
+                  <span key={tag}>
+                    {tag}
+                  </span>
+                )
+              )}
+
             </div>
 
             {activeProject.liveUrl ? (
               <a
-                href={activeProject.liveUrl}
+                href={
+                  activeProject.liveUrl
+                }
                 target="_blank"
                 rel="noreferrer"
               >
@@ -512,17 +663,29 @@ function Projects() {
         </div>
 
         <div className="archive-pagination">
-          {projects.map((project, index) => (
-            <button
-              key={project.number}
-              type="button"
-              className={index === activeIndex ? "active" : ""}
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Show project ${index + 1}`}
-            >
-              <span></span>
-            </button>
-          ))}
+
+          {projects.map(
+            (project, index) => (
+              <button
+                key={project.number}
+                type="button"
+                className={
+                  index === activeIndex
+                    ? "active"
+                    : ""
+                }
+                onClick={() =>
+                  setActiveIndex(index)
+                }
+                aria-label={`Show project ${
+                  index + 1
+                }`}
+              >
+                <span></span>
+              </button>
+            )
+          )}
+
         </div>
 
       </div>
