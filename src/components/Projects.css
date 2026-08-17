@@ -1009,190 +1009,6 @@
 }
 
 
-/* =========================================================
-   EMAIL VISUAL
-========================================================= */
-
-.visual-email{
-    height:100%;
-
-    display:grid;
-    grid-template-columns:10% 90%;
-
-    background:#13090d;
-}
-
-.visual-email-sidebar{
-    padding:15% 0;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    gap:14px;
-
-    border-right:1px solid rgba(255,255,255,.07);
-
-    background:#0c0508;
-}
-
-.visual-email-sidebar strong{
-    margin-bottom:8px;
-
-    color:#e2a5ba;
-
-    font-size:.62rem;
-    letter-spacing:1px;
-}
-
-.visual-email-sidebar span{
-    width:22px;
-    height:5px;
-
-    border-radius:999px;
-
-    background:rgba(255,255,255,.09);
-}
-
-.visual-email-sidebar span.active{
-    background:#c94c78;
-
-    box-shadow:
-        0 0 10px rgba(201,76,120,.52);
-}
-
-.visual-email-main{
-    min-width:0;
-
-    display:flex;
-    flex-direction:column;
-}
-
-.visual-email-toolbar{
-    height:13%;
-
-    padding:0 4%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.visual-email-toolbar > div{
-    display:flex;
-
-    gap:5px;
-}
-
-.visual-email-toolbar > div span{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#8f244c;
-}
-
-.visual-email-toolbar > div span:nth-child(2){
-    background:#c35c82;
-}
-
-.visual-email-toolbar > div span:nth-child(3){
-    background:#e1a0b7;
-}
-
-.visual-email-toolbar small{
-    color:#827478;
-
-    font-size:.5rem;
-    letter-spacing:.8px;
-    text-transform:uppercase;
-}
-
-.visual-email-paper{
-    width:75%;
-    height:79%;
-
-    margin:auto;
-    padding:4% 6%;
-
-    overflow:hidden;
-
-    color:#2c161e;
-
-    border-radius:13px 13px 0 0;
-
-    background:#f3edef;
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.28);
-}
-
-.visual-email-paper > small{
-    color:#9e3159;
-
-    font-size:.48rem;
-    font-weight:700;
-    letter-spacing:1.1px;
-    text-transform:uppercase;
-}
-
-.visual-email-paper h4{
-    margin:7px 0;
-
-    color:#28141c;
-
-    font-size:clamp(1.15rem,2.3vw,2.15rem);
-    line-height:1;
-    letter-spacing:-1px;
-}
-
-.visual-email-hero{
-    height:24%;
-
-    margin:10px 0;
-
-    border-radius:8px;
-
-    background:
-        radial-gradient(
-            circle at 75% 20%,
-            rgba(246,187,207,.5),
-            transparent 28%
-        ),
-        linear-gradient(
-            120deg,
-            #6e1b3a,
-            #c44b75
-        );
-}
-
-.visual-email-paper p{
-    margin:0;
-
-    color:#77676d;
-
-    font-size:.48rem;
-    line-height:1.55;
-}
-
-.visual-email-button{
-    display:inline-flex;
-
-    margin-top:9px;
-    padding:7px 12px;
-
-    color:#fff;
-
-    border-radius:999px;
-
-    background:#913255;
-
-    font-size:.47rem;
-    font-weight:600;
-}
 
 
 /* =========================================================
@@ -1703,9 +1519,6 @@
         font-size:.53rem;
     }
 
-    .visual-email-paper{
-        width:83%;
-    }
 
     .archive-details{
         margin-top:0;
@@ -1743,6 +1556,2481 @@
     .visual-workflow-line span{
         animation:none;
         transition:none;
+    }
+
+}
+
+/* =========================================================
+   EMAIL MARKETING — PENTAGON EXPERIENCE
+========================================================= */
+
+.pentagon-email{
+    position:relative;
+
+    width:100%;
+
+    margin-top:110px;
+}
+
+
+/* =========================================================
+   SECTION META
+========================================================= */
+
+.pentagon-email-topline{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:24px;
+}
+
+.pentagon-email-eyebrow{
+    display:inline-flex;
+    align-items:center;
+
+    gap:9px;
+
+    padding:9px 15px;
+
+    color:#ddaabd;
+
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:999px;
+
+    background:rgba(255,255,255,.028);
+
+    font-size:.7rem;
+    font-weight:600;
+
+    letter-spacing:2.2px;
+    text-transform:uppercase;
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.pentagon-email-topline > span{
+    color:rgba(223,122,157,.55);
+
+    font-size:.68rem;
+    font-weight:600;
+
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   MAIN STAGE
+========================================================= */
+
+.pentagon-email-stage{
+    position:relative;
+
+    width:100%;
+    height:820px;
+
+    overflow:visible;
+
+    isolation:isolate;
+}
+
+.pentagon-email-glow{
+    position:absolute;
+
+    width:720px;
+    height:470px;
+
+    left:50%;
+    top:49%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(142,29,69,.16),
+            rgba(89,11,38,.055) 47%,
+            transparent 73%
+        );
+
+    filter:blur(74px);
+}
+
+
+/* =========================================================
+   GLOWING PENTAGON TRACE
+========================================================= */
+
+.pentagon-email-trace{
+    position:absolute;
+
+    z-index:1;
+
+    width:760px;
+    height:700px;
+
+    left:50%;
+    top:49%;
+
+    transform:translate(-50%,-50%);
+
+    overflow:visible;
+
+    pointer-events:none;
+
+    animation:pentagonTraceFloat 7s ease-in-out infinite;
+}
+
+.pentagon-trace-glow{
+    fill:none;
+
+    stroke:#d75c89;
+    stroke-width:7;
+
+    opacity:.14;
+
+    filter:url(#pentagonTraceGlow);
+}
+
+.pentagon-trace-line{
+    fill:none;
+
+    stroke:url(#pentagonTraceGradient);
+    stroke-width:1.25;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
+
+    stroke-dasharray:170 1700;
+
+    filter:drop-shadow(
+        0 0 7px rgba(220,93,140,.46)
+    );
+
+    animation:
+        pentagonTraceRun
+        10s linear infinite;
+}
+
+.pentagon-email-stage.has-selected-email
+.pentagon-email-trace{
+    opacity:.24;
+}
+
+
+/* =========================================================
+   CENTER TITLE
+========================================================= */
+
+.pentagon-email-center{
+    position:absolute;
+
+    z-index:3;
+
+    width:min(800px,66%);
+
+    left:50%;
+    top:49%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    transition:
+        opacity .42s ease,
+        transform .48s ease,
+        filter .42s ease;
+}
+
+.pentagon-email-center.is-hidden{
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.94);
+
+    filter:blur(5px);
+}
+
+.pentagon-email-center > span{
+    display:block;
+
+    margin-bottom:13px;
+
+    color:rgba(218,105,144,.6);
+
+    font-size:.68rem;
+    font-weight:600;
+
+    letter-spacing:2.7px;
+    text-transform:uppercase;
+}
+
+.pentagon-email-center h2{
+    margin:0;
+
+    color:#fff8fa;
+
+    font-size:clamp(2.25rem,3.65vw,3.85rem);
+    font-weight:650;
+
+    line-height:.94;
+
+    letter-spacing:-2.5px;
+}
+
+.pentagon-email-title-line{
+    display:block;
+
+    white-space:nowrap;
+}
+
+.pentagon-email-center h2 strong{
+    display:block;
+
+    padding-bottom:.08em;
+
+    font-weight:650;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5d6e0 5%,
+            #dd7297 55%,
+            #a62955 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+}
+
+.pentagon-email-center p{
+    margin:17px 0 0;
+
+    color:#8d8185;
+
+    font-size:.74rem;
+
+    line-height:1.7;
+    letter-spacing:.35px;
+}
+
+.pentagon-mobile-instruction{
+    display:none;
+}
+
+
+
+/* =========================================================
+   PENTAGON CAMPAIGN NODES
+========================================================= */
+
+.pentagon-mail-node{
+    position:absolute;
+
+    z-index:5;
+
+    width:220px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    cursor:pointer;
+
+    outline:none;
+
+    transition:
+        left .76s cubic-bezier(.22,1,.36,1),
+        top .76s cubic-bezier(.22,1,.36,1),
+        width .76s cubic-bezier(.22,1,.36,1),
+        transform .76s cubic-bezier(.22,1,.36,1),
+        opacity .45s ease,
+        filter .45s ease;
+}
+
+.pentagon-mail-node:focus-visible
+.pentagon-envelope-base{
+    border-color:rgba(228,118,157,.38);
+
+    box-shadow:
+        0 22px 55px rgba(0,0,0,.32),
+        0 0 0 2px rgba(220,92,139,.12),
+        0 0 36px rgba(171,41,87,.16);
+}
+
+
+/* PENTAGON POSITIONS */
+
+.pentagon-mail-position-1{
+    left:50%;
+    top:10.5%;
+}
+
+.pentagon-mail-position-2{
+    left:83%;
+    top:36%;
+}
+
+.pentagon-mail-position-3{
+    left:70.5%;
+    top:82%;
+}
+
+.pentagon-mail-position-4{
+    left:29.5%;
+    top:82%;
+}
+
+.pentagon-mail-position-5{
+    left:17%;
+    top:36%;
+}
+
+
+/* =========================================================
+   SELECTED CAMPAIGN STATE
+========================================================= */
+
+.pentagon-email-stage.has-selected-email
+.pentagon-mail-node:not(.is-selected){
+    opacity:.12;
+
+    pointer-events:none;
+
+    filter:
+        blur(.8px)
+        saturate(.58);
+
+    transform:
+        translate(-50%,-50%)
+        scale(.88);
+}
+
+.pentagon-mail-node.is-selected{
+    z-index:30;
+
+    width:760px;
+
+    left:50%;
+    top:47%;
+
+    cursor:default;
+
+    opacity:1;
+    filter:none;
+
+    transform:translate(-50%,-50%);
+}
+
+
+/* =========================================================
+   MAIL OBJECT
+========================================================= */
+
+.pentagon-mail-object{
+    position:relative;
+
+    width:220px;
+    height:145px;
+
+    margin:0 auto;
+
+    overflow:visible;
+
+    translate:0 0;
+
+    animation:
+        pentagonMailFloat
+        5.4s ease-in-out infinite;
+
+    transition:
+        width .76s cubic-bezier(.22,1,.36,1),
+        height .76s cubic-bezier(.22,1,.36,1),
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.pentagon-mail-node:nth-of-type(2)
+.pentagon-mail-object{
+    animation-delay:-1.2s;
+}
+
+.pentagon-mail-node:nth-of-type(3)
+.pentagon-mail-object{
+    animation-delay:-2.4s;
+}
+
+.pentagon-mail-node:nth-of-type(4)
+.pentagon-mail-object{
+    animation-delay:-3.6s;
+}
+
+.pentagon-mail-node:nth-of-type(5)
+.pentagon-mail-object{
+    animation-delay:-4.8s;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-mail-object{
+    width:760px;
+    height:500px;
+
+    animation:none;
+
+    translate:0 0;
+}
+
+
+/* =========================================================
+   EMAIL PREVIEW
+========================================================= */
+
+.pentagon-mail-preview{
+    position:absolute;
+
+    z-index:3;
+
+    width:172px;
+    height:116px;
+
+    left:24px;
+    top:11px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.105);
+    border-radius:18px;
+
+    background:#12090c;
+
+    opacity:0;
+
+    filter:
+        blur(2px)
+        brightness(.62);
+
+    transform:
+        translateY(8px)
+        scale(.94);
+
+    box-shadow:
+        0 18px 38px rgba(0,0,0,.26);
+
+    transition:
+        opacity .42s ease,
+        filter .42s ease,
+        transform .48s cubic-bezier(.22,1,.36,1),
+        width .76s cubic-bezier(.22,1,.36,1),
+        height .76s cubic-bezier(.22,1,.36,1),
+        left .76s cubic-bezier(.22,1,.36,1),
+        top .76s cubic-bezier(.22,1,.36,1),
+        box-shadow .42s ease,
+        border-radius .42s ease;
+}
+
+.pentagon-mail-preview img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+    object-position:top center;
+}
+
+
+/* =========================================================
+   DESKTOP HOVER — MAIL OPENS + DESIGN PEEKS OUT
+========================================================= */
+
+@media(hover:hover) and (pointer:fine){
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-mail-object{
+        transform:translateY(-7px) scale(1.025);
+    }
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-mail-preview{
+        opacity:.82;
+
+        filter:
+            blur(.85px)
+            brightness(.78);
+
+        transform:
+            translateY(-45px)
+            scale(.96);
+
+        box-shadow:
+            0 26px 52px rgba(0,0,0,.34),
+            0 0 34px rgba(145,34,76,.09);
+    }
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-panel-top{
+        transform:
+            translateY(-19%)
+            rotateX(12deg);
+    }
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-panel-left{
+        transform:translateX(-10%);
+    }
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-panel-right{
+        transform:translateX(10%);
+    }
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-panel-bottom{
+        transform:translateY(7%);
+    }
+
+    .pentagon-mail-node:not(.is-selected):hover
+    .pentagon-envelope-icon{
+        transform:
+            translate(-50%,-50%)
+            translateY(7px);
+
+        opacity:.72;
+    }
+
+}
+
+
+/* =========================================================
+   SELECTED PREVIEW — LARGE + BRIEF BLUR REVEAL
+========================================================= */
+
+.pentagon-mail-node.is-selected
+.pentagon-mail-preview,
+.pentagon-mail-preview.is-open{
+    width:650px;
+    height:430px;
+
+    left:55px;
+    top:35px;
+
+    opacity:1;
+
+    border-radius:24px;
+
+    filter:
+        blur(.35px)
+        brightness(.87);
+
+    transform:none;
+
+    box-shadow:
+        0 36px 95px rgba(0,0,0,.46),
+        0 0 68px rgba(133,25,65,.09);
+
+    animation:
+        pentagonPreviewReveal
+        .78s cubic-bezier(.22,1,.36,1)
+        both;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-mail-preview img{
+    object-fit:cover;
+    object-position:top center;
+}
+
+@media(hover:hover) and (pointer:fine){
+
+    .pentagon-mail-node.is-selected:hover
+    .pentagon-mail-preview{
+        filter:
+            blur(0)
+            brightness(.94);
+
+        transform:
+            translateY(-5px)
+            scale(1.006);
+
+        box-shadow:
+            0 43px 110px rgba(0,0,0,.5),
+            0 0 75px rgba(145,31,74,.12);
+    }
+
+}
+
+
+/* =========================================================
+   TRANSPARENT ENVELOPE BODY
+========================================================= */
+
+.pentagon-envelope-base{
+    position:absolute;
+
+    z-index:2;
+
+    inset:0;
+
+    overflow:hidden;
+
+    border:1px solid rgba(223,117,154,.16);
+    border-radius:26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(99,24,52,.25),
+            rgba(35,9,20,.35)
+        );
+
+    box-shadow:
+        0 24px 58px rgba(0,0,0,.31),
+        0 11px 34px rgba(137,25,67,.07),
+        inset 0 1px 0 rgba(255,255,255,.045);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    transition:
+        opacity .42s ease,
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   FOUR ENVELOPE PANELS
+========================================================= */
+
+.pentagon-envelope-panel{
+    position:absolute;
+
+    z-index:4;
+
+    border:1px solid rgba(230,127,163,.105);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(111,27,58,.35),
+            rgba(39,9,22,.46)
+        );
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    transition:
+        transform .72s cubic-bezier(.22,1,.36,1),
+        opacity .42s ease,
+        filter .42s ease;
+}
+
+.pentagon-panel-top{
+    width:100%;
+    height:52%;
+
+    left:0;
+    top:0;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+}
+
+.pentagon-panel-bottom{
+    width:100%;
+    height:53%;
+
+    left:0;
+    bottom:0;
+
+    clip-path:
+        polygon(
+            0 100%,
+            100% 100%,
+            50% 0
+        );
+}
+
+.pentagon-panel-left{
+    width:52%;
+    height:100%;
+
+    left:0;
+    top:0;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 50%,
+            0 100%
+        );
+}
+
+.pentagon-panel-right{
+    width:52%;
+    height:100%;
+
+    right:0;
+    top:0;
+
+    clip-path:
+        polygon(
+            100% 0,
+            0 50%,
+            100% 100%
+        );
+}
+
+
+/* =========================================================
+   FOUR-WAY FULL OPEN
+========================================================= */
+
+.pentagon-mail-node.is-selected
+.pentagon-panel-top{
+    transform:
+        translateY(-68%)
+        scale(.985);
+
+    opacity:.2;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-panel-bottom{
+    transform:
+        translateY(68%)
+        scale(.985);
+
+    opacity:.2;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-panel-left{
+    transform:
+        translateX(-68%)
+        scale(.985);
+
+    opacity:.2;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-panel-right{
+    transform:
+        translateX(68%)
+        scale(.985);
+
+    opacity:.2;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-envelope-base{
+    opacity:.075;
+}
+
+
+/* =========================================================
+   MAIL ICON
+========================================================= */
+
+.pentagon-envelope-icon{
+    position:absolute;
+
+    z-index:7;
+
+    width:58px;
+    height:58px;
+
+    left:50%;
+    top:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transform:translate(-50%,-50%);
+
+    color:#ebb3c8;
+
+    border:1px solid rgba(236,158,188,.17);
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(51,13,27,.78),
+            rgba(25,7,14,.7)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.27),
+        0 0 30px rgba(172,46,94,.1),
+        inset 0 1px 0 rgba(255,255,255,.04);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    transition:
+        transform .32s ease,
+        opacity .32s ease,
+        border-color .32s ease,
+        box-shadow .32s ease;
+}
+
+.pentagon-mail-node:hover
+.pentagon-envelope-icon{
+    border-color:rgba(236,158,188,.29);
+
+    box-shadow:
+        0 16px 36px rgba(0,0,0,.31),
+        0 0 38px rgba(181,49,99,.15),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+
+/* =========================================================
+   CAMPAIGN LABEL
+========================================================= */
+
+.pentagon-mail-label{
+    margin-top:17px;
+
+    display:grid;
+    grid-template-columns:auto auto;
+    justify-content:center;
+
+    gap:4px 8px;
+
+    text-align:center;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+.pentagon-mail-label span{
+    color:#84767b;
+
+    font-size:.57rem;
+
+    letter-spacing:1.6px;
+}
+
+.pentagon-mail-label strong{
+    color:#e08cab;
+
+    font-size:.62rem;
+    font-weight:600;
+
+    letter-spacing:1.5px;
+}
+
+.pentagon-mail-label small{
+    grid-column:1 / -1;
+
+    max-width:180px;
+
+    overflow:hidden;
+
+    color:#ab9da2;
+
+    font-size:.58rem;
+
+    letter-spacing:.75px;
+
+    text-overflow:ellipsis;
+    text-transform:uppercase;
+
+    white-space:nowrap;
+}
+
+.pentagon-mail-node.is-selected
+.pentagon-mail-label{
+    opacity:0;
+
+    transform:translateY(5px);
+}
+
+
+/* =========================================================
+   VIEW EMAIL DESIGN
+========================================================= */
+
+.pentagon-view-email{
+    position:absolute;
+
+    z-index:20;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        translateY(12px);
+
+    padding:13px 20px;
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    white-space:nowrap;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:999px;
+
+    cursor:pointer;
+
+    background:rgba(8,5,7,.8);
+
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.36),
+        inset 0 1px 0 rgba(255,255,255,.04);
+
+    font-family:inherit;
+    font-size:.74rem;
+    font-weight:600;
+
+    opacity:0;
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    animation:
+        pentagonViewReveal
+        .42s .5s forwards;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+}
+
+.pentagon-view-email:hover{
+    transform:
+        translate(-50%,-50%)
+        translateY(6px);
+
+    border-color:rgba(224,109,149,.32);
+
+    background:rgba(103,24,53,.94);
+}
+
+
+/* =========================================================
+   CLOSE SELECTED CAMPAIGN
+========================================================= */
+
+.pentagon-mail-close{
+    position:absolute;
+
+    z-index:50;
+
+    width:46px;
+    height:46px;
+
+    right:-24px;
+    top:-25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0;
+
+    color:#f3e8ec;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:rgba(12,7,9,.8);
+
+    font-family:inherit;
+    font-size:23px;
+
+    box-shadow:0 14px 32px rgba(0,0,0,.3);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.pentagon-mail-close:hover{
+    transform:rotate(90deg);
+
+    border-color:rgba(219,97,140,.3);
+
+    background:rgba(92,21,47,.84);
+}
+
+
+/* =========================================================
+   SELECTED CAMPAIGN INFO
+========================================================= */
+
+.pentagon-selected-info{
+    position:absolute;
+
+    z-index:35;
+
+    width:min(650px,82%);
+
+    left:50%;
+    bottom:12px;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+
+    animation:
+        pentagonInfoReveal
+        .48s .3s both;
+}
+
+.pentagon-selected-info span{
+    color:#d77197;
+
+    font-size:.62rem;
+    font-weight:600;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.pentagon-selected-info h3{
+    margin:8px 0 0;
+
+    color:#faf1f4;
+
+    font-size:clamp(1.35rem,2.1vw,1.85rem);
+    font-weight:600;
+
+    line-height:1.2;
+    letter-spacing:-.55px;
+}
+
+
+/* =========================================================
+   MICRO FOOTER
+========================================================= */
+
+.pentagon-email-footer{
+    display:grid;
+
+    grid-template-columns:
+        auto minmax(50px,1fr)
+        auto
+        minmax(50px,1fr) auto;
+
+    align-items:center;
+
+    gap:18px;
+
+    width:min(820px,100%);
+
+    margin:0 auto;
+}
+
+.pentagon-email-footer span{
+    color:#aa788b;
+
+    font-size:.62rem;
+    font-weight:600;
+
+    letter-spacing:1px;
+}
+
+.pentagon-email-footer i{
+    width:100%;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(205,73,121,.24),
+            transparent
+        );
+}
+
+.pentagon-email-footer p{
+    margin:0;
+
+    color:#86797f;
+
+    font-size:.67rem;
+
+    line-height:1.6;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   FULLSCREEN EMAIL VIEWER
+========================================================= */
+
+.email-viewer-overlay{
+    position:fixed !important;
+
+    inset:0 !important;
+
+    z-index:2147483000 !important;
+
+    width:100vw !important;
+    height:100vh !important;
+    height:100dvh !important;
+
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+
+    padding:72px 126px 34px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(104,17,47,.12),
+            transparent 42%
+        ),
+        rgba(3,3,5,.978);
+
+    backdrop-filter:blur(9px);
+    -webkit-backdrop-filter:blur(9px);
+}
+
+.email-viewer-shell{
+    position:relative;
+
+    width:min(
+        820px,
+        calc(100vw - 270px)
+    );
+
+    height:calc(100dvh - 112px);
+    max-height:930px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:24px;
+
+    background:#0b090b;
+
+    box-shadow:
+        0 42px 120px rgba(0,0,0,.72),
+        0 0 78px rgba(120,24,52,.09);
+}
+
+.email-viewer-scroll{
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow-y:auto !important;
+    overflow-x:auto !important;
+
+    overscroll-behavior:contain;
+
+    background:#0b090b;
+
+    scrollbar-width:thin;
+    scrollbar-color:#a53255 rgba(255,255,255,.05);
+}
+
+.email-viewer-scroll::-webkit-scrollbar{
+    width:7px;
+    height:7px;
+}
+
+.email-viewer-scroll::-webkit-scrollbar-track{
+    background:rgba(255,255,255,.035);
+}
+
+.email-viewer-scroll::-webkit-scrollbar-thumb{
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #7f203f,
+            #d04470
+        );
+}
+
+.email-viewer-scroll img{
+    display:block;
+
+    height:auto !important;
+
+    max-width:none !important;
+    max-height:none !important;
+
+    margin:0 auto;
+
+    object-fit:contain !important;
+    object-position:top center;
+
+    transform-origin:top center;
+
+    transition:width .22s ease;
+}
+
+.email-viewer-close{
+    position:fixed !important;
+
+    z-index:2147483002;
+
+    width:54px;
+    height:54px;
+
+    top:38px;
+    right:44px;
+
+    padding:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.055);
+
+    font-family:inherit;
+    font-size:30px;
+    font-weight:300;
+
+    line-height:1;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.email-viewer-close:hover{
+    transform:rotate(90deg);
+
+    border-color:rgba(215,83,130,.32);
+
+    background:rgba(118,26,59,.3);
+}
+
+.email-viewer-zoom{
+    position:fixed !important;
+
+    z-index:2147483002;
+
+    right:44px;
+    top:50%;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:14px;
+
+    transform:translateY(-50%);
+}
+
+.email-viewer-zoom button{
+    width:54px;
+    height:54px;
+
+    padding:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.17);
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:rgba(13,10,13,.86);
+
+    font-family:inherit;
+    font-size:27px;
+    font-weight:300;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.email-viewer-zoom button:hover{
+    transform:scale(1.06);
+
+    border-color:rgba(215,83,130,.34);
+
+    background:rgba(116,29,55,.34);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes pentagonTraceRun{
+
+    from{
+        stroke-dashoffset:0;
+    }
+
+    to{
+        stroke-dashoffset:-1870;
+    }
+
+}
+
+@keyframes pentagonTraceFloat{
+
+    0%,
+    100%{
+        transform:
+            translate(-50%,-50%)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            translateY(-5px);
+    }
+
+}
+
+@keyframes pentagonMailFloat{
+
+    0%,
+    100%{
+        translate:0 0;
+    }
+
+    50%{
+        translate:0 -7px;
+    }
+
+}
+
+@keyframes pentagonPreviewReveal{
+
+    0%{
+        opacity:.35;
+
+        filter:
+            blur(10px)
+            brightness(.46);
+
+        transform:
+            scale(.93)
+            translateY(12px);
+    }
+
+    55%{
+        opacity:1;
+
+        filter:
+            blur(2px)
+            brightness(.72);
+    }
+
+    100%{
+        opacity:1;
+
+        filter:
+            blur(.35px)
+            brightness(.87);
+
+        transform:none;
+    }
+
+}
+
+@keyframes pentagonViewReveal{
+
+    from{
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            translateY(22px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            translateY(12px);
+    }
+
+}
+
+@keyframes pentagonInfoReveal{
+
+    from{
+        opacity:0;
+
+        transform:
+            translate(-50%,10px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translate(-50%,0);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .pentagon-email-stage{
+        height:735px;
+    }
+
+    .pentagon-email-trace{
+        width:620px;
+        height:570px;
+
+        top:48%;
+    }
+
+    .pentagon-email-center{
+        width:min(650px,70%);
+
+        top:48%;
+    }
+
+    .pentagon-email-center h2{
+        font-size:clamp(2.15rem,5.2vw,3.4rem);
+    }
+
+    .pentagon-mail-node{
+        width:185px;
+    }
+
+    .pentagon-mail-object{
+        width:185px;
+        height:125px;
+    }
+
+    .pentagon-mail-preview{
+        width:145px;
+        height:98px;
+
+        left:20px;
+        top:10px;
+    }
+
+    .pentagon-mail-position-2{
+        left:81%;
+    }
+
+    .pentagon-mail-position-5{
+        left:19%;
+    }
+
+    .pentagon-mail-node.is-selected{
+        width:min(700px,82vw);
+
+        top:46.5%;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-mail-object{
+        width:min(700px,82vw);
+        height:465px;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-mail-preview,
+    .pentagon-mail-preview.is-open{
+        width:calc(100% - 90px);
+        height:395px;
+
+        left:45px;
+        top:35px;
+    }
+
+    .email-viewer-overlay{
+        padding:
+            66px 96px 28px 24px;
+    }
+
+    .email-viewer-shell{
+        width:min(
+            760px,
+            calc(100vw - 130px)
+        );
+
+        height:calc(100dvh - 94px);
+    }
+
+    .email-viewer-close{
+        top:24px;
+        right:24px;
+    }
+
+    .email-viewer-zoom{
+        right:23px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    /* =====================================================
+       MOBILE EMAIL EXPERIENCE
+       Keep the pentagon concept, but compose it for touch.
+    ===================================================== */
+
+    .pentagon-email{
+        margin-top:82px;
+    }
+
+    .pentagon-email-topline{
+        margin-bottom:16px;
+        padding:0 2px;
+    }
+
+    .pentagon-email-eyebrow{
+        padding:8px 11px;
+        gap:7px;
+        font-size:.57rem;
+        letter-spacing:1.35px;
+    }
+
+    .pentagon-email-eyebrow svg{
+        width:13px;
+        height:13px;
+    }
+
+    .pentagon-email-topline > span{
+        font-size:.55rem;
+        letter-spacing:1.45px;
+    }
+
+    .pentagon-email-stage{
+        height:535px;
+        overflow:hidden;
+    }
+
+    /* smaller, cleaner trace so it does not dominate */
+    .pentagon-email-trace{
+        width:318px;
+        height:294px;
+        top:45%;
+        opacity:.72;
+        filter:drop-shadow(0 0 8px rgba(210,78,128,.16));
+    }
+
+    .pentagon-trace-glow{
+        opacity:.34;
+    }
+
+    .pentagon-email-stage.has-selected-email
+    .pentagon-email-trace{
+        opacity:.07;
+    }
+
+    /* center copy */
+    .pentagon-email-center{
+        width:54%;
+        top:45%;
+    }
+
+    .pentagon-email-center > span{
+        display:none;
+    }
+
+    .pentagon-email-center h2{
+        font-size:clamp(1.55rem,7vw,1.95rem);
+        line-height:.96;
+        letter-spacing:-1.5px;
+    }
+
+    .pentagon-email-title-line{
+        white-space:normal;
+    }
+
+    .pentagon-email-center p{
+        margin-top:12px;
+        color:#8f8387;
+        font-size:.61rem;
+        line-height:1.55;
+    }
+
+    .pentagon-desktop-instruction{
+        display:none;
+    }
+
+    .pentagon-mobile-instruction{
+        display:inline;
+    }
+
+    /* compact floating mail cards */
+    .pentagon-mail-node{
+        width:102px;
+    }
+
+    .pentagon-mail-object{
+        width:102px;
+        height:72px;
+    }
+
+    .pentagon-envelope-base{
+        border-radius:18px;
+        box-shadow:
+            0 14px 34px rgba(0,0,0,.26),
+            0 0 24px rgba(166,47,91,.07),
+            inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .pentagon-envelope-panel{
+        border-radius:16px;
+    }
+
+    .pentagon-envelope-icon{
+        width:40px;
+        height:40px;
+        border-radius:13px;
+    }
+
+    .pentagon-envelope-icon svg{
+        width:21px;
+        height:21px;
+    }
+
+    .pentagon-mail-preview{
+        width:76px;
+        height:58px;
+        left:13px;
+        top:7px;
+        border-radius:11px;
+    }
+
+    /* true mobile pentagon spacing */
+    .pentagon-mail-position-1{
+        left:50%;
+        top:9%;
+    }
+
+    .pentagon-mail-position-2{
+        left:81%;
+        top:30%;
+    }
+
+    .pentagon-mail-position-3{
+        left:69%;
+        top:70%;
+    }
+
+    .pentagon-mail-position-4{
+        left:31%;
+        top:70%;
+    }
+
+    .pentagon-mail-position-5{
+        left:19%;
+        top:30%;
+    }
+
+    .pentagon-mail-label{
+        margin-top:9px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:4px;
+    }
+
+    .pentagon-mail-label span,
+    .pentagon-mail-label strong{
+        font-size:.47rem;
+        letter-spacing:1.15px;
+    }
+
+    .pentagon-mail-label small{
+        display:none;
+    }
+
+    /* touch has no hover: keep unopened preview hidden */
+    .pentagon-mail-node:not(.is-selected)
+    .pentagon-mail-preview{
+        opacity:0;
+        transform:translateY(8px) scale(.94);
+    }
+
+    /* once selected, remove the other 4 completely from the visual field */
+    .pentagon-email-stage.has-selected-email
+    .pentagon-mail-node:not(.is-selected){
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transform:translate(-50%,-50%) scale(.82);
+    }
+
+    .pentagon-email-stage.has-selected-email
+    .pentagon-email-glow{
+        opacity:.55;
+    }
+
+    /* selected campaign becomes the hero preview */
+    .pentagon-mail-node.is-selected{
+        width:min(91vw,382px);
+        left:50%;
+        top:43%;
+        transform:translate(-50%,-50%);
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-mail-object{
+        width:min(91vw,382px);
+        height:338px;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-mail-preview,
+    .pentagon-mail-preview.is-open{
+        width:calc(100% - 34px);
+        height:300px;
+        left:17px;
+        top:18px;
+        border-radius:19px;
+        opacity:1;
+        filter:none;
+        transform:none;
+        box-shadow:
+            0 24px 64px rgba(0,0,0,.43),
+            0 0 34px rgba(126,28,65,.08);
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-mail-preview img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:top center;
+        filter:none;
+    }
+
+    /* four-way opening, but contained inside phone viewport */
+    .pentagon-mail-node.is-selected
+    .pentagon-panel-top{
+        transform:translateY(-34%);
+        opacity:.13;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-panel-bottom{
+        transform:translateY(34%);
+        opacity:.13;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-panel-left{
+        transform:translateX(-24%);
+        opacity:.13;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-panel-right{
+        transform:translateX(24%);
+        opacity:.13;
+    }
+
+    .pentagon-mail-node.is-selected
+    .pentagon-envelope-base{
+        opacity:.08;
+    }
+
+    .pentagon-view-email{
+        padding:11px 15px;
+        gap:7px;
+        font-size:.65rem;
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
+
+    .pentagon-mail-close{
+        width:40px;
+        height:40px;
+        right:1px;
+        top:-46px;
+        font-size:20px;
+    }
+
+    .pentagon-selected-info{
+        width:90%;
+        bottom:4px;
+    }
+
+    .pentagon-selected-info span{
+        font-size:.54rem;
+        letter-spacing:1.4px;
+    }
+
+    .pentagon-selected-info h3{
+        margin-top:6px;
+        font-size:1.05rem;
+        line-height:1.2;
+    }
+
+    /* remove the desktop micro-footer on phones */
+    .pentagon-email-footer{
+        display:none;
+    }
+
+    /* fullscreen viewer: full-height scrollable email, not cropped */
+    .email-viewer-overlay{
+        padding:64px 10px 72px;
+    }
+
+    .email-viewer-shell{
+        width:100%;
+        height:calc(100dvh - 136px);
+        max-width:620px;
+        border-radius:18px;
+    }
+
+    .email-viewer-scroll{
+        overflow-y:auto !important;
+        overflow-x:auto !important;
+    }
+
+    .email-viewer-scroll img{
+        display:block;
+        width:100%;
+        height:auto !important;
+        max-width:none !important;
+        max-height:none !important;
+        margin:0 auto;
+    }
+
+    .email-viewer-close{
+        top:12px;
+        right:12px;
+        width:44px;
+        height:44px;
+        font-size:25px;
+    }
+
+    .email-viewer-zoom{
+        top:auto;
+        right:auto;
+        left:50%;
+        bottom:12px;
+        flex-direction:row;
+        transform:translateX(-50%);
+    }
+
+    .email-viewer-zoom button{
+        width:44px;
+        height:44px;
+        font-size:23px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .pentagon-email-trace,
+    .pentagon-mail-object,
+    .pentagon-mail-preview,
+    .pentagon-envelope-panel,
+    .pentagon-email-center,
+    .pentagon-view-email,
+    .email-viewer-scroll img,
+    .email-viewer-close,
+    .email-viewer-zoom button{
+        animation:none !important;
+
+        transition:none !important;
+    }
+
+}
+
+
+/* =========================================================
+   EMAIL MARKETING — MOBILE STACK EXPERIENCE
+   Desktop/tablet keep the pentagon. Phones get a dedicated
+   stacked-email interface so nothing is squeezed or crowded.
+========================================================= */
+
+.pentagon-desktop-layout{
+    display:block;
+}
+
+.mobile-email-stack{
+    display:none;
+}
+
+
+@media(max-width:700px){
+
+    /* -----------------------------------------
+       SWITCH EXPERIENCES
+    ----------------------------------------- */
+
+    .pentagon-email{
+        margin-top:82px;
+    }
+
+    .pentagon-desktop-layout{
+        display:none !important;
+    }
+
+    .mobile-email-stack{
+        display:block;
+        position:relative;
+        width:100%;
+        padding:30px 0 14px;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE HEADING
+    ----------------------------------------- */
+
+    .mobile-email-stack-heading{
+        width:min(100%,390px);
+        margin:0 auto 32px;
+        text-align:center;
+    }
+
+    .mobile-email-stack-heading > span{
+        display:block;
+        margin-bottom:9px;
+        color:rgba(218,105,144,.62);
+        font-size:.55rem;
+        font-weight:600;
+        letter-spacing:2.2px;
+        text-transform:uppercase;
+    }
+
+    .mobile-email-stack-heading h2{
+        margin:0;
+        color:#fff8fa;
+        font-size:clamp(1.9rem,9vw,2.55rem);
+        font-weight:650;
+        line-height:.96;
+        letter-spacing:-1.8px;
+    }
+
+    .mobile-email-stack-heading h2 strong{
+        display:block;
+        padding-bottom:.08em;
+        font-weight:650;
+        background:linear-gradient(
+            180deg,
+            #f5d6e0 5%,
+            #dd7297 55%,
+            #a62955 100%
+        );
+        -webkit-background-clip:text;
+        background-clip:text;
+        color:transparent;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .mobile-email-stack-heading p{
+        margin:12px 0 0;
+        color:#95888d;
+        font-size:.68rem;
+        line-height:1.55;
+    }
+
+
+    /* -----------------------------------------
+       STACK CONTAINER
+    ----------------------------------------- */
+
+    .mobile-email-stack-list{
+        position:relative;
+        width:min(100%,450px);
+        margin:0 auto;
+        padding:8px 0 18px;
+    }
+
+    .mobile-email-stack-card{
+        position:relative;
+        z-index:1;
+        width:100%;
+        margin:0 auto;
+        overflow:visible;
+        border:1px solid rgba(255,255,255,.085);
+        border-radius:23px;
+        background:
+            radial-gradient(
+                circle at 18% 0%,
+                rgba(202,71,116,.12),
+                transparent 40%
+            ),
+            linear-gradient(
+                145deg,
+                rgba(62,16,34,.72),
+                rgba(18,8,13,.88)
+            );
+        box-shadow:
+            0 24px 48px rgba(0,0,0,.28),
+            inset 0 1px 0 rgba(255,255,255,.04),
+            0 0 34px rgba(138,31,70,.06);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        transform-origin:center;
+        transition:
+            transform .45s cubic-bezier(.22,1,.36,1),
+            opacity .35s ease,
+            border-color .35s ease,
+            box-shadow .35s ease,
+            margin .45s cubic-bezier(.22,1,.36,1);
+    }
+
+    .mobile-email-stack-card + .mobile-email-stack-card{
+        margin-top:12px;
+    }
+
+    .mobile-email-stack-card-1,
+    .mobile-email-stack-card-2,
+    .mobile-email-stack-card-3,
+    .mobile-email-stack-card-4,
+    .mobile-email-stack-card-5{
+        transform:none;
+        z-index:1;
+    }
+
+    .mobile-email-stack-card.is-expanded{
+        z-index:20;
+        margin-top:12px;
+        margin-bottom:24px;
+        transform:translateY(-2px) scale(1.005);
+        border-color:rgba(224,105,146,.22);
+        box-shadow:
+            0 30px 70px rgba(0,0,0,.4),
+            0 0 40px rgba(167,44,88,.12),
+            inset 0 1px 0 rgba(255,255,255,.055);
+    }
+
+    .mobile-email-stack-list.has-expanded
+    .mobile-email-stack-card:not(.is-expanded){
+        opacity:.48;
+        filter:saturate(.72);
+    }
+
+
+    /* -----------------------------------------
+       TAP ROW
+    ----------------------------------------- */
+
+    .mobile-email-stack-trigger{
+        width:100%;
+        min-height:94px;
+        padding:16px 17px 16px 16px;
+        display:grid;
+        grid-template-columns:56px minmax(0,1fr) 36px;
+        align-items:center;
+        gap:13px;
+        color:inherit;
+        border:0;
+        border-radius:23px;
+        background:transparent;
+        font-family:inherit;
+        text-align:left;
+        cursor:pointer;
+        -webkit-tap-highlight-color:transparent;
+    }
+
+    .mobile-email-stack-icon{
+        width:56px;
+        height:56px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#edb1c7;
+        border:1px solid rgba(235,149,181,.16);
+        border-radius:17px;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(127,34,67,.5),
+                rgba(44,12,25,.52)
+            );
+        box-shadow:
+            0 12px 24px rgba(0,0,0,.22),
+            inset 0 1px 0 rgba(255,255,255,.05),
+            0 0 22px rgba(188,65,109,.08);
+    }
+
+    .mobile-email-stack-copy{
+        min-width:0;
+        display:flex;
+        flex-direction:column;
+        gap:4px;
+    }
+
+    .mobile-email-stack-copy small{
+        color:#d57598;
+        font-size:.5rem;
+        font-weight:700;
+        letter-spacing:1.7px;
+        text-transform:uppercase;
+    }
+
+    .mobile-email-stack-copy strong{
+        overflow:hidden;
+        color:#f7edf1;
+        font-size:.82rem;
+        font-weight:600;
+        line-height:1.25;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+    .mobile-email-stack-copy > span{
+        overflow:hidden;
+        color:#95878c;
+        font-size:.64rem;
+        line-height:1.35;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+    .mobile-email-stack-toggle{
+        width:34px;
+        height:34px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        justify-self:end;
+        color:#d9c8ce;
+        border:1px solid rgba(255,255,255,.09);
+        border-radius:50%;
+        background:rgba(255,255,255,.025);
+        font-size:1rem;
+        font-weight:300;
+        line-height:1;
+        transition:
+            transform .3s ease,
+            background .3s ease,
+            border-color .3s ease;
+    }
+
+    .mobile-email-stack-card.is-expanded
+    .mobile-email-stack-toggle{
+        transform:rotate(180deg);
+        border-color:rgba(219,99,141,.2);
+        background:rgba(135,31,68,.22);
+    }
+
+
+    /* -----------------------------------------
+       EXPANDED PREVIEW
+    ----------------------------------------- */
+
+    .mobile-email-stack-reveal{
+        max-height:0;
+        padding:0 14px;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:
+            max-height .58s cubic-bezier(.22,1,.36,1),
+            opacity .35s ease,
+            padding .45s ease;
+    }
+
+    .mobile-email-stack-card.is-expanded
+    .mobile-email-stack-reveal{
+        max-height:330px;
+        opacity:1;
+        pointer-events:auto;
+        padding:0 14px 15px;
+    }
+
+    .mobile-email-stack-preview{
+        position:relative;
+        min-height:0;
+        max-height:0;
+        overflow:hidden;
+        border:0 solid rgba(255,255,255,.09);
+        border-radius:17px;
+        background:#10070b;
+        transition:
+            max-height .55s cubic-bezier(.22,1,.36,1),
+            border-width .35s ease;
+    }
+
+    .mobile-email-stack-card.is-expanded
+    .mobile-email-stack-preview{
+        max-height:230px;
+        border-width:1px;
+    }
+
+    .mobile-email-stack-preview img{
+        width:100%;
+        height:230px;
+        display:block;
+        object-fit:cover;
+        object-position:top center;
+        filter:brightness(.72) saturate(.82);
+        transform:scale(1.015);
+    }
+
+    .mobile-email-stack-preview-shade{
+        position:absolute;
+        inset:0;
+        pointer-events:none;
+        background:
+            linear-gradient(
+                180deg,
+                transparent 44%,
+                rgba(12,5,8,.18) 67%,
+                rgba(12,5,8,.82) 100%
+            );
+    }
+
+    .mobile-email-stack-placeholder{
+        min-height:170px;
+        padding:24px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#d9c8cf;
+        text-align:center;
+        font-size:.75rem;
+    }
+
+    .mobile-email-stack-view{
+        width:100%;
+        margin-top:11px;
+        padding:13px 16px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:8px;
+        color:#fff7fa;
+        border:1px solid rgba(235,141,174,.18);
+        border-radius:14px;
+        background:
+            linear-gradient(
+                135deg,
+                rgba(111,27,58,.88),
+                rgba(157,48,87,.9)
+            );
+        box-shadow:0 14px 28px rgba(78,11,36,.22);
+        font-family:inherit;
+        font-size:.68rem;
+        font-weight:600;
+        cursor:pointer;
+        -webkit-tap-highlight-color:transparent;
+    }
+
+    .mobile-email-stack-view:active{
+        transform:scale(.985);
+    }
+
+
+    /* -----------------------------------------
+       FULLSCREEN EMAIL VIEWER — PHONE POLISH
+       Keep the whole long design scrollable.
+    ----------------------------------------- */
+
+    .email-viewer-overlay{
+        padding:68px 12px 78px !important;
+    }
+
+    .email-viewer-shell{
+        width:min(100%,540px) !important;
+        height:calc(100dvh - 146px) !important;
+        max-width:540px !important;
+        border-radius:17px !important;
+    }
+
+    .email-viewer-scroll{
+        width:100% !important;
+        height:100% !important;
+        overflow-y:auto !important;
+        overflow-x:auto !important;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .email-viewer-scroll img{
+        display:block !important;
+        height:auto !important;
+        max-width:none !important;
+        max-height:none !important;
+        margin:0 auto !important;
+        object-fit:unset !important;
+        object-position:top center !important;
+    }
+
+    .email-viewer-close{
+        top:12px !important;
+        right:12px !important;
+        width:44px !important;
+        height:44px !important;
+        font-size:25px !important;
+    }
+
+    .email-viewer-zoom{
+        top:auto !important;
+        right:auto !important;
+        left:50% !important;
+        bottom:15px !important;
+        flex-direction:row !important;
+        transform:translateX(-50%) !important;
+    }
+
+    .email-viewer-zoom button{
+        width:45px !important;
+        height:45px !important;
+        font-size:23px !important;
+    }
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+    .mobile-email-stack-card,
+    .mobile-email-stack-toggle,
+    .mobile-email-stack-reveal,
+    .mobile-email-stack-preview{
+        transition:none !important;
+    }
+
+}
+/* =========================================================
+   AUTOMATION VIDEO PROJECTS
+========================================================= */
+
+.archive-project-video-wrap{
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(126,25,62,.18),
+            transparent 48%
+        ),
+        #080406;
+}
+
+
+.archive-project-video{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+
+    background:#050203;
+}
+
+
+/* Keep native video controls clickable */
+
+.archive-project-video-wrap,
+.archive-project-video{
+    position:relative;
+    z-index:5;
+}
+
+
+/* Prevent decorative shine from blocking controls */
+
+.archive-card-shine{
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   MOBILE VIDEO
+========================================================= */
+
+@media(max-width:700px){
+
+    .archive-project-video-wrap{
+        width:100%;
+        height:100%;
+        min-height:220px;
+    }
+
+    .archive-project-video{
+        width:100%;
+        height:100%;
+
+        object-fit:contain;
     }
 
 }
