@@ -12,11 +12,8 @@ import {
 
 import "./FloatingChat.css";
 
-import {
-  bookingHref,
-  hasBookingLink,
-  siteConfig
-} from "../config/siteConfig";
+import { siteConfig } from "../config/siteConfig";
+import { openBooking } from "../utils/openBooking";
 
 const initialMessages = [
   {
@@ -328,14 +325,14 @@ function FloatingChat() {
 
   const handleMessageAction = (action) => {
     if (action.href === "#booking") {
-      if (hasBookingLink) {
-        window.open(bookingHref, "_blank", "noopener,noreferrer");
-      } else {
-        window.location.href = bookingHref;
-      }
+      setOpen(false);
+
+      window.setTimeout(() => {
+        openBooking();
+      }, 50);
+
       return;
     }
-
     if (action.href.startsWith("#")) {
       const destination = document.querySelector(action.href);
 
@@ -511,9 +508,11 @@ function FloatingChat() {
           <div className="chat-action-row">
 
             <a
-              href={bookingHref}
-              target={hasBookingLink ? "_blank" : undefined}
-              rel={hasBookingLink ? "noreferrer" : undefined}
+              href="#booking"
+              onClick={(event) => {
+                setOpen(false);
+                openBooking(event);
+              }}
             >
               <Calendar size={15} />
               Book a Call

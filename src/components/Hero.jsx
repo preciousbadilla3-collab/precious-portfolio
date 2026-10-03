@@ -1,7 +1,7 @@
 import "./Hero.css";
-import preciousPhoto from "../assets/precious.jpg";
 
-import { bookingHref, hasBookingLink } from "../config/siteConfig";
+import preciousPhoto
+  from "../assets/precious.jpg";
 
 import {
   ArrowRight,
@@ -9,52 +9,61 @@ import {
   Sparkles
 } from "lucide-react";
 
+import { openBooking } from "../utils/openBooking";
+
 function Hero() {
   return (
     <section
       className="hero hero-redesign"
       id="hero"
     >
-      {/* Decorative background */}
+
       <div
         className="hero-scene"
         aria-hidden="true"
       >
         <span className="hero-scene-glow hero-glow-left"></span>
+
         <span className="hero-scene-glow hero-glow-right"></span>
 
         <span className="hero-orbit hero-orbit-one"></span>
+
         <span className="hero-orbit hero-orbit-two"></span>
       </div>
 
-      {/* LEFT CONTENT */}
       <div className="hero-copy">
 
         <div className="hero-status">
           <span className="hero-status-dot"></span>
+
           Available for select projects — 2026
         </div>
 
         <h1 className="hero-headline">
           Turn curious clicks into
-          <span>booked conversations.</span>
+          <span>
+            booked conversations.
+          </span>
         </h1>
 
         <p className="hero-summary">
-          I build GoHighLevel funnels, CRM pipelines, and automations
-          that capture leads, follow up instantly, and keep every
-          opportunity moving—without the manual chase.
+          I build GoHighLevel funnels,
+          CRM pipelines, and automations
+          that capture leads, follow up
+          instantly, and keep every
+          opportunity moving—without the
+          manual chase.
         </p>
 
         <div className="hero-actions">
 
           <a
-            href={bookingHref}
+            href="#booking"
             className="hero-primary-button"
-            target={hasBookingLink ? "_blank" : undefined}
-            rel={hasBookingLink ? "noopener noreferrer" : undefined}
+            onClick={openBooking}
           >
             Book a Discovery Call
+
             <ArrowRight size={18} />
           </a>
 
@@ -74,7 +83,9 @@ function Hero() {
 
             <div>
               <small>01</small>
-              <strong>Lead Capture</strong>
+              <strong>
+                Lead Capture
+              </strong>
             </div>
           </div>
 
@@ -83,7 +94,9 @@ function Hero() {
 
             <div>
               <small>02</small>
-              <strong>Smart Follow-Up</strong>
+              <strong>
+                Smart Follow-Up
+              </strong>
             </div>
           </div>
 
@@ -92,7 +105,9 @@ function Hero() {
 
             <div>
               <small>03</small>
-              <strong>Client Pipelines</strong>
+              <strong>
+                Client Pipelines
+              </strong>
             </div>
           </div>
 
@@ -100,11 +115,11 @@ function Hero() {
 
       </div>
 
-      {/* RIGHT PORTRAIT */}
       <div className="hero-visual">
 
         <div className="hero-visual-label">
           <Sparkles size={14} />
+
           Systems, strategy &amp; design
         </div>
 
@@ -143,30 +158,51 @@ function Hero() {
           </div>
 
           <div className="hero-float-card hero-card-one">
+
             <span></span>
 
             <div>
-              <strong>CRM Systems</strong>
-              <small>Lead capture &amp; pipeline</small>
+              <strong>
+                CRM Systems
+              </strong>
+
+              <small>
+                Lead capture &amp; pipeline
+              </small>
             </div>
+
           </div>
 
           <div className="hero-float-card hero-card-two">
+
             <span></span>
 
             <div>
-              <strong>Funnels</strong>
-              <small>Landing pages &amp; offers</small>
+              <strong>
+                Funnels
+              </strong>
+
+              <small>
+                Landing pages &amp; offers
+              </small>
             </div>
+
           </div>
 
           <div className="hero-float-card hero-card-three">
+
             <span></span>
 
             <div>
-              <strong>Automations</strong>
-              <small>Email &amp; workflows</small>
+              <strong>
+                Automations
+              </strong>
+
+              <small>
+                Email &amp; workflows
+              </small>
             </div>
+
           </div>
 
         </div>

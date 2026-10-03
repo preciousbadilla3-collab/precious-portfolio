@@ -20,11 +20,10 @@ const SESSION_KEY =
   "precious-nebula-intro-seen";
 
 /*
-  3.3 seconds of animation
-  + 0.7 seconds of exit
-  = approximately 4 seconds total.
+  Keep the removal timer aligned with the shortened
+  outro timing in Intro.css.
 */
-const INTRO_DURATION = 7450;
+const INTRO_DURATION = 6650;
 const EXIT_DURATION = 850;
 
 const PARTICLES = Array.from(

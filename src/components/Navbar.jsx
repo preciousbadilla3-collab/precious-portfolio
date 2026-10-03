@@ -2,11 +2,8 @@ import "./Navbar.css";
 import { ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import {
-  bookingHref,
-  hasBookingLink,
-  whatsappHref
-} from "../config/siteConfig";
+import { whatsappHref } from "../config/siteConfig";
+import { openBooking } from "../utils/openBooking";
 
 const links = [
   ["#hero", "Home"],
@@ -47,10 +44,9 @@ function Navbar() {
         </a>
 
         <a
-          href={bookingHref}
+          href="#booking"
           className="talk-btn"
-          target={hasBookingLink ? "_blank" : undefined}
-          rel={hasBookingLink ? "noopener noreferrer" : undefined}
+          onClick={openBooking}
         >
           <span>Let's Talk</span>
           <ArrowRight size={17} />

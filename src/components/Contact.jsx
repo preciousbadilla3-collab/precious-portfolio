@@ -12,12 +12,12 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 
 import {
-  bookingHref,
-  hasBookingLink,
   locationLabel,
   siteConfig,
   whatsappHref
 } from "../config/siteConfig";
+
+import { openBooking } from "../utils/openBooking";
 
 function Contact() {
   return (
@@ -168,10 +168,9 @@ function Contact() {
           </div>
 
           <a
-            href={bookingHref}
+            href="#booking"
             className="contact-book-button"
-            target={hasBookingLink ? "_blank" : undefined}
-            rel={hasBookingLink ? "noopener noreferrer" : undefined}
+            onClick={openBooking}
           >
             <Calendar size={19} />
             <span>Book a Discovery Call</span>
