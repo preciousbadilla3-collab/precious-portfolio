@@ -19,12 +19,10 @@
   background:
     radial-gradient(
       circle at 50% 8%,
-      rgba(148, 25, 60, 0.2),
+      rgba(148, 25, 60, 0.18),
       transparent 38%
     ),
-    rgba(2, 1, 2, 0.86);
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
+    rgba(2, 1, 2, 0.92);
   cursor: pointer;
 }
 
@@ -51,19 +49,19 @@
     0 38px 100px rgba(0, 0, 0, 0.72),
     0 0 70px rgba(120, 16, 47, 0.12);
   scrollbar-width: thin;
+  contain: layout paint;
   animation: bookingPanelIn
-    0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .booking-modal-glow {
   position: absolute;
-  top: -170px;
-  left: -160px;
-  width: 430px;
-  height: 430px;
+  top: -120px;
+  left: -120px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  background: rgba(128, 17, 48, 0.13);
-  filter: blur(80px);
+  background: rgba(128, 17, 48, 0.08);
   pointer-events: none;
 }
 
@@ -82,7 +80,10 @@
   background: rgba(255, 255, 255, 0.045);
   color: #f8edf0;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .booking-modal-close:hover {
@@ -200,7 +201,7 @@
 }
 
 /* =========================================================
-   SIMPLE LIGHTWEIGHT TIMEZONE PICKER
+   TIMEZONE PICKER
    ========================================================= */
 
 .booking-timezone-picker {
@@ -303,7 +304,9 @@
   background: rgba(255, 255, 255, 0.035);
   color: #f5e9ed;
   cursor: pointer;
-  transition: 0.18s ease;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .booking-month-nav button:hover {
@@ -339,6 +342,7 @@
 .booking-days-grid {
   position: relative;
   row-gap: 5px;
+  contain: layout paint;
 }
 
 .booking-day {
@@ -448,7 +452,10 @@
   color: #f9eef1;
   font-size: 0.69rem;
   cursor: pointer;
-  transition: 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .booking-time-button:hover,
@@ -630,7 +637,9 @@
   font: inherit;
   font-size: 0.69rem;
   padding: 11px 12px;
-  transition: 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .booking-form input::placeholder,
@@ -671,7 +680,9 @@
   cursor: pointer;
   box-shadow:
     0 12px 30px rgba(104, 15, 42, 0.22);
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .booking-submit:hover {
@@ -761,7 +772,7 @@
 @keyframes bookingPanelIn {
   from {
     opacity: 0;
-    transform: translateY(16px) scale(0.985);
+    transform: translateY(10px) scale(0.99);
   }
 
   to {
@@ -893,5 +904,11 @@
 
   .booking-loading-spinner {
     animation: none;
+  }
+
+  .booking-modal-close,
+  .booking-time-button,
+  .booking-submit {
+    transition: none;
   }
 }

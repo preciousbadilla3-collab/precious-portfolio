@@ -75,6 +75,45 @@ const TIMEZONE_OPTIONS = [
   },
 ];
 
+/*
+  Cache timezone labels once.
+
+  This prevents Intl.DateTimeFormat from being
+  recreated every time the modal renders.
+*/
+const timezoneLabels = Object.fromEntries(
+  TIMEZONE_OPTIONS.map((option) => {
+    let offset = "GMT";
+
+    try {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: option.value,
+        timeZoneName: "shortOffset",
+      }).formatToParts(new Date());
+
+      offset =
+        parts.find(
+          (part) => part.type === "timeZoneName"
+        )?.value || "GMT";
+    } catch {
+      offset = "GMT";
+    }
+
+    return [
+      option.value,
+      `${offset} — ${option.city}`,
+    ];
+  })
+);
+
+/*
+  Cache availability between modal opens/month changes.
+
+  Key:
+  month + timezone
+*/
+const availabilityCache = new Map();
+
 function getBrowserTimezone() {
   try {
     const detected =
@@ -92,33 +131,11 @@ function getBrowserTimezone() {
   }
 }
 
-function getGMTOffset(timezone) {
-  try {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone: timezone,
-      timeZoneName: "shortOffset",
-    }).formatToParts(new Date());
-
-    return (
-      parts.find(
-        (part) => part.type === "timeZoneName"
-      )?.value || "GMT"
-    );
-  } catch {
-    return "GMT";
-  }
-}
-
 function getTimezoneDisplay(timezone) {
-  const option = TIMEZONE_OPTIONS.find(
-    (item) => item.value === timezone
+  return (
+    timezoneLabels[timezone] ||
+    `GMT — ${timezone}`
   );
-
-  if (!option) {
-    return `${getGMTOffset(timezone)} — ${timezone}`;
-  }
-
-  return `${getGMTOffset(option.value)} — ${option.city}`;
 }
 
 const pad = (value) =>
@@ -134,29 +151,49 @@ const dateKey = (date) =>
     date.getMonth() + 1
   )}-${pad(date.getDate())}`;
 
-const formatMonth = (date) =>
+const formatMonthFormatter =
   new Intl.DateTimeFormat("en-US", {
     month: "long",
     year: "numeric",
-  }).format(date);
+  });
+
+const selectedDateFormatter =
+  new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+
+const calendarTimeFormatters = new Map();
+
+function getTimeFormatter(timezone) {
+  if (!calendarTimeFormatters.has(timezone)) {
+    calendarTimeFormatters.set(
+      timezone,
+      new Intl.DateTimeFormat("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: timezone,
+      })
+    );
+  }
+
+  return calendarTimeFormatters.get(timezone);
+}
 
 const formatSelectedDate = (value) => {
   if (!value) return "";
 
-  return new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(`${value}T12:00:00`));
+  return selectedDateFormatter.format(
+    new Date(`${value}T12:00:00`)
+  );
 };
 
 const formatTime = (value, timezone) =>
-  new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-    timeZone: timezone,
-  }).format(new Date(value));
+  getTimeFormatter(timezone).format(
+    new Date(value)
+  );
 
 const calendarCells = (month) => {
   const first = new Date(
@@ -302,18 +339,30 @@ function BookingModal() {
   /*
     Load HighLevel availability.
 
-    The selected timezone is sent to the API so
-    the availability can be interpreted for the
-    visitor's selected timezone.
+    Optimizations:
+    - Abort previous request when a new one starts
+    - Cache already-loaded month/timezone combinations
+    - Avoid duplicate requests
   */
   useEffect(() => {
     if (!open || step !== "calendar") {
       return undefined;
     }
 
-    let cancelled = false;
-
     const key = monthKey(viewMonth);
+    const cacheKey = `${key}|${selectedTimezone}`;
+
+    if (availabilityCache.has(cacheKey)) {
+      setAvailability(
+        availabilityCache.get(cacheKey)
+      );
+      setSlotsError("");
+      setLoadingSlots(false);
+
+      return undefined;
+    }
+
+    const controller = new AbortController();
 
     setLoadingSlots(true);
     setSlotsError("");
@@ -323,9 +372,11 @@ function BookingModal() {
         selectedTimezone
       )}`,
       {
+        method: "GET",
         headers: {
           Accept: "application/json",
         },
+        signal: controller.signal,
       }
     )
       .then(async (response) => {
@@ -341,29 +392,32 @@ function BookingModal() {
         return data;
       })
       .then((data) => {
-        if (cancelled) return;
+        const nextAvailability =
+          data.availability || {};
 
-        setAvailability(
-          data.availability || {}
+        availabilityCache.set(
+          cacheKey,
+          nextAvailability
         );
 
+        setAvailability(nextAvailability);
         setLoadingSlots(false);
       })
       .catch((error) => {
-        if (cancelled) return;
+        if (error.name === "AbortError") {
+          return;
+        }
 
         setAvailability({});
-
         setSlotsError(
           error.message ||
             "Unable to load availability."
         );
-
         setLoadingSlots(false);
       });
 
     return () => {
-      cancelled = true;
+      controller.abort();
     };
   }, [
     open,
@@ -382,8 +436,11 @@ function BookingModal() {
 
   const todayKey = dateKey(new Date());
 
-  const selectedTimezoneDisplay =
-    getTimezoneDisplay(selectedTimezone);
+  const selectedTimezoneDisplay = useMemo(
+    () =>
+      getTimezoneDisplay(selectedTimezone),
+    [selectedTimezone]
+  );
 
   const close = () => {
     setOpen(false);
@@ -528,8 +585,6 @@ function BookingModal() {
         {step === "calendar" && (
           <section className="booking-calendar-view">
             <div className="booking-calendar-main">
-
-              {/* TIMEZONE PICKER */}
               <div className="booking-timezone-picker">
                 <label htmlFor="booking-timezone">
                   Timezone
@@ -553,10 +608,9 @@ function BookingModal() {
                         key={option.value}
                         value={option.value}
                       >
-                        {getGMTOffset(
+                        {timezoneLabels[
                           option.value
-                        )}{" "}
-                        — {option.city}
+                        ]}
                       </option>
                     )
                   )}
@@ -570,7 +624,9 @@ function BookingModal() {
                   </span>
 
                   <h3>
-                    {formatMonth(viewMonth)}
+                    {formatMonthFormatter.format(
+                      viewMonth
+                    )}
                   </h3>
                 </div>
 
